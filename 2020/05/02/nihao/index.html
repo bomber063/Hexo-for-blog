@@ -396,6 +396,23 @@
 
 
     
+        <section id='comments' style='margin: 2em; padding: 2em; background: rgba(255, 255, 255, 0.5)'>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+    <div id="gitalk-container"></div>
+    <script type="text/javascript">
+        var gitalk = new Gitalk({
+            clientID: '8d0b2df66c239725d968',
+            clientSecret: 'f68581425d9790c161bb4ad5361158fdfb5b2bda',
+            repo: 'Hexo-for-blog',
+            owner: 'bomber063',
+            admin: ['bomber063'],
+            id: window.location.pathname
+        })
+        gitalk.render('gitalk-container')
+    </script>
+</section>
+    
 
 
 
