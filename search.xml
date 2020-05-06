@@ -126,13 +126,24 @@
       </tags>
   </entry>
   <entry>
+    <title>readme</title>
+    <url>/2020/02/03/README/</url>
+    <content><![CDATA[<ul>
+<li>hahaha</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020前端面试题基础篇(HTML)</title>
     <url>/2020/04/27/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
 <li>知识点如下：<ol>
 <li><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</li>
 <li>meta viewport 是做什么用的，怎么写？</li>
-<li>你用过哪些 [HTML 5](<a href="https://developer.mozilla" target="_blank" rel="noopener">https://developer.mozilla</a><br>.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list) 标签？</li>
+<li>你用过哪些 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML 5</a> 标签？</li>
 <li>H5 是什么？<a id="more"></a></li>
 </ol>
 </li>
@@ -188,17 +199,6 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>readme</title>
-    <url>/2020/02/03/README/</url>
-    <content><![CDATA[<ul>
-<li>hahaha</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hello World</title>
     <url>/2013/07/13/hello-world/</url>
     <content><![CDATA[<p>updated: 2018-01-01 12:00:00<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
@@ -235,6 +235,46 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 ]]></content>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>第一次面试答的不好的问题</title>
+    <url>/2020/05/06/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AD%94%E7%9A%84%E4%B8%8D%E5%A5%BD%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h3 id="手写promise"><a href="#手写promise" class="headerlink" title="手写promise"></a>手写promise</h3><ul>
+<li><a href="https://juejin.im/post/5aafe3edf265da238f125c0a" target="_blank" rel="noopener">手写 Promise</a><a id="more"></a>
+<h3 id="数组如何扁平化"><a href="#数组如何扁平化" class="headerlink" title="数组如何扁平化"></a>数组如何扁平化</h3></li>
+<li><a href="https://www.cnblogs.com/wind-lanyan/p/9044130.html" target="_blank" rel="noopener">5种方式实现数组扁平化</a><h3 id="跨域有几种方式"><a href="#跨域有几种方式" class="headerlink" title="跨域有几种方式"></a>跨域有几种方式</h3></li>
+<li><a href="https://baijiahao.baidu.com/s?id=1628698007235057817&wfr=spider&for=pc" target="_blank" rel="noopener">四种跨越简单说明</a></li>
+<li><a href="https://juejin.im/entry/57d21eadbf22ec005f9c7d76" target="_blank" rel="noopener">四种跨域及部分优缺点对比</a></li>
+<li><a href="https://segmentfault.com/a/1190000012242882" target="_blank" rel="noopener">4中跨域及部分优缺点对比</a></li>
+<li><a href="https://juejin.im/post/5c23993de51d457b8c1f4ee1" target="_blank" rel="noopener">9种跨域方式，及部分优缺点对比</a><h3 id="HTTP缓存机制原理"><a href="#HTTP缓存机制原理" class="headerlink" title="HTTP缓存机制原理"></a>HTTP缓存机制原理</h3></li>
+<li><a href="https://blog.csdn.net/weixin_34377065/article/details/91399959" target="_blank" rel="noopener">这个机制原理说的内容比较少</a></li>
+<li><a href="https://blog.csdn.net/Jutal_ljt/article/details/80021545" target="_blank" rel="noopener">Http缓存机制与原理,这个也不多</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/23299600" target="_blank" rel="noopener">饥人谷若愚关于如何缓存的说明</a></li>
+<li><a href="https://juejin.im/post/5c93ba526fb9a070ca103898" target="_blank" rel="noopener">缓存机制和原理的深入理解，很长</a></li>
+<li><a href="https://blog.csdn.net/a419419/article/details/80202166" target="_blank" rel="noopener">http的缓存机制面试版部分重点</a>，还有另一个和前面那个很像，就是<a href="https://cloud.tencent.com/developer/article/1439159" target="_blank" rel="noopener">你清楚HTTP缓存机制和原理吗？</a>和<a href="https://www.cnblogs.com/chenqf/p/6386163.html" target="_blank" rel="noopener">彻底弄懂HTTP缓存机制及原理</a></li>
+<li><a href="https://blog.csdn.net/zouzixuan/article/details/84677548" target="_blank" rel="noopener">面试常见：http缓存机制，浏览器缓存到底是什么？</a><h3 id="小程序的声明周期函数"><a href="#小程序的声明周期函数" class="headerlink" title="小程序的声明周期函数"></a>小程序的声明周期函数</h3></li>
+<li><a href="https://juejin.im/post/5ab362ea6fb9a028c06abb35" target="_blank" rel="noopener">微信小程序页面的生命周期</a></li>
+<li><a href="https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html" target="_blank" rel="noopener">微信官方文档的页面生命周期</a><h3 id="webpack的原理"><a href="#webpack的原理" class="headerlink" title="webpack的原理"></a>webpack的原理</h3></li>
+<li><a href="https://zhuanlan.zhihu.com/p/58151131" target="_blank" rel="noopener">理解webpack原理，手写一个100行的webpack</a></li>
+<li><a href="https://juejin.im/entry/5b0e3eba5188251534379615" target="_blank" rel="noopener">webpack原理</a></li>
+<li><a href="https://segmentfault.com/a/1190000017890529" target="_blank" rel="noopener">超详细的webpack原理解读</a></li>
+<li><a href="https://www.cnblogs.com/chengxs/p/11022842.html" target="_blank" rel="noopener">webpack系列–浅析webpack的原理</a><h3 id="webpack3和4的区别"><a href="#webpack3和4的区别" class="headerlink" title="webpack3和4的区别"></a>webpack3和4的区别</h3></li>
+<li><a href="https://www.jianshu.com/p/5d306ed6aaff" target="_blank" rel="noopener">Webpack4与3区别</a></li>
+<li><a href="https://segmentfault.com/a/1190000021881418" target="_blank" rel="noopener">Webpack4与3区别</a></li>
+<li><a href="https://www.cnblogs.com/Super-scarlett/p/11085363.html" target="_blank" rel="noopener">WEBPACK3和WEBPACK4区别</a><h3 id="web性能优化"><a href="#web性能优化" class="headerlink" title="web性能优化"></a>web性能优化</h3></li>
+<li><a href="https://github.com/berwin/Blog/issues/23" target="_blank" rel="noopener">嗨，送你一张Web性能优化地图</a></li>
+<li><a href="https://juejin.im/post/5c011e0c5188252ea66afdfa" target="_blank" rel="noopener">前端面试之路四(web性能优化篇)</a></li>
+<li><a href="https://juejin.im/post/5b0b7d74518825158e173a0c" target="_blank" rel="noopener">网站性能优化实战——从12.67s到1.06s的故事</a></li>
+<li><a href="https://segmentfault.com/a/1190000016553662" target="_blank" rel="noopener">web性能优化</a></li>
+<li><a href="https://xiedaimala.com/tasks/17aa2419-1450-425d-9d53-c20b08598b46/video_tutorials/b31e779a-04c6-4cbc-8ae8-9fa3014e1e9f" target="_blank" rel="noopener">之前有看过方方的视频，但是忘的差不多了，当时没有写博客或者文章记录</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>面试</category>
+      </categories>
+      <tags>
+        <tag>面试</tag>
       </tags>
   </entry>
   <entry>
