@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>getBoundingClientRect,clientHeight,scrollHeight等测试</title>
+    <url>/2020/05/07/getBoundingClientRect-clientHeight-scrollHeight%E7%AD%89%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  前面已经测试过部分位置信息了。<br>  <a id="more"></a><br>  <a href="https://zhuanlan.zhihu.com/p/62483585" target="_blank" rel="noopener">Top和Y的部分API测试笔记（一）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62514240" target="_blank" rel="noopener">Top和Y的部分API测试笔记（二）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62519712" target="_blank" rel="noopener">Top和Y的部分API测试笔记（三）和总结</a><br>  今天在做Vue轮子项目的popover组件的时候发现还不够熟悉，直接再写一篇博客加深影响。</p>
+<ul>
+<li>这次测试信息包括：<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollY" target="_blank" rel="noopener">window.scrollY</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">offsetTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">scrollHeight</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollLeft</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">clientHeight</a><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="HTML代码-不是重点可以不用看"><a href="#HTML代码-不是重点可以不用看" class="headerlink" title="HTML代码(不是重点可以不用看)"></a>HTML代码(不是重点可以不用看)</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>111111111sdfsdfdfsdfsdfsdf111111111111111111111111111111111111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS代码-不是重点可以不用看"><a href="#CSS代码-不是重点可以不用看" class="headerlink" title="CSS代码(不是重点可以不用看)"></a>CSS代码(不是重点可以不用看)</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#b</span>&#123;</span><br><span class="line">  <span class="comment">/* border:1px solid blue; */</span></span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#c</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid green;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript代码（主要测试对象）"><a href="#JavaScript代码（主要测试对象）" class="headerlink" title="JavaScript代码（主要测试对象）"></a>JavaScript代码（主要测试对象）</h3></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(width,height,'b元素距离顶部为'+top,left)</span></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  上面是第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口.</span></span><br><span class="line"><span class="comment">// 注意这里每次点击之后都需要获取值，所以要写到function里面。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>window.scrollY,offsetTop,scrollHeight及getBoundingClientRect返回值之间的关系，这里用到了ES6的语法。因为我的浏览器还存在小数，所以用了四舍五入Math.round()。</p>
+<ul>
+<li>关系测试了两种。分别为：<ul>
+<li>2-1.这只有在竖直方向的竖条没有移动的前提下才满足的情况，也就再最上面的时候</li>
+<li>2-2.在任何条件都可以满足的情况</li>
+</ul>
+</li>
+<li>两种情况看下面代码的注释及<a href="https://jsbin.com/wuhawekose/1/edit?css,js,output" target="_blank" rel="noopener">JSbin代码链接</a>  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line">  top=<span class="built_in">Math</span>.round(top)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> &#123;<span class="attr">height</span>:cHeight&#125;=c.getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bodyHeight=<span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line"><span class="keyword">let</span> bodyWidth=<span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight为'</span>+bodyHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollWidth为'</span>+bodyWidth)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top+window.scrollY求和为'</span>+(top+<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'window.scrollY为'</span>+<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'height为'</span>+height)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'cHeight为'</span>+cHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.offsetTop为'</span>+b.offsetTop)</span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这只有在竖直方法的竖条没有移动的前提下才满足，也就再最上面的时候</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height===top)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这只有在竖直方向的竖条没有移动的前提下才满足'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height===top成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度-整个页面竖直方向滚动条移动的距离===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这个在任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height-<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY)===top)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这个在任何条件都可以满足'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height-Math.round(window.scrollY)===top成功'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//b元素距离视口上边距的距离+垂直方向滚动的距离===b元素顶部相对于其offsetParent元素的顶部的距离</span></span><br><span class="line"><span class="comment">// 任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(top+<span class="built_in">window</span>.scrollY===b.offsetTop)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'任何条件都可以满足'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top+window.scrollY===b.offsetTop成功'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上面主要测试window.scrollY,offsetTop,scrollHeight</span></span><br><span class="line"><span class="comment">// 及getBoundingClientRect返回值之间的关系。</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>测试scrollLeft和scrollTop</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ascrollLeft=a.scrollLeft;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ascrollLeft为'</span>+ascrollLeft)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a元素滚动后距离左边的距离为'</span>+ascrollLeft)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bscrollTop=b.scrollTop</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bscrollTop为'</span>+bscrollTop)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b元素滚动后距离顶部的距离为'</span>+bscrollTop)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试scrollLeft和scrollTop</span></span><br></pre></td></tr></table></figure></li>
+<li><p>scrollHeight,scrollTop,clientHeight之间的关系  </p>
+<p>浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="noopener">Math.round()</a></p>
+<ul>
+<li>分了两种情况：<ul>
+<li>4-1.当b元素竖直方向滚动到最下面的时候才相等</li>
+<li>4-2.当b元素竖直方向没有滚动到最下面，所以不相等 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入。</span></span><br><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'b元素的整个高度为'</span>+b.scrollHeight)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b元素的滚动的高度为'</span>+<span class="built_in">Math</span>.round(b.scrollTop))</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'b元素的可视范围高度为'</span>+b.clientHeight)</span><br><span class="line"><span class="comment">// 当b元素竖直方向滚动到最下面的时候才相等</span></span><br><span class="line">  <span class="keyword">if</span>((b.scrollHeight - <span class="built_in">Math</span>.round(b.scrollTop)) === b.clientHeight)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向滚动到最下面的时候才相等'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向没有滚动到最下面，所以不相等'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//scrollHeight,scrollTop,clientHeight之间的关系</span></span><br></pre></td></tr></table></figure>
+<h3 id="最后附上一个前端使用的大部分位置API的截图说明。"><a href="#最后附上一个前端使用的大部分位置API的截图说明。" class="headerlink" title="最后附上一个前端使用的大部分位置API的截图说明。"></a>最后附上一个前端使用的大部分位置API的截图说明。</h3><img src="https://s1.ax1x.com/2020/05/07/YZh89H.jpg" alt="YZh89H.jpg"></li>
+</ul>
+</li>
+</ul>
+<p>该截图来自于<a href="https://blog.csdn.net/caseywei/article/details/92644503" target="_blank" rel="noopener">Js——ScrollTop、ScrollHeight、ClientHeight、OffsetHeight汇总</a></p>
+</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2020前端面试题基础篇(CSS)</title>
     <url>/2020/04/28/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(CSS)/</url>
     <content><![CDATA[<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
@@ -126,17 +177,6 @@
       </tags>
   </entry>
   <entry>
-    <title>readme</title>
-    <url>/2020/02/03/README/</url>
-    <content><![CDATA[<ul>
-<li>hahaha</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020前端面试题基础篇(HTML)</title>
     <url>/2020/04/27/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
@@ -196,6 +236,17 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>readme</title>
+    <url>/2020/02/03/README/</url>
+    <content><![CDATA[<ul>
+<li>hahaha</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
