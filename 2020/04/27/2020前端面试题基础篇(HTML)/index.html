@@ -118,9 +118,11 @@
 
   <style>
     .post-block{
-      border:1px solid rgba(0, 0, 255, .2);
-      box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
-      opacity:10;
+      /*border:1px solid rgba(0, 0, 255, .2);*/
+      box-shadow: rgba(0, 0, 0, 2) 0px 1px 6px, rgba(0, 0, 0, 0.12) 0px 1px 4px;
+      /*background:var(--content-bg-color);*/
+      border-radius:4px;
+      /*opacity:1;*/
     }
   </style>
 </head>
@@ -178,17 +180,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">5</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">5</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">8</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">8</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">18</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -442,8 +444,8 @@ JavaScript<figure class="highlight js"><table><tr><td class="gutter"><pre><span 
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/03/README/" rel="prev" title="readme">
-      <i class="fa fa-chevron-left"></i> readme
+    <a href="/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/" rel="prev" title="子选择器">
+      <i class="fa fa-chevron-left"></i> 子选择器
     </a></div>
       <div class="post-nav-item">
     <a href="/2020/04/28/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(CSS)/" rel="next" title="2020前端面试题基础篇(CSS)">
@@ -461,7 +463,20 @@ JavaScript<figure class="highlight js"><table><tr><td class="gutter"><pre><span 
 
           </div>
           
-    <div class="comments" id="valine-comments"></div>
+      <div class="tabs tabs-comment">
+        <ul class="nav-tabs">
+            <li class="tab"><a href="#comment-gitalk">gitalk</a></li>
+            <li class="tab"><a href="#comment-valine">valine</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane gitalk" id="comment-gitalk">
+              <div class="comments" id="gitalk-container"></div>
+            </div>
+            <div class="tab-pane valine" id="comment-valine">
+              <div class="comments" id="valine-comments"></div>
+            </div>
+        </div>
+      </div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -524,20 +539,20 @@ JavaScript<figure class="highlight js"><table><tr><td class="gutter"><pre><span 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -580,13 +595,13 @@ JavaScript<figure class="highlight js"><table><tr><td class="gutter"><pre><span 
       <i class="fa fa-chart-area"></i>
     </span>
       <span class="post-meta-item-text">Symbols count total: </span>
-    <span title="Symbols count total">23k</span>
+    <span title="Symbols count total">18k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">Reading time total &asymp;</span>
-    <span title="Reading time total">20 mins.</span>
+    <span title="Reading time total">17 mins.</span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a>
   </div>
@@ -730,6 +745,26 @@ JavaScript<figure class="highlight js"><table><tr><td class="gutter"><pre><span 
     });
     </script>
 
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '8d0b2df66c239725d968',
+      clientSecret: 'f68581425d9790c161bb4ad5361158fdfb5b2bda',
+      repo        : 'Hexo-for-blog',
+      owner       : 'bomber063',
+      admin       : ['bomber063'],
+      id          : '9bac6981be1d8a1eb87f1be5057879ba',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 
 <script>

