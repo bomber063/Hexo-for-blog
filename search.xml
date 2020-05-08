@@ -1,8 +1,328 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>2020前端面试题基础篇(CSS)</title>
-    <url>/2020/04/28/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(CSS)/</url>
+    <title>CSS的引入方式笔记</title>
+    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
+
+<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
+<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
+<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git bash安装whois</title>
+    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
+    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+<a id="more"></a>
+<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
+]]></content>
+      <categories>
+        <category>git bash</category>
+      </categories>
+      <tags>
+        <tag>git bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ES6解构赋值</title>
+    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+<a id="more"></a>
+<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
+<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
+<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
+<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
+<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>HTML、CSS、JS内容样式行为分离</title>
+    <url>/2019/05/07/HTML%E3%80%81CSS%E3%80%81JS%E5%86%85%E5%AE%B9%E6%A0%B7%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E7%A6%BB/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下一个页面，都是由三部分组成：</p>
+<ul>
+<li>HTML负责内容</li>
+<li>CSS负责样式</li>
+<li>JavaScript负责行为<br>虽然可以混用，但一般情况是不建议混成一团来使用。<a id="more"></a>
+<h2 id="如果HTML文件表示样式。"><a href="#如果HTML文件表示样式。" class="headerlink" title="如果HTML文件表示样式。"></a>如果HTML文件表示样式。</h2><img src="https://s1.ax1x.com/2020/05/08/Ynje3R.jpg" alt="Ynje3R.jpg"><br>上图中就显示出本该负责内容结构的HTML上有很多无用的标签，会让HTML代码显的很复杂。</li>
+</ul>
+<p>本来body标签里面就只有两个字——你好。</p>
+<p>但是又用了center，font，color。</p>
+<p>这样有些标签就表示内容，有些标签就表示样式，如果代码更多，就很难区分标签真正的逻辑结构。</p>
+<h2 id="如果CSS用来表示内容"><a href="#如果CSS用来表示内容" class="headerlink" title="如果CSS用来表示内容"></a>如果CSS用来表示内容</h2><p>下图用CSS生成的文字用鼠标（人类）选择是无法选中的，只有HTML生成的文字可以选中。用到了CSS的<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content" target="_blank" rel="noopener">content属性</a><br><img src="https://s1.ax1x.com/2020/05/08/YnjE4J.jpg" alt="YnjE4J.jpg"><br>不仅如此，CSS生成的文字内容也无法用JavaScript获取到。<br><img src="https://s1.ax1x.com/2020/05/08/Ynjmg1.jpg" alt="Ynjmg1.jpg"><br>所以用CSS生成文字内容会显得很麻烦。</p>
+<h2 id="如果用CSS来控制行为"><a href="#如果用CSS来控制行为" class="headerlink" title="如果用CSS来控制行为"></a>如果用CSS来控制行为</h2><p>CSS以前有一个CSS expression（也就是CSS的表达式），但是现在我查询到的关于CSS的expression的博客都是五年前的了，而且expression也已经从标准中查询不到了。</p>
+<p>从IE5开始得到支持，后因标准、性能、安全性等问题，微软从IE8 beta2标准模式开始，取消对css expression的支持。</p>
+<p>它除了让CSS负责样式以外，还让CSS来负责行为逻辑，导致CSS运行变慢，页面就会变慢，违反了页面优化的一个原则——就是不要在CSS中使用expression，它还暴露了脚本执行的上下文，可能带来脚本注入的隐患。</p>
+<h2 id="如果用JS来控制样式"><a href="#如果用JS来控制样式" class="headerlink" title="如果用JS来控制样式"></a>如果用JS来控制样式</h2><p>用jQuery中的API测试——<a href="https://www.jquery123.com/show/" target="_blank" rel="noopener">show()</a>和<a href="https://www.jquery123.com/hide/" target="_blank" rel="noopener">hide()</a><br>当原本的CSS中设置display:flex的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjAN4.jpg" alt="YnjAN4.jpg"><br>当原本的CSS中display:block的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjMDK.jpg" alt="YnjMDK.jpg"><br><strong>但是</strong>当原本的CSS中display:inline-block的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:inline-block。</strong><br><img src="https://s1.ax1x.com/2020/05/08/Ynjnjx.jpg" alt="Ynjnjx.jpg"><br>当原本的CSS中display:none的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:none。</strong><br><img src="https://s1.ax1x.com/2020/05/08/YnjKu6.jpg" alt="YnjKu6.jpg"><br>所以上面用JS来控制样式就显得很不可靠，你要去猜用JS控制之后可能变成了并不是你原本的样式。<br>所以应该用JS来控制行为，比如添加一个类:</p>
+<ol>
+<li><p>addClass（’active’），激活某个CSS类；</p>
+</li>
+<li><p>addClass（’deactive’），不激活某个CSS类；</p>
+</li>
+<li><p>addClass（’disable’），不激活某个CSS类。<br>等等添加删除class的操作。</p>
+</li>
+</ol>
+<p>这样就用JS来控制一个语义化的变量名来代表状态即可。不用来描述是否显示样式（也就是是否能够看见），只用来描述是一个打开/关闭状态或者正面/负面状态。至于打开/关闭和正面/负面的状态的样式是什么样子的JS不管，给CSS负责。</p>
+<p>所以尽量让HTML负责内容，CSS负责样式，JavaScript负责行为。</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+        <category>JavaScript</category>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>JavaScript</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html代码中的空格笔记</title>
+    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
+<a id="more"></a>
+
+
+<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
+<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fetch merge commit</title>
+    <url>/2019/04/20/fetch%20merge%20commit/</url>
+    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
+<a id="more"></a>
+
+<ul>
+<li>运行 git fetch 后，会发生以下活动：</li>
+</ul>
+<ol>
+<li>远程分支上的 commit 会复制到本地仓库</li>
+<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+</ol>
+<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
+<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
+<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
+<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
+这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改git hub的仓库名字后怎么push</title>
+    <url>/2019/03/04/hub%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D%E5%AD%97%E5%90%8E%E6%80%8E%E4%B9%88push/</url>
+    <content><![CDATA[<p>今天不小心改了git hub上的仓库名字发现了push了半天都报错。  </p>
+<a id="more"></a>
+
+<p>报错部分信息</p>
+<blockquote>
+<p>fatal: Could not read from remote repository.<br>  Please make sure you have the correct access rights<br>  and the repository exists.</p>
+</blockquote>
+<ul>
+<li>accecc rights我肯定是有的。因为修改了repository的名字，肯定是因为这个原因了。<br>解决方案就是通过git bash在本地把远程仓库修改后的地址改一下就好了（因为了仓库名字，仓库地址就会跟着修改）</li>
+</ul>
+<p>修改远程仓库地址</p>
+<p><code>$ git remote -v 显示当前远程仓库地址</code>  </p>
+<p><code>$ git remote set-url origin git@github.con:账户名字/远程残仓库名字.git（这里就是新的远程仓库名的地址）</code><br>第二行命令就是修改远程仓库的地址的意思<br><code>$ git push -u origin master</code></p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改分支名字</title>
+    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
+<a id="more"></a>
+<ul>
+<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
+<li>注：#号后面的为标注！不需要键入！</li>
+<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于 HTML 的简单介绍</title>
+    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
+<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
+<a id="more"></a>
+</li>
+<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
+</li>
+<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
+<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
+</li>
+</ul>
+<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
+<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
+<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
+<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
+</ul>
+<ol>
+<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
+<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
+<li><code>&lt;h1&gt;</code>是最大的标题</li>
+<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
+<li><code>&lt;br&gt;</code>可以插入折行</li>
+<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
+<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
+<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
+<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
+<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
+<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
+<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
+<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
+<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
+<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
+<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
+<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
+<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
+<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
+<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
+<li>Which character is used to indicate an end tag?<br>\</li>
+<li>Inline elements are normally displayed without starting a new line.<br>True</li>
+<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
+<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
+<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
+<li>Block elements are normally displayed without starting a new line.<br>False</li>
+<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
+<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
+<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
+<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
+<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
+<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
+<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
+<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
+<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
+<li>Graphics defined by SVG is in which format?<br>XML</li>
+<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
+<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
+<li>Which input type defines a slider control?<br>range</li>
+<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
+<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
+<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
+<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
+</ol>
+<ul>
+<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改已经push了的commit信息</title>
+    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
+<a id="more"></a>
+<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
+<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
+<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
+<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
+<p>step4：输入【git push -f】强制提交。  </p>
+<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基础篇(CSS)</title>
+    <url>/2020/04/28/%E5%9F%BA%E7%A1%80%E7%AF%87(CSS)/</url>
     <content><![CDATA[<h2 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h2><ul>
 <li>知识点如下：<ol>
 <li><strong>必考</strong>：两种盒模型分别说一下。</li>
@@ -126,142 +446,8 @@
       </tags>
   </entry>
   <entry>
-    <title>HTML、CSS、JS内容样式行为分离</title>
-    <url>/2019/05/07/HTML%E3%80%81CSS%E3%80%81JS%E5%86%85%E5%AE%B9%E6%A0%B7%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E7%A6%BB/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下一个页面，都是由三部分组成：</p>
-<ul>
-<li>HTML负责内容</li>
-<li>CSS负责样式</li>
-<li>JavaScript负责行为<br>虽然可以混用，但一般情况是不建议混成一团来使用。<a id="more"></a>
-<h2 id="如果HTML文件表示样式。"><a href="#如果HTML文件表示样式。" class="headerlink" title="如果HTML文件表示样式。"></a>如果HTML文件表示样式。</h2><img src="https://s1.ax1x.com/2020/05/08/Ynje3R.jpg" alt="Ynje3R.jpg"><br>上图中就显示出本该负责内容结构的HTML上有很多无用的标签，会让HTML代码显的很复杂。</li>
-</ul>
-<p>本来body标签里面就只有两个字——你好。</p>
-<p>但是又用了center，font，color。</p>
-<p>这样有些标签就表示内容，有些标签就表示样式，如果代码更多，就很难区分标签真正的逻辑结构。</p>
-<h2 id="如果CSS用来表示内容"><a href="#如果CSS用来表示内容" class="headerlink" title="如果CSS用来表示内容"></a>如果CSS用来表示内容</h2><p>下图用CSS生成的文字用鼠标（人类）选择是无法选中的，只有HTML生成的文字可以选中。用到了CSS的<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/content" target="_blank" rel="noopener">content属性</a><br><img src="https://s1.ax1x.com/2020/05/08/YnjE4J.jpg" alt="YnjE4J.jpg"><br>不仅如此，CSS生成的文字内容也无法用JavaScript获取到。<br><img src="https://s1.ax1x.com/2020/05/08/Ynjmg1.jpg" alt="Ynjmg1.jpg"><br>所以用CSS生成文字内容会显得很麻烦。</p>
-<h2 id="如果用CSS来控制行为"><a href="#如果用CSS来控制行为" class="headerlink" title="如果用CSS来控制行为"></a>如果用CSS来控制行为</h2><p>CSS以前有一个CSS expression（也就是CSS的表达式），但是现在我查询到的关于CSS的expression的博客都是五年前的了，而且expression也已经从标准中查询不到了。</p>
-<p>从IE5开始得到支持，后因标准、性能、安全性等问题，微软从IE8 beta2标准模式开始，取消对css expression的支持。</p>
-<p>它除了让CSS负责样式以外，还让CSS来负责行为逻辑，导致CSS运行变慢，页面就会变慢，违反了页面优化的一个原则——就是不要在CSS中使用expression，它还暴露了脚本执行的上下文，可能带来脚本注入的隐患。</p>
-<h2 id="如果用JS来控制样式"><a href="#如果用JS来控制样式" class="headerlink" title="如果用JS来控制样式"></a>如果用JS来控制样式</h2><p>用jQuery中的API测试——<a href="https://www.jquery123.com/show/" target="_blank" rel="noopener">show()</a>和<a href="https://www.jquery123.com/hide/" target="_blank" rel="noopener">hide()</a><br>当原本的CSS中设置display:flex的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjAN4.jpg" alt="YnjAN4.jpg"><br>当原本的CSS中display:block的时候，先用hide()，再用show()后会把<strong>它原本的display</strong>给显示出来。<br><img src="https://s1.ax1x.com/2020/05/08/YnjMDK.jpg" alt="YnjMDK.jpg"><br><strong>但是</strong>当原本的CSS中display:inline-block的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:inline-block。</strong><br><img src="https://s1.ax1x.com/2020/05/08/Ynjnjx.jpg" alt="Ynjnjx.jpg"><br>当原本的CSS中display:none的时候，先用hide()，再用show()后会把<strong>display:block覆盖原本的display:none。</strong><br><img src="https://s1.ax1x.com/2020/05/08/YnjKu6.jpg" alt="YnjKu6.jpg"><br>所以上面用JS来控制样式就显得很不可靠，你要去猜用JS控制之后可能变成了并不是你原本的样式。<br>所以应该用JS来控制行为，比如添加一个类:</p>
-<ol>
-<li><p>addClass（’active’），激活某个CSS类；</p>
-</li>
-<li><p>addClass（’deactive’），不激活某个CSS类；</p>
-</li>
-<li><p>addClass（’disable’），不激活某个CSS类。<br>等等添加删除class的操作。</p>
-</li>
-</ol>
-<p>这样就用JS来控制一个语义化的变量名来代表状态即可。不用来描述是否显示样式（也就是是否能够看见），只用来描述是一个打开/关闭状态或者正面/负面状态。至于打开/关闭和正面/负面的状态的样式是什么样子的JS不管，给CSS负责。</p>
-<p>所以尽量让HTML负责内容，CSS负责样式，JavaScript负责行为。</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-        <category>HTML</category>
-        <category>JavaScript</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-        <tag>HTML</tag>
-        <tag>JavaScript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ES6解构赋值</title>
-    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
-    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
-<a id="more"></a>
-<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
-<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
-<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
-<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
-<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
-<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS的引入方式笔记</title>
-    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
-
-<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
-<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
-<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git bash安装whois</title>
-    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
-    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
-<a id="more"></a>
-<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
-]]></content>
-      <categories>
-        <category>git bash</category>
-      </categories>
-      <tags>
-        <tag>git bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>content-box 与 border-box</title>
-    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
-    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
-<a id="more"></a>
-<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
-<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
-<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
-<ol>
-<li><p>content-box——会使内容宽高为100×100；</p>
-</li>
-<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
-</li>
-<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
-</li>
-</ol>
-<p>有效果。</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>2020前端面试题基础篇(HTML)</title>
-    <url>/2020/04/27/2020%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
+    <title>基础篇(HTML)</title>
+    <url>/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
 <li>知识点如下：<ol>
 <li><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</li>
@@ -322,108 +508,31 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>html代码中的空格笔记</title>
-    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
+    <title>content-box 与 border-box</title>
+    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
+    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
 <a id="more"></a>
-
-
-<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
-<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改git hub的仓库名字后怎么push</title>
-    <url>/2019/03/04/hub%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D%E5%AD%97%E5%90%8E%E6%80%8E%E4%B9%88push/</url>
-    <content><![CDATA[<p>今天不小心改了git hub上的仓库名字发现了push了半天都报错。  </p>
-<a id="more"></a>
-
-<p>报错部分信息</p>
-<blockquote>
-<p>fatal: Could not read from remote repository.<br>  Please make sure you have the correct access rights<br>  and the repository exists.</p>
-</blockquote>
-<ul>
-<li>accecc rights我肯定是有的。因为修改了repository的名字，肯定是因为这个原因了。<br>解决方案就是通过git bash在本地把远程仓库修改后的地址改一下就好了（因为了仓库名字，仓库地址就会跟着修改）</li>
-</ul>
-<p>修改远程仓库地址</p>
-<p><code>$ git remote -v 显示当前远程仓库地址</code>  </p>
-<p><code>$ git remote set-url origin git@github.con:账户名字/远程残仓库名字.git（这里就是新的远程仓库名的地址）</code><br>第二行命令就是修改远程仓库的地址的意思<br><code>$ git push -u origin master</code></p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fetch merge commit</title>
-    <url>/2019/04/20/fetch%20merge%20commit/</url>
-    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
-<a id="more"></a>
-
-<ul>
-<li>运行 git fetch 后，会发生以下活动：</li>
-</ul>
+<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
+<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
+<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
 <ol>
-<li>远程分支上的 commit 会复制到本地仓库</li>
-<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+<li><p>content-box——会使内容宽高为100×100；</p>
+</li>
+<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
+</li>
+<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
+</li>
 </ol>
-<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
-<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
-<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
-<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
-这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
-</ul>
+<p>有效果。</p>
 ]]></content>
       <categories>
-        <category>github</category>
+        <category>CSS</category>
       </categories>
       <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改分支名字</title>
-    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
-    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
-<a id="more"></a>
-<ul>
-<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
-<li>注：#号后面的为标注！不需要键入！</li>
-<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改已经push了的commit信息</title>
-    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
-<a id="more"></a>
-<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
-<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
-<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
-<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
-<p>step4：输入【git push -f】强制提交。  </p>
-<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -460,112 +569,20 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>关于 HTML 的简单介绍</title>
-    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
-<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
-<a id="more"></a>
-</li>
-<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
-</li>
-<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
-<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
-</li>
-</ul>
-<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
-<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
-<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
-<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
-</ul>
-<ol>
-<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
-<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
-<li><code>&lt;h1&gt;</code>是最大的标题</li>
-<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
-<li><code>&lt;br&gt;</code>可以插入折行</li>
-<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
-<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
-<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
-<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
-<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
-<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
-<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
-<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
-<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
-<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
-<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
-<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
-<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
-<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
-<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
-<li>Which character is used to indicate an end tag?<br>\</li>
-<li>Inline elements are normally displayed without starting a new line.<br>True</li>
-<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
-<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
-<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
-<li>Block elements are normally displayed without starting a new line.<br>False</li>
-<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
-<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
-<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
-<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
-<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
-<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
-<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
-<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
-<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
-<li>Graphics defined by SVG is in which format?<br>XML</li>
-<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
-<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
-<li>Which input type defines a slider control?<br>range</li>
-<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
-<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
-<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
-<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
-</ol>
-<ul>
-<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
 </ul>
 ]]></content>
       <categories>
-        <category>HTML</category>
+        <category>github</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -584,23 +601,6 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>还原到某个commit的代码</title>
-    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
-<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -658,8 +658,8 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>第一次面试答的不好的问题</title>
-    <url>/2020/05/06/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9D%A2%E8%AF%95%E7%AD%94%E7%9A%84%E4%B8%8D%E5%A5%BD%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <title>部分问题收集</title>
+    <url>/2020/05/06/%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E6%94%B6%E9%9B%86/</url>
     <content><![CDATA[<h3 id="手写promise"><a href="#手写promise" class="headerlink" title="手写promise"></a>手写promise</h3><ul>
 <li><a href="https://juejin.im/post/5aafe3edf265da238f125c0a" target="_blank" rel="noopener">手写 Promise</a><a id="more"></a>
 <h3 id="数组如何扁平化"><a href="#数组如何扁平化" class="headerlink" title="数组如何扁平化"></a>数组如何扁平化</h3></li>
