@@ -408,8 +408,8 @@
 <li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
 <li>Which character is used to indicate an end tag?<br>\</li>
 <li>Inline elements are normally displayed without starting a new line.<br>True</li>
-<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code></li>
-<li>An <iframe> is used to display a web page within a web page.<br>True</li>
+<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
+<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
 <li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
 <li>Block elements are normally displayed without starting a new line.<br>False</li>
 <li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
@@ -764,23 +764,6 @@
       });
       });
   </script>
-<!-- calendar widget -->
-
-    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
-    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
-    <script>
-    $(function() {
-        $('#CloudCalendar').aCalendar('zh-CN',
-            $.extend(
-                '', {
-                    single:true,
-                    root:'/calendar/'
-                }
-            )
-        );
-    });
-    </script>
-
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
@@ -801,6 +784,23 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
   }, window.Gitalk);
 });
 </script>
+<!-- calendar widget -->
+
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/calendar.min.js"></script>
+    <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-calendar/languages.min.js"></script>
+    <script>
+    $(function() {
+        $('#CloudCalendar').aCalendar('zh-CN',
+            $.extend(
+                '', {
+                    single:true,
+                    root:'/calendar/'
+                }
+            )
+        );
+    });
+    </script>
+
 
 
 <script>
