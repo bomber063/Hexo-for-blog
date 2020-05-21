@@ -53,48 +53,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git bash安装whois</title>
-    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
-    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
-<a id="more"></a>
-<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
-]]></content>
-      <categories>
-        <category>git bash</category>
-      </categories>
-      <tags>
-        <tag>git bash</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>content-box 与 border-box</title>
-    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
-    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
-<a id="more"></a>
-<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
-<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
-<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
-<ol>
-<li><p>content-box——会使内容宽高为100×100；</p>
-</li>
-<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
-</li>
-<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
-</li>
-</ol>
-<p>有效果。</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML、CSS、JS内容样式行为分离</title>
     <url>/2019/05/07/HTML%E3%80%81CSS%E3%80%81JS%E5%86%85%E5%AE%B9%E6%A0%B7%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E7%A6%BB/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下一个页面，都是由三部分组成：</p>
@@ -135,6 +93,65 @@
       </tags>
   </entry>
   <entry>
+    <title>git bash安装whois</title>
+    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
+    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+<a id="more"></a>
+<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
+]]></content>
+      <categories>
+        <category>git bash</category>
+      </categories>
+      <tags>
+        <tag>git bash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>html代码中的空格笔记</title>
+    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
+<a id="more"></a>
+
+
+<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
+<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>content-box 与 border-box</title>
+    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
+    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
+<a id="more"></a>
+<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
+<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
+<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
+<ol>
+<li><p>content-box——会使内容宽高为100×100；</p>
+</li>
+<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
+</li>
+<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
+</li>
+</ol>
+<p>有效果。</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>fetch merge commit</title>
     <url>/2019/04/20/fetch%20merge%20commit/</url>
     <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
@@ -159,23 +176,6 @@
       </categories>
       <tags>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>html代码中的空格笔记</title>
-    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
-<a id="more"></a>
-
-
-<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
-<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -237,6 +237,115 @@
       </categories>
       <tags>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于 HTML 的简单介绍</title>
+    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
+<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
+<a id="more"></a>
+</li>
+<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
+</li>
+<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
+<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
+</li>
+</ul>
+<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
+<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
+<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
+<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
+</ul>
+<ol>
+<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
+<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
+<li><code>&lt;h1&gt;</code>是最大的标题</li>
+<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
+<li><code>&lt;br&gt;</code>可以插入折行</li>
+<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
+<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
+<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
+<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
+<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
+<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
+<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
+<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
+<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
+<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
+<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
+<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
+<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
+<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
+<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
+<li>Which character is used to indicate an end tag?<br>\</li>
+<li>Inline elements are normally displayed without starting a new line.<br>True</li>
+<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
+<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
+<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
+<li>Block elements are normally displayed without starting a new line.<br>False</li>
+<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
+<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
+<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
+<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
+<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
+<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
+<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
+<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
+<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
+<li>Graphics defined by SVG is in which format?<br>XML</li>
+<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
+<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
+<li>Which input type defines a slider control?<br>range</li>
+<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
+<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
+<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
+<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
+</ol>
+<ul>
+<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>HTML</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -365,165 +474,6 @@
       </tags>
   </entry>
   <entry>
-    <title>关于 HTML 的简单介绍</title>
-    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
-<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
-<a id="more"></a>
-</li>
-<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
-</li>
-<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
-<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
-</li>
-</ul>
-<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
-<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
-<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
-<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
-</ul>
-<ol>
-<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
-<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
-<li><code>&lt;h1&gt;</code>是最大的标题</li>
-<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
-<li><code>&lt;br&gt;</code>可以插入折行</li>
-<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
-<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
-<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
-<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
-<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
-<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
-<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
-<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
-<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
-<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
-<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
-<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
-<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
-<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
-<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
-<li>Which character is used to indicate an end tag?<br>\</li>
-<li>Inline elements are normally displayed without starting a new line.<br>True</li>
-<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
-<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
-<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
-<li>Block elements are normally displayed without starting a new line.<br>False</li>
-<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
-<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
-<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
-<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
-<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
-<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
-<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
-<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
-<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
-<li>Graphics defined by SVG is in which format?<br>XML</li>
-<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
-<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
-<li>Which input type defines a slider control?<br>range</li>
-<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
-<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
-<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
-<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
-</ol>
-<ul>
-<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>理解DOM事件</title>
-    <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
-<a id="more"></a>
-<h2 id="当都设置为true的时候"><a href="#当都设置为true的时候" class="headerlink" title="当都设置为true的时候"></a>当都设置为true的时候</h2><ul>
-<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有捕获阶段执行</strong>。也就是都是<strong>true</strong>。说明从<strong>外层逐步到内层，从父元素到子元素</strong>。</li>
-<li><strong>同时在同一个DIV绑定两个事件</strong>，增加类和移除类，并且<strong>增加类的代码在移除类的前面</strong>，那么就从<strong>外</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>内层</strong>。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/nobihoduzi/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当都设置为false的时候"><a href="#当都设置为false的时候" class="headerlink" title="当都设置为false的时候"></a>当都设置为false的时候</h2><ul>
-<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有冒泡阶段执行</strong>。也就是都是<strong>false</strong>。说明从<strong>内层逐步到外层，从子元素到父元素</strong>。</li>
-<li>同时在同一个DIV绑定两个事件，增加类和移除类，并且增加类的代码在移除类的前面，那么就从<strong>内</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>外层</strong>。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/sucuxebare/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当前面的增加类为false，后面的移除类为true的时候"><a href="#当前面的增加类为false，后面的移除类为true的时候" class="headerlink" title="当前面的增加类为false，后面的移除类为true的时候"></a>当前面的增加类为false，后面的移除类为true的时候</h2><ul>
-<li>增加类在延迟函数(setTimeout)里面是<strong>冒泡阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>捕获阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
-<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层DIV</strong>在同一个DIV<strong>绑定两个事件</strong>，此时就跟代码<strong>顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会移除类，也就是最开始没有颜色，然后到<strong>最内层</strong>的时候增加类，会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/lakazurasu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当前面的增加类为true，后面的移除类为false的时候"><a href="#当前面的增加类为true，后面的移除类为false的时候" class="headerlink" title="当前面的增加类为true，后面的移除类为false的时候"></a>当前面的增加类为true，后面的移除类为false的时候</h2><ul>
-<li>增加类在延迟函数(setTimeout)里面是<strong>捕获阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>冒泡阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
-<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层</strong>DIV在同一个DIV<strong>绑定两个事件</strong>，此时就跟<strong>代码顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会先增加类，也就是最开始从外层到内侧依次增加颜色，到<strong>最内层</strong>的时候，由于事件绑定了同一个DIV，那么就是按照<strong>代码先后顺序执行</strong>，也就是先增加最内层的类，然后最内层移除类，也就是到<strong>最内层</strong>的时候会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/zecojimibu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DOM</category>
-      </categories>
-      <tags>
-        <tag>DOM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>还原到某个commit的代码</title>
-    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
-<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>子选择器</title>
     <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
     <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
@@ -601,6 +551,56 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>理解DOM事件</title>
+    <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
+<a id="more"></a>
+<h2 id="当都设置为true的时候"><a href="#当都设置为true的时候" class="headerlink" title="当都设置为true的时候"></a>当都设置为true的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有捕获阶段执行</strong>。也就是都是<strong>true</strong>。说明从<strong>外层逐步到内层，从父元素到子元素</strong>。</li>
+<li><strong>同时在同一个DIV绑定两个事件</strong>，增加类和移除类，并且<strong>增加类的代码在移除类的前面</strong>，那么就从<strong>外</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>内层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/nobihoduzi/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当都设置为false的时候"><a href="#当都设置为false的时候" class="headerlink" title="当都设置为false的时候"></a>当都设置为false的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有冒泡阶段执行</strong>。也就是都是<strong>false</strong>。说明从<strong>内层逐步到外层，从子元素到父元素</strong>。</li>
+<li>同时在同一个DIV绑定两个事件，增加类和移除类，并且增加类的代码在移除类的前面，那么就从<strong>内</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>外层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/sucuxebare/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当前面的增加类为false，后面的移除类为true的时候"><a href="#当前面的增加类为false，后面的移除类为true的时候" class="headerlink" title="当前面的增加类为false，后面的移除类为true的时候"></a>当前面的增加类为false，后面的移除类为true的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>冒泡阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>捕获阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层DIV</strong>在同一个DIV<strong>绑定两个事件</strong>，此时就跟代码<strong>顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会移除类，也就是最开始没有颜色，然后到<strong>最内层</strong>的时候增加类，会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/lakazurasu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当前面的增加类为true，后面的移除类为false的时候"><a href="#当前面的增加类为true，后面的移除类为false的时候" class="headerlink" title="当前面的增加类为true，后面的移除类为false的时候"></a>当前面的增加类为true，后面的移除类为false的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>捕获阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>冒泡阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层</strong>DIV在同一个DIV<strong>绑定两个事件</strong>，此时就跟<strong>代码顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会先增加类，也就是最开始从外层到内侧依次增加颜色，到<strong>最内层</strong>的时候，由于事件绑定了同一个DIV，那么就是按照<strong>代码先后顺序执行</strong>，也就是先增加最内层的类，然后最内层移除类，也就是到<strong>最内层</strong>的时候会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/zecojimibu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DOM</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
       </tags>
   </entry>
   <entry>
@@ -719,12 +719,18 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li><a href="https://segmentfault.com/a/1190000012861862" target="_blank" rel="noopener">Vue.nextTick 的原理和用途</a><h2 id="深圳星通网络科技有限公司"><a href="#深圳星通网络科技有限公司" class="headerlink" title="深圳星通网络科技有限公司"></a><a href="https://www.tianyancha.com/company/3266977635" target="_blank" rel="noopener">深圳星通网络科技有限公司</a></h2></li>
 <li>基本没问啥。<h2 id="深圳市博远中天科技发展有限公司"><a href="#深圳市博远中天科技发展有限公司" class="headerlink" title="深圳市博远中天科技发展有限公司"></a><a href="https://baike.baidu.com/item/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%8D%9A%E8%BF%9C%E4%B8%AD%E5%A4%A9%E7%A7%91%E6%8A%80%E5%8F%91%E5%B1%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/21023226?fr=aladdin" target="_blank" rel="noopener">深圳市博远中天科技发展有限公司</a></h2></li>
 <li>基本没问啥，主要是上级做一个简单的页面，但是要自己下载软件，我没有带电脑过去，下载速度太慢了。然后就没了。</li>
-<li>这里我想要使用http协议，没办法用，所以用了file协议打不开图片和div标签。但是我用自己的电脑的时候又可以看到图片了，也可以调试，不知道是不是因为我紧张了还是别的原因。<h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
+<li>这里我想要使用http协议，没办法用，所以用了file协议打不开图片和div标签。但是我用自己的电脑的时候又可以看到图片了，也可以调试，不知道是不是因为我紧张了还是别的原因。<h2 id="深圳市青石软件技术有限公司"><a href="#深圳市青石软件技术有限公司" class="headerlink" title="深圳市青石软件技术有限公司"></a><a href="https://www.tianyancha.com/sabnormal/3369067100-297e" target="_blank" rel="noopener">深圳市青石软件技术有限公司</a></h2></li>
+<li>基本没有问什么，就是问了做过小程序没有，有没有做过登陆 注册 支付，我没有做过支付，然后基本就没了。<h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
 <li>深圳乐道科技<ul>
 <li>写一个函数，能够发送多个请求，同时发送失败的请求可以再次发送（自定义发送次数），我不知道是是不是<a href="https://juejin.im/post/5c3ee7c9f265da614f708bec" target="_blank" rel="noopener">这个</a>,就是一个请求的promise里面的成功或者失败回调还有promise。</li>
 </ul>
 </li>
-<li>押题群的面试题<br>  <img src="https://s1.ax1x.com/2020/05/15/YDqMvj.png" alt="YDqMvj.png"><br>  <img src="https://s1.ax1x.com/2020/05/15/YDqlKs.png" alt="YDqlKs.png"><h2 id="gulu-bomber安装Cli"><a href="#gulu-bomber安装Cli" class="headerlink" title="gulu-bomber安装Cli"></a>gulu-bomber安装Cli</h2></li>
+<li>押题群的面试题<br>  <img src="https://s1.ax1x.com/2020/05/15/YDqMvj.png" alt="YDqMvj.png"><br>  <img src="https://s1.ax1x.com/2020/05/15/YDqlKs.png" alt="YDqlKs.png"></li>
+<li>一道关于重绘和重排的问题。<br><img src="https://s1.ax1x.com/2020/05/21/Yb7VC6.png" alt="Yb7VC6.png"><ul>
+<li>这样写会触发三次重排或者重绘(有的人解释并不会触发三次，会积攒到一个tick然后再渲染，也就是重排或者重绘)，一般都是提前写好样式，然后加上class，比如</li>
+<li><img src="https://s1.ax1x.com/2020/05/21/Yb7KDH.png" alt="Yb7KDH.png"><h2 id="gulu-bomber安装Cli"><a href="#gulu-bomber安装Cli" class="headerlink" title="gulu-bomber安装Cli"></a>gulu-bomber安装Cli</h2></li>
+</ul>
+</li>
 <li>安装cli之后，如果不是全局安装，npm安装需要使用npx，如果是yarn安装就直接使用yarn就可以实现响应的命令，也就是把npm的npx在yarn里面用yarn,具体看<a href="https://cli.vuejs.org/zh/guide/cli-service.html" target="_blank" rel="noopener">这里</a>或者<a href="https://stackoverflow.com/questions/49154490/did-you-register-the-component-correctly-for-recursive-components-make-sure-to" target="_blank" rel="noopener">这里</a></li>
 <li>比如npm的  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npx vue create hello-world</span><br></pre></td></tr></table></figure></li>
 <li>在yarn里面就可以写成  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">    yarn vue create hello-world</span><br><span class="line">    ``` </span><br><span class="line">* npm运行服务器的时候 </span><br><span class="line">    ```sh</span><br><span class="line">    npm run serve</span><br></pre></td></tr></table></figure></li>
@@ -732,9 +738,10 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li>然后需要注意的时候注册组件的时候可以参考<a href="https://element.eleme.cn/#/zh-CN/component/quickstart" target="_blank" rel="noopener">element</a>，要在main.js里面注册<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Button, Popover&#125; <span class="keyword">from</span> <span class="string">"gulu-bomber/index"</span>;</span><br><span class="line"></span><br><span class="line">Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line">Vue.component(<span class="string">"g-button"</span>, Button);</span><br><span class="line">Vue.component(<span class="string">"g-popover"</span>, Popover);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  render: <span class="function"><span class="params">h</span> =&gt;</span> h(App),</span><br><span class="line">&#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure></li>
 <li>我之前都是在app.vue里面注册，总是报错，可能这里不是全局注册，具体见这里<a href="https://github.com/yarnpkg/yarn/issues/4890" target="_blank" rel="noopener">说明</a><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'./components/HelloWorld.vue'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Button&#125; <span class="keyword">from</span> <span class="string">'gulu-bomber'</span></span><br><span class="line"><span class="keyword">import</span> &#123;Popover&#125; <span class="keyword">from</span> <span class="string">'gulu-bomber'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'gulu-bomber/dist/index.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">    <span class="string">'g-button'</span>:Button,</span><br><span class="line">    <span class="string">'g-popover'</span>:Popover</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>如果在app.vue里面需要全部路径，而且这里不用解构赋值，直接存为变量<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'./components/HelloWorld.vue'</span></span><br><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">'gulu-bomber/src/button'</span></span><br><span class="line"><span class="keyword">import</span> Popover <span class="keyword">from</span> <span class="string">'gulu-bomber/src/popover'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">'gulu-bomber/dist/index.css'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld,</span><br><span class="line">    <span class="string">'g-button'</span>:Button,</span><br><span class="line">    <span class="string">'g-popover'</span>:Popover</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>另外我发现不管用yarn还是npm，最后都需要安装node-sass和sass-loader依赖。</li>
-</ul>
-<h2 id="git-和-linux"><a href="#git-和-linux" class="headerlink" title="git 和 linux"></a>git 和 linux</h2><ul>
+<li>另外我发现不管用yarn还是npm，最后都需要安装node-sass和sass-loader依赖。<h2 id="vue-轮子有一个问题"><a href="#vue-轮子有一个问题" class="headerlink" title="vue 轮子有一个问题"></a>vue 轮子有一个问题</h2></li>
+<li>就是docs-&gt;components里面各种组件，button标签是html语言  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Button-按钮</span></span><br><span class="line">&lt;ClientOnly&gt;</span><br><span class="line">  &lt;button-demo-1&gt;&lt;/button-demo-1&gt;</span><br><span class="line">&lt;/ClientOnly&gt;</span><br></pre></td></tr></table></figure></li>
+<li>但是另外一个标签collapse就只能用xml语言。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Collapse-手风琴</span></span><br><span class="line"> </span><br><span class="line">&lt;ClientOnly&gt;</span><br><span class="line">  &lt;collapse/&gt;</span><br><span class="line">&lt;/ClientOnly&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="git-和-linux"><a href="#git-和-linux" class="headerlink" title="git 和 linux"></a>git 和 linux</h2></li>
 <li><a href="https://www.cnblogs.com/boluopabo/p/7890326.html" target="_blank" rel="noopener">【git】git 常用命令(含删除文件)</a></li>
 <li><a href="https://www.cnblogs.com/scplee/p/5478992.html" target="_blank" rel="noopener">Linux 命令之删除命令</a></li>
 </ul>
