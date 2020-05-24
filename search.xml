@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ES6解构赋值</title>
+    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+<a id="more"></a>
+<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
+<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
+<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
+<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
+<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git bash安装whois</title>
+    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
+    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+<a id="more"></a>
+<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
+]]></content>
+      <categories>
+        <category>git bash</category>
+      </categories>
+      <tags>
+        <tag>git bash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CSS的引入方式笔记</title>
     <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
@@ -26,30 +67,30 @@
       </tags>
   </entry>
   <entry>
-    <title>ES6解构赋值</title>
-    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
-    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
+    <title>fetch merge commit</title>
+    <url>/2019/04/20/fetch%20merge%20commit/</url>
+    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
 <a id="more"></a>
-<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
-<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
-<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
-<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
-<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
-<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
+
+<ul>
+<li>运行 git fetch 后，会发生以下活动：</li>
+</ul>
+<ol>
+<li>远程分支上的 commit 会复制到本地仓库</li>
+<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+</ol>
+<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
+<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
+<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
+<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
+这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
+</ul>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
-        <category>ES6</category>
+        <category>github</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -110,28 +151,31 @@
 <p>所以尽量让HTML负责内容，CSS负责样式，JavaScript负责行为。</p>
 ]]></content>
       <categories>
-        <category>CSS</category>
         <category>JavaScript</category>
+        <category>CSS</category>
         <category>HTML</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
         <tag>JavaScript</tag>
+        <tag>CSS</tag>
         <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
-    <title>git bash安装whois</title>
-    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
-    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+    <title>html代码中的空格笔记</title>
+    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
 <a id="more"></a>
-<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
+
+
+<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
+<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
 ]]></content>
       <categories>
-        <category>git bash</category>
+        <category>HTML</category>
       </categories>
       <tags>
-        <tag>git bash</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -143,33 +187,6 @@
 <li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
 <li>注：#号后面的为标注！不需要键入！</li>
 <li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fetch merge commit</title>
-    <url>/2019/04/20/fetch%20merge%20commit/</url>
-    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
-<a id="more"></a>
-
-<ul>
-<li>运行 git fetch 后，会发生以下活动：</li>
-</ul>
-<ol>
-<li>远程分支上的 commit 会复制到本地仓库</li>
-<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
-</ol>
-<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
-<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
-<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
-<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
-这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
 </ul>
 ]]></content>
       <categories>
@@ -220,23 +237,6 @@
       </categories>
       <tags>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>html代码中的空格笔记</title>
-    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
-<a id="more"></a>
-
-
-<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
-<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -346,6 +346,23 @@
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -474,6 +491,57 @@
       </tags>
   </entry>
   <entry>
+    <title>理解DOM事件</title>
+    <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
+<a id="more"></a>
+<h2 id="当都设置为true的时候"><a href="#当都设置为true的时候" class="headerlink" title="当都设置为true的时候"></a>当都设置为true的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有捕获阶段执行</strong>。也就是都是<strong>true</strong>。说明从<strong>外层逐步到内层，从父元素到子元素</strong>。</li>
+<li><strong>同时在同一个DIV绑定两个事件</strong>，增加类和移除类，并且<strong>增加类的代码在移除类的前面</strong>，那么就从<strong>外</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>内层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/nobihoduzi/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当都设置为false的时候"><a href="#当都设置为false的时候" class="headerlink" title="当都设置为false的时候"></a>当都设置为false的时候</h2><ul>
+<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有冒泡阶段执行</strong>。也就是都是<strong>false</strong>。说明从<strong>内层逐步到外层，从子元素到父元素</strong>。</li>
+<li>同时在同一个DIV绑定两个事件，增加类和移除类，并且增加类的代码在移除类的前面，那么就从<strong>内</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>外层</strong>。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/sucuxebare/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当前面的增加类为false，后面的移除类为true的时候"><a href="#当前面的增加类为false，后面的移除类为true的时候" class="headerlink" title="当前面的增加类为false，后面的移除类为true的时候"></a>当前面的增加类为false，后面的移除类为true的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>冒泡阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>捕获阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层DIV</strong>在同一个DIV<strong>绑定两个事件</strong>，此时就跟代码<strong>顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会移除类，也就是最开始没有颜色，然后到<strong>最内层</strong>的时候增加类，会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/lakazurasu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+<h2 id="当前面的增加类为true，后面的移除类为false的时候"><a href="#当前面的增加类为true，后面的移除类为false的时候" class="headerlink" title="当前面的增加类为true，后面的移除类为false的时候"></a>当前面的增加类为true，后面的移除类为false的时候</h2><ul>
+<li>增加类在延迟函数(setTimeout)里面是<strong>捕获阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>冒泡阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
+<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层</strong>DIV在同一个DIV<strong>绑定两个事件</strong>，此时就跟<strong>代码顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会先增加类，也就是最开始从外层到内侧依次增加颜色，到<strong>最内层</strong>的时候，由于事件绑定了同一个DIV，那么就是按照<strong>代码先后顺序执行</strong>，也就是先增加最内层的类，然后最内层移除类，也就是到<strong>最内层</strong>的时候会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
+<li>jsbin代码<a href="http://js.jirengu.com/zecojimibu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>DOM</category>
+      </categories>
+      <tags>
+        <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>子选择器</title>
+    <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
+<a id="more"></a>
+
+<p>如果加了&gt;，此时选择使用的只能是子元素，不可以是用孙元素，只能下一级。</p>
+<p>使用list-style:none；属性</p>
+<p>如果不加&gt;，只使用空格.<br><img src="https://s1.ax1x.com/2020/05/08/YuDtMV.png" alt="YuDtMV.png"><br>如果加了&gt;就不可以。<br><img src="https://s1.ax1x.com/2020/05/08/YuDJx0.png" alt="YuDJx0.png"><br>因为body与nav元素之间还有一个div。</p>
+<p>如果把body和nav之间在加一个div就可以使用了。<br><img src="https://s1.ax1x.com/2020/05/08/YuDG2q.png" alt="YuDG2q.png"></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>基础篇(HTML)</title>
     <url>/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
@@ -533,74 +601,6 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>子选择器</title>
-    <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
-    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
-<a id="more"></a>
-
-<p>如果加了&gt;，此时选择使用的只能是子元素，不可以是用孙元素，只能下一级。</p>
-<p>使用list-style:none；属性</p>
-<p>如果不加&gt;，只使用空格.<br><img src="https://s1.ax1x.com/2020/05/08/YuDtMV.png" alt="YuDtMV.png"><br>如果加了&gt;就不可以。<br><img src="https://s1.ax1x.com/2020/05/08/YuDJx0.png" alt="YuDJx0.png"><br>因为body与nav元素之间还有一个div。</p>
-<p>如果把body和nav之间在加一个div就可以使用了。<br><img src="https://s1.ax1x.com/2020/05/08/YuDG2q.png" alt="YuDG2q.png"></p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>理解DOM事件</title>
-    <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
-<a id="more"></a>
-<h2 id="当都设置为true的时候"><a href="#当都设置为true的时候" class="headerlink" title="当都设置为true的时候"></a>当都设置为true的时候</h2><ul>
-<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有捕获阶段执行</strong>。也就是都是<strong>true</strong>。说明从<strong>外层逐步到内层，从父元素到子元素</strong>。</li>
-<li><strong>同时在同一个DIV绑定两个事件</strong>，增加类和移除类，并且<strong>增加类的代码在移除类的前面</strong>，那么就从<strong>外</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>内层</strong>。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/nobihoduzi/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当都设置为false的时候"><a href="#当都设置为false的时候" class="headerlink" title="当都设置为false的时候"></a>当都设置为false的时候</h2><ul>
-<li>增加类和移除类在延迟函数(setTimeout)里面<strong>都只有冒泡阶段执行</strong>。也就是都是<strong>false</strong>。说明从<strong>内层逐步到外层，从子元素到父元素</strong>。</li>
-<li>同时在同一个DIV绑定两个事件，增加类和移除类，并且增加类的代码在移除类的前面，那么就从<strong>内</strong>部该层<strong>先变色</strong>，然后<strong>移除该层的颜色</strong>，逐步到<strong>外层</strong>。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/sucuxebare/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当前面的增加类为false，后面的移除类为true的时候"><a href="#当前面的增加类为false，后面的移除类为true的时候" class="headerlink" title="当前面的增加类为false，后面的移除类为true的时候"></a>当前面的增加类为false，后面的移除类为true的时候</h2><ul>
-<li>增加类在延迟函数(setTimeout)里面是<strong>冒泡阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>捕获阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
-<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层DIV</strong>在同一个DIV<strong>绑定两个事件</strong>，此时就跟代码<strong>顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会移除类，也就是最开始没有颜色，然后到<strong>最内层</strong>的时候增加类，会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/lakazurasu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-<h2 id="当前面的增加类为true，后面的移除类为false的时候"><a href="#当前面的增加类为true，后面的移除类为false的时候" class="headerlink" title="当前面的增加类为true，后面的移除类为false的时候"></a>当前面的增加类为true，后面的移除类为false的时候</h2><ul>
-<li>增加类在延迟函数(setTimeout)里面是<strong>捕获阶段执行</strong>,移除类在延迟函数(setTimeout)里面<strong>冒泡阶段执行</strong>。DOM事件模型都是<strong>先捕获在冒泡</strong>。</li>
-<li><strong>除了最内层外，其他DIV没有在同一个DIV绑定两个事件</strong>，跟<strong>代码顺序没有关系</strong>，但是<strong>最内层</strong>DIV在同一个DIV<strong>绑定两个事件</strong>，此时就跟<strong>代码顺序相关</strong>，代码在前面的就先执行，就是<strong>队列模型</strong>，所以<strong>最外层</strong>会先增加类，也就是最开始从外层到内侧依次增加颜色，到<strong>最内层</strong>的时候，由于事件绑定了同一个DIV，那么就是按照<strong>代码先后顺序执行</strong>，也就是先增加最内层的类，然后最内层移除类，也就是到<strong>最内层</strong>的时候会<strong>先变色</strong>，然后<strong>移除该层颜色</strong>，然后从<strong>内部第二层</strong>开始从内向外部，也就是冒泡阶段增加类来添加颜色。</li>
-<li>jsbin代码<a href="http://js.jirengu.com/zecojimibu/1/edit?html,css,js,output" target="_blank" rel="noopener">链接</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>DOM</category>
-      </categories>
-      <tags>
-        <tag>DOM</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>还原到某个commit的代码</title>
-    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
-<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -719,8 +719,9 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li><a href="https://segmentfault.com/a/1190000012861862" target="_blank" rel="noopener">Vue.nextTick 的原理和用途</a><h2 id="深圳星通网络科技有限公司"><a href="#深圳星通网络科技有限公司" class="headerlink" title="深圳星通网络科技有限公司"></a><a href="https://www.tianyancha.com/company/3266977635" target="_blank" rel="noopener">深圳星通网络科技有限公司</a></h2></li>
 <li>基本没问啥。<h2 id="深圳市博远中天科技发展有限公司"><a href="#深圳市博远中天科技发展有限公司" class="headerlink" title="深圳市博远中天科技发展有限公司"></a><a href="https://baike.baidu.com/item/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%8D%9A%E8%BF%9C%E4%B8%AD%E5%A4%A9%E7%A7%91%E6%8A%80%E5%8F%91%E5%B1%95%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8/21023226?fr=aladdin" target="_blank" rel="noopener">深圳市博远中天科技发展有限公司</a></h2></li>
 <li>基本没问啥，主要是上级做一个简单的页面，但是要自己下载软件，我没有带电脑过去，下载速度太慢了。然后就没了。</li>
-<li>这里我想要使用http协议，没办法用，所以用了file协议打不开图片和div标签。但是我用自己的电脑的时候又可以看到图片了，也可以调试，不知道是不是因为我紧张了还是别的原因。<h2 id="深圳市青石软件技术有限公司"><a href="#深圳市青石软件技术有限公司" class="headerlink" title="深圳市青石软件技术有限公司"></a><a href="https://www.tianyancha.com/sabnormal/3369067100-297e" target="_blank" rel="noopener">深圳市青石软件技术有限公司</a></h2></li>
-<li>基本没有问什么，就是问了做过小程序没有，有没有做过登陆 注册 支付，我没有做过支付，然后基本就没了。<h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
+<li>这里我想要使用http协议，没办法用，所以用了file协议打不开图片和div标签。但是我用自己的电脑的时候又可以看到图片了，也可以调试，不知道是不是因为我紧张了还是别的原因。<strong>可能这里是因为修改代码后没有保存的原因</strong><h2 id="深圳市青石软件技术有限公司"><a href="#深圳市青石软件技术有限公司" class="headerlink" title="深圳市青石软件技术有限公司"></a><a href="https://www.tianyancha.com/sabnormal/3369067100-297e" target="_blank" rel="noopener">深圳市青石软件技术有限公司</a></h2></li>
+<li>基本没有问什么，就是问了做过小程序没有，有没有做过登陆 注册 支付，我没有做过支付，然后基本就没了。<h2 id="深圳市妙同信息技术有限公司"><a href="#深圳市妙同信息技术有限公司" class="headerlink" title="深圳市妙同信息技术有限公司"></a><a href="http://www.mioto.cn/#/about?about_gsjs=gsjs" target="_blank" rel="noopener">深圳市妙同信息技术有限公司</a></h2></li>
+<li>这家公司去面试直接是上级做一个静态页面，只需要做一个表格，很简单，但是刚开始我还是犯傻，<strong>因为修改代码后没有保存就一直不出效果</strong>。后面跟产品经理稍微聊了聊，不知道后面是不是可以获得他们公司的offer。暂时没有问技术问题。公司有一个前端工程师。如果他们面试的人多可能还有复试。<h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
 <li>深圳乐道科技<ul>
 <li>写一个函数，能够发送多个请求，同时发送失败的请求可以再次发送（自定义发送次数），我不知道是是不是<a href="https://juejin.im/post/5c3ee7c9f265da614f708bec" target="_blank" rel="noopener">这个</a>,就是一个请求的promise里面的成功或者失败回调还有promise。</li>
 </ul>
