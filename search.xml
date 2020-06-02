@@ -68,28 +68,17 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS的引入方式笔记</title>
-    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
-
-<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
-<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
-<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
+    <title>git bash安装whois</title>
+    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
+    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
+<a id="more"></a>
+<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>git bash</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
+        <tag>git bash</tag>
       </tags>
   </entry>
   <entry>
@@ -121,14 +110,48 @@
       </tags>
   </entry>
   <entry>
-    <title>修改分支名字</title>
-    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
-    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
+    <title>CSS的引入方式笔记</title>
+    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
+
+<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
+<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
+<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fetch merge commit</title>
+    <url>/2019/04/20/fetch%20merge%20commit/</url>
+    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
 <a id="more"></a>
+
 <ul>
-<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
-<li>注：#号后面的为标注！不需要键入！</li>
-<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
+<li>运行 git fetch 后，会发生以下活动：</li>
+</ul>
+<ol>
+<li>远程分支上的 commit 会复制到本地仓库</li>
+<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+</ol>
+<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
+<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
+<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
+<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
+这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
 </ul>
 ]]></content>
       <categories>
@@ -136,20 +159,6 @@
       </categories>
       <tags>
         <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git bash安装whois</title>
-    <url>/2019/02/05/bash%E5%AE%89%E8%A3%85whois/</url>
-    <content><![CDATA[<p>Whois，通常来说，就是一个用于查询域名是否已经被注册，以及注册域名的详细信息（如域名所有人、域名注册商、域名注册日期和过期日期等）的工具。<br>当然，现在已经有各种网页版查看 whois 信息的工具，但是很多时候网页查询有附加条件，比如输入验证码或者不支持的后缀等，比较低效。因此在命令行下使用 whois 命令来直接获得域名的 whois 信息。</p>
-<a id="more"></a>
-<p>需要输入 npm i -g whois在git bash里面安装whois即可<br><img src="https://s1.ax1x.com/2020/05/08/Yugfdf.png" alt="Yugfdf.png"><br>输入whois +一级域名就可以查询域名信息了<br><img src="https://s1.ax1x.com/2020/05/08/YugWeP.png" alt="YugWeP.png"></p>
-]]></content>
-      <categories>
-        <category>git bash</category>
-      </categories>
-      <tags>
-        <tag>git bash</tag>
       </tags>
   </entry>
   <entry>
@@ -194,23 +203,14 @@
       </tags>
   </entry>
   <entry>
-    <title>fetch merge commit</title>
-    <url>/2019/04/20/fetch%20merge%20commit/</url>
-    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
+    <title>修改分支名字</title>
+    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
 <a id="more"></a>
-
 <ul>
-<li>运行 git fetch 后，会发生以下活动：</li>
-</ul>
-<ol>
-<li>远程分支上的 commit 会复制到本地仓库</li>
-<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
-</ol>
-<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
-<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
-<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
-<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
-这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
+<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
+<li>注：#号后面的为标注！不需要键入！</li>
+<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
 </ul>
 ]]></content>
       <categories>
@@ -327,6 +327,25 @@
       </categories>
       <tags>
         <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>修改已经push了的commit信息</title>
+    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
+<a id="more"></a>
+<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
+<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
+<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
+<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
+<p>step4：输入【git push -f】强制提交。  </p>
+<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -473,25 +492,6 @@
       </tags>
   </entry>
   <entry>
-    <title>修改已经push了的commit信息</title>
-    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
-<a id="more"></a>
-<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
-<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
-<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
-<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
-<p>step4：输入【git push -f】强制提交。  </p>
-<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>基础篇(HTML)</title>
     <url>/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
     <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
@@ -554,23 +554,6 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>还原到某个commit的代码</title>
-    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
-<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>理解DOM事件</title>
     <url>/2019/06/04/%E7%90%86%E8%A7%A3DOM%E4%BA%8B%E4%BB%B6/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过动效图来分析<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">addEventListener</a>在不同情况的捕获和冒泡过程</p>
@@ -601,6 +584,23 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>DOM</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -756,7 +756,8 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 </li>
 </ol>
 </li>
-<li>这里已经有一个前端小伙子了，跟他聊天好像是上年刚毕业的。最后我还是选择不去了。因为不想做业务了。而且我觉得我学的不够好，他们的业务主要也是做做小程序和Vue做PC端页面。<h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
+<li>这里已经有一个前端小伙子了，跟他聊天好像是上年刚毕业的。最后我还是选择不去了。因为不想做业务了。而且我觉得我学的不够好，他们的业务主要也是做做小程序和Vue做PC端页面。</li>
+<li>这个是我回答的，就算有些题目以前是看过的，但是回答的时候还是写的不完全对。自己真菜！！！<br><img src="https://s1.ax1x.com/2020/06/02/tt41tH.jpg" alt="tt41tH.jpg"><h2 id="别人面试的问题"><a href="#别人面试的问题" class="headerlink" title="别人面试的问题"></a>别人面试的问题</h2></li>
 <li>深圳乐道科技<ul>
 <li>写一个函数，能够发送多个请求，同时发送失败的请求可以再次发送（自定义发送次数），我不知道是是不是<a href="https://juejin.im/post/5c3ee7c9f265da614f708bec" target="_blank" rel="noopener">这个</a>,就是一个请求的promise里面的成功或者失败回调还有promise。</li>
 </ul>
