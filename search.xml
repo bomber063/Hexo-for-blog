@@ -813,7 +813,8 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li><p>正常阻止耐受量分两种：</p>
 <ol>
 <li>即为临床医生所能接受的、造成组织或器官的某种损伤的最小的和最大的剂量。最小的损伤剂量为TD<sub>5/5</sub>,表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过5%;</li>
-<li>最大的损伤剂量为TD<sub>50/5</sub>, 表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过50%<h2 id="两个DVH比较图"><a href="#两个DVH比较图" class="headerlink" title="两个DVH比较图"></a>两个DVH比较图</h2></li>
+<li>最大的损伤剂量为TD<sub>50/5</sub>, 表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过50%<a id="more"></a>
+<h2 id="两个DVH比较图"><a href="#两个DVH比较图" class="headerlink" title="两个DVH比较图"></a>两个DVH比较图</h2></li>
 </ol>
 </li>
 </ul>
