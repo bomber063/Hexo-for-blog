@@ -1,195 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ES6解构赋值</title>
-    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
-    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
-<a id="more"></a>
-<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
-<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
-<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
-<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
-<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
-<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
-<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
-<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
-]]></content>
-      <categories>
-        <category>JavaScript</category>
-        <category>ES6</category>
-      </categories>
-      <tags>
-        <tag>JavaScript</tag>
-        <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PhysicalTherapist---PT</title>
-    <url>/2021/02/27/PhysicalTherapist-PT/</url>
-    <content><![CDATA[<h1 id="PhysicalTherapist—PT"><a href="#PhysicalTherapist—PT" class="headerlink" title="PhysicalTherapist—PT"></a>PhysicalTherapist—PT</h1><h2 id="2021-1-25"><a href="#2021-1-25" class="headerlink" title="2021.1.25"></a>2021.1.25</h2><h3 id="TD5-5"><a href="#TD5-5" class="headerlink" title="TD5/5"></a>TD<sub>5/5</sub></h3><ul>
-<li><p>TD<sub>5/5</sub>,从肿瘤放射物理学中查询到时329页有说到。</p>
-<ul>
-<li><p><strong>我记得在做计划的时候都是考虑98%就可以</strong>。而下面说道的95%可能跟这个有关。</p>
-</li>
-<li><p>为统一标准，将达到95%的肿瘤控制率所需要的剂量（TCD<sub>95</sub>）定义为<a href="https://www.med66.com/html/ziliao/07/58/8db1b9c8cb52198d4752176ba2e29795.htm" target="_blank" rel="noopener">肿瘤致死剂量</a></p>
-</li>
-<li><p>正常阻止耐受量分两种：</p>
-<ol>
-<li>即为临床医生所能接受的、造成组织或器官的某种损伤的最小的和最大的剂量。最小的损伤剂量为TD<sub>5/5</sub>,表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过5%;</li>
-<li>最大的损伤剂量为TD<sub>50/5</sub>, 表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过50%<h2 id="两个DVH比较图"><a href="#两个DVH比较图" class="headerlink" title="两个DVH比较图"></a>两个DVH比较图</h2></li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>书本453页。</p>
-</li>
-<li><p>利用 DVH 鉴别治疗方案的优劣要区别具体情况①当一个计划 OAR 的 DVH 曲线总是低于另一个计划的 DVH 值时，前者计划应该优于后者；②当两个计划 OAR 的 DVH 曲线有交叉时，如图 9-51所示，计划 D 中的 （）AR 有较多的体积受到比计划 I中更高的剂量，但计划 I 中有较大的体积受到较低剂量的照射。如果 （）AR 是串型组织（由单元组织或细胞决定整个器官的功能，第八章第五节），如脊髓，高剂量段将决定治疗方案的取舍，计划 I 优于计划 I ;如果 OAR 是并行组织（器官中大部分单元组织或细胞受伤后，器官功能才受损，第八章第五节），如肝、肺等组织，因DVH 曲线 I，K 下的面积近似相同，计划 I，H 可能等同。</p>
-</li>
-<li><p>两个计划DVH图比较图 9-51<a href="https://imgchr.com/i/sO2jzT" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/25/sO2jzT.png" alt="sO2jzT.png"></a>]</p>
-<h2 id="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"><a href="#2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）" class="headerlink" title="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"></a>2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）</h2><h3 id="plan1"><a href="#plan1" class="headerlink" title="plan1"></a>plan1</h3></li>
-<li><p>plan1优化参数-1<a href="https://imgchr.com/i/yLdtwd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdtwd.jpg" alt="yLdtwd.jpg"></a></p>
-</li>
-<li><p>plan1优化参数-2<a href="https://imgchr.com/i/yLdGOe" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdGOe.jpg" alt="yLdGOe.jpg"></a></p>
-</li>
-<li><p>plan1优化参数-3<a href="https://imgchr.com/i/yLdYeH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdYeH.jpg" alt="yLdYeH.jpg"></a></p>
-<h3 id="plan2"><a href="#plan2" class="headerlink" title="plan2"></a>plan2</h3></li>
-<li><p>ctv-gtv 优选度由150降低到100</p>
-</li>
-<li><p>gtv 优选度由150降低到100</p>
-</li>
-<li><p>b-c 优选度由150降低到100</p>
-</li>
-<li><p>plan2优化参数 1<a href="https://imgchr.com/i/yLddYt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLddYt.jpg" alt="yLddYt.jpg"></a></p>
-</li>
-<li><p>plan2优化参数-2<a href="https://imgchr.com/i/yLdBSf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdBSf.jpg" alt="yLdBSf.jpg"></a></p>
-</li>
-<li><p>结果</p>
-<ul>
-<li>剂量线5000的会多出部分接近肺，CTV中间会多出一些剂量散点</li>
-<li>剂量线5750的会多出部分</li>
-<li>体积直方图DVH中业整体会使plan2的剂量低于plan1(但CTV和c-g出现剂量超过5200后plan2&gt;plan1)</li>
-<li>进过测试危机器官优选度低于ctv和gtv，会导致低剂量区变小，高剂量区变大。</li>
-</ul>
-</li>
-<li><p>plan2剂量分布图<a href="https://imgchr.com/i/yLdwfP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdwfP.jpg" alt="yLdwfP.jpg"></a></p>
-</li>
-<li><p>plan2的DVH图<a href="https://imgchr.com/i/yLdaFI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdaFI.jpg" alt="yLdaFI.jpg"></a></p>
-</li>
-<li><p>plan2的5000和5750剂量分布图<a href="https://imgchr.com/i/yLd8yD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd8yD.jpg" alt="yLd8yD.jpg"></a></p>
-</li>
-<li><p>plan2的5000和5750剂量分布图 (2)<a href="https://imgchr.com/i/yLdNTA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdNTA.jpg" alt="yLdNTA.jpg"></a></p>
-<h3 id="plan3"><a href="#plan3" class="headerlink" title="plan3"></a>plan3</h3></li>
-<li><p>plan3优化参数-1<a href="https://imgchr.com/i/yLdDl8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdDl8.jpg" alt="yLdDl8.jpg"></a></p>
-</li>
-<li><p>cord脊髓优选度由10提高到150</p>
-</li>
-<li><p>heart心脏优选度由80提高到150</p>
-</li>
-<li><p>lung-r右肺超过优选度由70提高到150</p>
-</li>
-<li><p>lung-l左肺优选度由50提高到150</p>
-</li>
-<li><p>结果</p>
-<ul>
-<li>剂量5000的中间会出现一个缺口。</li>
-<li>计量5750的会稍微大一些。</li>
-<li>体积直方图中<ul>
-<li>cord脊髓基本不变</li>
-<li>lung-r剂量超过400时plan1&gt;plan3,小于400时候plan3&gt;plan1</li>
-<li>lung-l剂量超过600时plan1&gt;plan3,小于600时候plan3&gt;plan1</li>
-<li>heart剂量超过480时plan1&gt;plan3,小于480时候plan3&gt;plan1</li>
-<li>ctv剂量超过5300时plan3&gt;plan1,小于5300时候plan1&gt;plan3</li>
-<li>c-g剂量超过5200时plan3&gt;plan1,小于5200时候plan1&gt;plan3</li>
-<li>gtv,plan1&gt;plan3</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>plan3剂量分布图<a href="https://imgchr.com/i/yLdsOg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdsOg.jpg" alt="yLdsOg.jpg"></a></p>
-</li>
-<li><p>plan3剂量分布图-2<a href="https://imgchr.com/i/yLd6mQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd6mQ.jpg" alt="yLd6mQ.jpg"></a></p>
-<h3 id="plan4"><a href="#plan4" class="headerlink" title="plan4"></a>plan4</h3></li>
-<li><p>经过测试剂量限值上限增加会使实际剂量也会增加。</p>
-</li>
-<li><p>plan4优化参数调整<a href="https://imgchr.com/i/yLdr6S" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdr6S.jpg" alt="yLdr6S.jpg"></a></p>
-<h2 id="2021年2月25日"><a href="#2021年2月25日" class="headerlink" title="2021年2月25日"></a>2021年2月25日</h2><h3 id="喉癌计划测试"><a href="#喉癌计划测试" class="headerlink" title="喉癌计划测试"></a>喉癌计划测试</h3></li>
-<li><p>该计划做完之后在两个ptv靶区之间等剂量分布线连在一起了，为了分隔等剂量线，在左右两个等剂量线之间画一个回流区为NC。然后设置优化参数如下图所示。</p>
-</li>
-<li><p>另外我第一次做的5000剂量线包裹不了PTV靶区，主要是因为</p>
-<ol>
-<li>可能是我的优选度给的比较低之前给的是30和100，后面都改成了120。</li>
-<li>PTV一般给两个上限和两个下限。我给了三个上限和一个下限。</li>
-<li>剂量降低的数值刚开始是100，后面减少为50.</li>
-<li>最好是100%体积的时候剂量超过需要的5000，最开始的5000我修改为5100.</li>
-</ol>
-</li>
-<li><p>另外包裹不住PTV靶区</p>
-<ol>
-<li>ptv里面分两个上限和两个下限。两个下限中就类似于cold冷端，也就是最外面不能低于多少剂量。</li>
-</ol>
-</li>
-<li><p><strong>百分比0对应的是剂量最大值，百分比100对应的是剂量最小值</strong>。</p>
-</li>
-<li><p>优化图1<a href="https://imgtu.com/i/yvqljI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvqljI.jpg" alt="yvqljI.jpg"></a></p>
-</li>
-<li><p>优化图2<a href="https://imgtu.com/i/yvq3ut" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvq3ut.jpg" alt="yvq3ut.jpg"></a></p>
-<h3 id="导ct图是第一行第四个图标"><a href="#导ct图是第一行第四个图标" class="headerlink" title="导ct图是第一行第四个图标"></a>导ct图是第一行第四个图标</h3></li>
-<li><p>第一行第四个<a href="https://imgtu.com/i/yvL9Vf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvL9Vf.jpg" alt="yvL9Vf.jpg"></a></p>
-</li>
-<li><p>名字代号示例<a href="https://imgtu.com/i/yvLPIS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvLPIS.jpg" alt="yvLPIS.jpg"></a></p>
-</li>
-<li><p>老钱说的只有靶区，<strong>比如ptv才有下限</strong>，因为靶区剂量不能低于医生需要的剂量要求。其他的都只有上限。</p>
-</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>html代码中的空格笔记</title>
-    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
-<a id="more"></a>
-
-
-<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
-<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
-]]></content>
-      <categories>
-        <category>HTML</category>
-      </categories>
-      <tags>
-        <tag>HTML</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS的引入方式笔记</title>
-    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
-
-<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
-<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
-<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>HTML、CSS、JS内容样式行为分离</title>
     <url>/2019/05/07/HTML%E3%80%81CSS%E3%80%81JS%E5%86%85%E5%AE%B9%E6%A0%B7%E5%BC%8F%E8%A1%8C%E4%B8%BA%E5%88%86%E7%A6%BB/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>一般情况下一个页面，都是由三部分组成：</p>
@@ -219,25 +30,86 @@
 <p>所以尽量让HTML负责内容，CSS负责样式，JavaScript负责行为。</p>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
         <category>HTML</category>
+        <category>CSS</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>HTML</tag>
+        <tag>CSS</tag>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS的引入方式笔记</title>
+    <url>/2019/01/01/CSS%E7%9A%84%E5%BC%95%E5%85%A5%E6%96%B9%E5%BC%8F%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="CSS一共有五种引用方式。"><a href="#CSS一共有五种引用方式。" class="headerlink" title="CSS一共有五种引用方式。"></a>CSS一共有五种引用方式。</h2><a id="more"></a>
+
+<h3 id="行内式"><a href="#行内式" class="headerlink" title="行内式"></a>行内式</h3><p>直接在body、h1等标签里面写标签或者属性，这种叫做，不过这种基本已经废弃了：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">bgcolor</span>=<span class="string">'grey'</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——body的背景颜色为红色；--&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span><span class="tag">&lt;<span class="name">center</span>&gt;</span><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">font</span>&gt;</span><span class="tag">&lt;/<span class="name">center</span>&gt;</span><span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--——hi标签居中，并且颜色为红色--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style内联样式"><a href="#style内联样式" class="headerlink" title="style内联样式"></a>style内联样式</h3><p>在body、h1等标签里面写上style，这种叫做style属性，把样式写在标签上，也叫所style内联样式，这种方式会导致html代码冗长：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">"background-color: grey"</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——body的背景颜色为灰色；--&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">'text-align: center; color: red;'</span>&gt;</span>哈哈<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--    ——hi标签剧中，并且颜色为红色。这里一个style=后面把里面的属性都放到引号里面包起来。以英文的分号;隔开各个属性。--&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style嵌入式"><a href="#style嵌入式" class="headerlink" title="style嵌入式"></a>style嵌入式</h3><p>一般在head标签里面写一个style标签，不写在head标签里面也可以，这种叫做style嵌入式。这种方式会使标签变得比较简洁，但是也会导致html代码冗长，但是可以集中看到css样式。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">        body&#123;</span><br><span class="line">        background-color: grey</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        h1&#123;</span><br><span class="line">        text-align: center; color: red;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="style外部式"><a href="#style外部式" class="headerlink" title="style外部式"></a>style外部式</h3><p>style外部式，通过html文件外部引入一个CSS，也就是把第三种方法中的style放到html意外的CSS中去即可，这样会使html代码变得简洁很多。这种是现在用的最多的，但是html中需要写入引用代码：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"./style.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>rel就是relationship（关系），CSS就是一种stylesheet，引用到./就是当前目录下的style.css文件。<br>通过在该文件夹下使用git bash，输入http-server -c -1来是使用http协议打开<br><img src="https://s1.ax1x.com/2020/05/08/YusGuV.jpg" alt="YusGuV.jpg"><br>输入<a href="http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css">http://192.168.1.2:8080就可以使用http协议打开，看到html.html通过了get请求得到style.css</a><br><img src="https://s1.ax1x.com/2020/05/08/YusJBT.jpg" alt="YusJBT.jpg"></p>
+<h3 id="CSS里面引入另外一CSS"><a href="#CSS里面引入另外一CSS" class="headerlink" title="CSS里面引入另外一CSS"></a>CSS里面引入另外一CSS</h3><p>用的不多，就是</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span> url(./b.css);</span><br></pre></td></tr></table></figure>
+<p>括号里面先对路径和绝对路劲都可以。<br><img src="https://s1.ax1x.com/2020/05/08/Yus3j0.jpg" alt="Yus3j0.jpg"></p>
+]]></content>
+      <categories>
         <category>CSS</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
-        <tag>HTML</tag>
         <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
-    <title>修改分支名字</title>
-    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
-    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
+    <title>ES6解构赋值</title>
+    <url>/2019/09/08/ES6%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">解构赋值</a>语法是一种 Javascript 表达式。通过解构赋值,可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
 <a id="more"></a>
+<h2 id="简单的结构"><a href="#简单的结构" class="headerlink" title="简单的结构"></a>简单的结构</h2><h3 id="不用解构赋值的方法的代码"><a href="#不用解构赋值的方法的代码" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">let</span> method=config.method</span><br><span class="line"> <span class="keyword">let</span> url=config.url</span><br><span class="line"> <span class="keyword">let</span> data=config.data</span><br><span class="line"> </span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果是<br><img src="https://s1.ax1x.com/2020/05/08/Yn5Pv4.jpg" alt="Yn5Pv4.jpg"></p>
+<h3 id="使用解构赋值的方法的代码"><a href="#使用解构赋值的方法的代码" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"> <span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果还是跟前面的一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5C2F.jpg" alt="Yn5C2F.jpg"><br><strong>稍微注意点就是let method=config.method，前面的method必须要和后面的method一样。如果修改为method1，就不一样，这样就不符合解构赋值的方法，就产生错误</strong><br><img src="https://s1.ax1x.com/2020/05/08/Yn598U.jpg" alt="Yn598U.jpg"></p>
+<h2 id="作为函数实参"><a href="#作为函数实参" class="headerlink" title="作为函数实参"></a>作为函数实参</h2><h3 id="不用解构赋值的方法的代码-1"><a href="#不用解构赋值的方法的代码-1" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;<span class="attr">method</span>:<span class="string">'m'</span>,<span class="attr">url</span>:<span class="string">'u'</span>,<span class="attr">data</span>:<span class="string">'d'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>输出结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn4z5V.jpg" alt="Yn4z5V.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-1"><a href="#使用解构赋值的方法的代码-1" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> config=&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//  let method=config.method</span></span><br><span class="line"><span class="comment">//  let url=config.url</span></span><br><span class="line"><span class="comment">//  let data=config.data</span></span><br><span class="line">  <span class="keyword">let</span> &#123;method,url,data&#125;=config</span><br><span class="line"><span class="comment">//  console.log(method,url,data)</span></span><br><span class="line"> </span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">x</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(x)</span><br><span class="line"> &#125;</span><br><span class="line">fn(&#123;method,url,data&#125;)</span><br><span class="line"><span class="comment">// fn(&#123;method:'m',url:'u',data:'d'&#125;)</span></span><br></pre></td></tr></table></figure>
+<p>输出结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5FKJ.jpg" alt="Yn5FKJ.jpg"></p>
+<h2 id="对象里面还有对象"><a href="#对象里面还有对象" class="headerlink" title="对象里面还有对象"></a>对象里面还有对象</h2><h3 id="不用解构赋值的方法的代码-2"><a href="#不用解构赋值的方法的代码-2" class="headerlink" title="不用解构赋值的方法的代码"></a>不用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> config=response.config</span><br><span class="line"><span class="keyword">let</span> method=config.method</span><br><span class="line"><span class="keyword">let</span> url=config.url</span><br><span class="line"><span class="keyword">let</span> data=config.data</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)</span><br></pre></td></tr></table></figure>
+<p>输出的结果<br><img src="https://s1.ax1x.com/2020/05/08/Yn5kr9.jpg" alt="Yn5kr9.jpg"></p>
+<h3 id="使用解构赋值的方法的代码-2"><a href="#使用解构赋值的方法的代码-2" class="headerlink" title="使用解构赋值的方法的代码"></a>使用解构赋值的方法的代码</h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> response=&#123;</span><br><span class="line">  config:&#123;</span><br><span class="line">  method:<span class="string">'m'</span>,</span><br><span class="line">  url:<span class="string">'u'</span>,</span><br><span class="line">  data:<span class="string">'d'</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// let config=response.config</span></span><br><span class="line"><span class="comment">// let method=config.method</span></span><br><span class="line"><span class="comment">// let url=config.url</span></span><br><span class="line"><span class="comment">// let data=config.data</span></span><br><span class="line"><span class="comment">// let &#123;method,url,data&#125;=config</span></span><br><span class="line"><span class="comment">// let &#123;config&#125;=response</span></span><br><span class="line"><span class="keyword">let</span> &#123;<span class="attr">config</span>:&#123;method,url,data&#125;&#125;=response<span class="comment">//这个是没有声明config</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(method,url,data)<span class="comment">//这里不能输出config，但是可以输出method或url或data</span></span><br></pre></td></tr></table></figure>
+<p>输出的结果一样<br><img src="https://s1.ax1x.com/2020/05/08/Yn5AbR.jpg" alt="Yn5AbR.jpg"><br>需要注意一点，因为这里是没有声明config，所以这里打印config会报错<br><img src="https://s1.ax1x.com/2020/05/08/Yn5VV1.jpg" alt="Yn5VV1.jpg"></p>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>fetch merge commit</title>
+    <url>/2019/04/20/fetch%20merge%20commit/</url>
+    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
+<a id="more"></a>
+
 <ul>
-<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
-<li>注：#号后面的为标注！不需要键入！</li>
-<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
+<li>运行 git fetch 后，会发生以下活动：</li>
+</ul>
+<ol>
+<li>远程分支上的 commit 会复制到本地仓库</li>
+<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
+</ol>
+<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
+<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
+<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
+<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
+这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
 </ul>
 ]]></content>
       <categories>
@@ -245,6 +117,34 @@
       </categories>
       <tags>
         <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>content-box 与 border-box</title>
+    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
+    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
+<a id="more"></a>
+<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
+<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
+<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
+<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
+<ol>
+<li><p>content-box——会使内容宽高为100×100；</p>
+</li>
+<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
+</li>
+<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
+</li>
+</ol>
+<p>有效果。</p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
   <entry>
@@ -286,180 +186,14 @@
       </tags>
   </entry>
   <entry>
-    <title>content-box 与 border-box</title>
-    <url>/2019/01/20/content-box%20%E4%B8%8E%20border-box/</url>
-    <content><![CDATA[<h2 id="content-box"><a href="#content-box" class="headerlink" title="content-box"></a>content-box</h2><p>content-box——内容宽高为100×100，</p>
-<a id="more"></a>
-<p>所以元素宽高为100×100（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=122×102（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudUNn.jpg" alt="YudUNn.jpg"></p>
-<h2 id="border-box"><a href="#border-box" class="headerlink" title="border-box"></a>border-box</h2><p>border-box——内容宽高为78×98，</p>
-<p>所以元素宽高为78×98（content）+2×[10×0(padding)+ 1×1(border)</p>
-<p>+0×0(margin)]=100×100（宽×高）<br><img src="https://s1.ax1x.com/2020/05/08/YudNAs.jpg" alt="YudNAs.jpg"><br>可以看到字体内容宽度不够了，变成了两行。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>设置高宽分别为100×100：</p>
-<ol>
-<li><p>content-box——会使内容宽高为100×100；</p>
-</li>
-<li><p>border-box——会使border（包括border宽高）以内的宽高为100×100。</p>
-</li>
-<li><p>由于inline元素无法设置宽高，所以inline元素这content-box和border-box两个属性没</p>
-</li>
-</ol>
-<p>有效果。</p>
-]]></content>
-      <categories>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>fetch merge commit</title>
-    <url>/2019/04/20/fetch%20merge%20commit/</url>
-    <content><![CDATA[<h2 id="git-fetch-origin-master"><a href="#git-fetch-origin-master" class="headerlink" title="git fetch origin master"></a>git fetch origin master</h2><p>远程仓库比本地仓库多了一些本地仓库没有的commit，可以使用该命令后与远程仓库在不合并的情况下的获取到远程的commit。</p>
+    <title>html代码中的空格笔记</title>
+    <url>/2019/03/02/html%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E7%A9%BA%E6%A0%BC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>html代码的标签之间只要有大于等于一个空格，在浏览器中所呈现出来的都会出现一个空格。</p>
 <a id="more"></a>
 
-<ul>
-<li>运行 git fetch 后，会发生以下活动：</li>
-</ul>
-<ol>
-<li>远程分支上的 commit 会复制到本地仓库</li>
-<li>本地跟踪分支（例如，origin/master）移到指向最新的 commit 需要注意的一点是，本地分支完全不会被改变。<br>你可以将 git fetch 想象成 git pull 它的一半操作，而 git pull 的另一半是合并(git merge)。</li>
-</ol>
-<h2 id="git-merge-origin-master"><a href="#git-merge-origin-master" class="headerlink" title="git merge origin/master"></a>git merge origin/master</h2><p>把远程做的修改更新来本地仓库。</p>
-<h2 id="git-commit-–amend"><a href="#git-commit-–amend" class="headerlink" title="git commit –amend"></a>git commit –amend</h2><p>运行 git commit –amend 来更新最近的 commit，而不是创建新的 commit。</p>
-<h2 id="本地仓库创建分支推送到远程仓库"><a href="#本地仓库创建分支推送到远程仓库" class="headerlink" title="本地仓库创建分支推送到远程仓库"></a>本地仓库创建分支推送到远程仓库</h2><ul>
-<li>命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ git push --<span class="built_in">set</span>-upstream origin f_sidebar</span><br></pre></td></tr></table></figure>
-这里的f_sidebar就是本地的仓库分支名字，不修改也是就远程仓库分支的名字也叫f_sidebar</li>
-</ul>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>修改已经push了的commit信息</title>
-    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
-    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
-<a id="more"></a>
-<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
-<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
-<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
-<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
-<p>step4：输入【git push -f】强制提交。  </p>
-<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
-]]></content>
-      <categories>
-        <category>github</category>
-      </categories>
-      <tags>
-        <tag>github</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于 HTML 的简单介绍</title>
-    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
-<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
-<a id="more"></a>
-</li>
-<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
-</li>
-<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
-<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
-<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
-</li>
-<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
-</li>
-</ul>
-<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
-<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
-<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
-<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
-</ul>
-<ol>
-<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
-<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
-<li><code>&lt;h1&gt;</code>是最大的标题</li>
-<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
-<li><code>&lt;br&gt;</code>可以插入折行</li>
-<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
-<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
-<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
-<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
-<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
-<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
-<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
-<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
-<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
-<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
-<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
-<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
-<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
-<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
-<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
-<li>Which character is used to indicate an end tag?<br>\</li>
-<li>Inline elements are normally displayed without starting a new line.<br>True</li>
-<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
-<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
-<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
-<li>Block elements are normally displayed without starting a new line.<br>False</li>
-<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
-<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
-<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
-<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
-<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
-<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
-<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
-<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
-<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
-<li>Graphics defined by SVG is in which format?<br>XML</li>
-<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
-<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
-<li>Which input type defines a slider control?<br>range</li>
-<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
-<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
-<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
-<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
-</ol>
-<ul>
-<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
-</ul>
+
+<p>但是如果标签之间没有空格，在浏览器中所呈现出来的也就没有空格。</p>
+<p>有时候觉得这个空格比较大，可以使用盒模型来控制和修改间隙大小。<br><img src="https://s1.ax1x.com/2020/05/08/YuByDS.png" alt="YuByDS.png"><br>但是以上的代码用JS生成就不会出现空格。</p>
 ]]></content>
       <categories>
         <category>HTML</category>
@@ -469,57 +203,83 @@
       </tags>
   </entry>
   <entry>
-    <title>部分位置API测试</title>
-    <url>/2019/12/04/%E9%83%A8%E5%88%86%E4%BD%8D%E7%BD%AEAPI%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  前面已经测试过部分位置信息了。<br>  <a id="more"></a><br>  <a href="https://zhuanlan.zhihu.com/p/62483585" target="_blank" rel="noopener">Top和Y的部分API测试笔记（一）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62514240" target="_blank" rel="noopener">Top和Y的部分API测试笔记（二）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62519712" target="_blank" rel="noopener">Top和Y的部分API测试笔记（三）和总结</a><br>  今天在做Vue轮子项目的popover组件的时候发现还不够熟悉，直接再写一篇博客加深影响。</p>
+    <title>修改分支名字</title>
+    <url>/2019/11/15/%E4%BF%AE%E6%94%B9%E5%88%86%E6%94%AF%E5%90%8D%E5%AD%97/</url>
+    <content><![CDATA[<p>我发现我的分支名字错了用下面命令修改分支名字</p>
+<a id="more"></a>
 <ul>
-<li>这次测试信息包括：<ul>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollY" target="_blank" rel="noopener">window.scrollY</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">offsetTop</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">scrollHeight</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollLeft</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollTop</a></li>
-<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">clientHeight</a><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="HTML代码-不是重点可以不用看"><a href="#HTML代码-不是重点可以不用看" class="headerlink" title="HTML代码(不是重点可以不用看)"></a>HTML代码(不是重点可以不用看)</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>111111111sdfsdfdfsdfsdfsdf111111111111111111111111111111111111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="CSS代码-不是重点可以不用看"><a href="#CSS代码-不是重点可以不用看" class="headerlink" title="CSS代码(不是重点可以不用看)"></a>CSS代码(不是重点可以不用看)</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#b</span>&#123;</span><br><span class="line">  <span class="comment">/* border:1px solid blue; */</span></span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#c</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid green;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="JavaScript代码（主要测试对象）"><a href="#JavaScript代码（主要测试对象）" class="headerlink" title="JavaScript代码（主要测试对象）"></a>JavaScript代码（主要测试对象）</h3></li>
+<li>可以通过下面的命令修改分支    <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git branch -m old_branch new_branch <span class="comment"># Rename branch locally </span></span><br><span class="line">git push origin :old_branch <span class="comment"># Delete the old branch </span></span><br><span class="line">git push --<span class="built_in">set</span>-upstream origin new_branch <span class="comment"># Push the new branch, set local branch to track the new remote</span></span><br></pre></td></tr></table></figure></li>
+<li>注：#号后面的为标注！不需要键入！</li>
+<li>具体见文章——<a href="https://www.cnblogs.com/wangzhichao/p/git.html" target="_blank" rel="noopener">git-更改本地和远程分支的名称</a></li>
 </ul>
+]]></content>
+      <categories>
+        <category>github</category>
+      </categories>
+      <tags>
+        <tag>github</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基础篇(HTML)</title>
+    <url>/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
+    <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
+<li>知识点如下：<ol>
+<li><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</li>
+<li>meta viewport 是做什么用的，怎么写？</li>
+<li>你用过哪些 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML 5</a> 标签？</li>
+<li>H5 是什么？<a id="more"></a></li>
+</ol>
 </li>
 </ul>
 <ol>
-<li><p>第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口</p>
- <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(width,height,'b元素距离顶部为'+top,left)</span></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  上面是第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口.</span></span><br><span class="line"><span class="comment">// 注意这里每次点击之后都需要获取值，所以要写到function里面。</span></span><br></pre></td></tr></table></figure></li>
-<li><p>window.scrollY,offsetTop,scrollHeight及getBoundingClientRect返回值之间的关系，这里用到了ES6的语法。因为我的浏览器还存在小数，所以用了四舍五入Math.round()。</p>
+<li><p><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</p>
+<ol>
+<li>举例法<br>HTML 语义化就是使用正确的标签（总结）段落就写 p 标签，标题就写 h1 标签，文章就写article标签，视频就写video标签，时间用<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time" target="_blank" rel="noopener">time标签</a>，画板用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" target="_blank" rel="noopener">canvas标签</a>等等。</li>
+<li>阐述法(补充)</li>
+</ol>
 <ul>
-<li>关系测试了两种。分别为：<ul>
-<li>2-1.这只有在竖直方向的竖条没有移动的前提下才满足的情况，也就再最上面的时候</li>
-<li>2-2.在任何条件都可以满足的情况</li>
+<li>首先讲以前的后台开发人员使用table标签布局，然后讲美工人员使用div+css布局（<strong>但是，不够语义化，分不清不同DIV之间有什么区别</strong>），最后讲专业的前端会使用正确的标签进行页面开发。</li>
+<li>所以最前面那种不是正确的写法，然后div+css的写法虽然有一些改进，但是换汤不换药，也不够合适。</li>
 </ul>
 </li>
-<li>两种情况看下面代码的注释及<a href="https://jsbin.com/wuhawekose/1/edit?css,js,output" target="_blank" rel="noopener">JSbin代码链接</a>  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line">  top=<span class="built_in">Math</span>.round(top)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> &#123;<span class="attr">height</span>:cHeight&#125;=c.getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bodyHeight=<span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line"><span class="keyword">let</span> bodyWidth=<span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight为'</span>+bodyHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollWidth为'</span>+bodyWidth)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top+window.scrollY求和为'</span>+(top+<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'window.scrollY为'</span>+<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'height为'</span>+height)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'cHeight为'</span>+cHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.offsetTop为'</span>+b.offsetTop)</span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这只有在竖直方法的竖条没有移动的前提下才满足，也就再最上面的时候</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height===top)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这只有在竖直方向的竖条没有移动的前提下才满足'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height===top成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度-整个页面竖直方向滚动条移动的距离===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这个在任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height-<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY)===top)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这个在任何条件都可以满足'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height-Math.round(window.scrollY)===top成功'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//b元素距离视口上边距的距离+垂直方向滚动的距离===b元素顶部相对于其offsetParent元素的顶部的距离</span></span><br><span class="line"><span class="comment">// 任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(top+<span class="built_in">window</span>.scrollY===b.offsetTop)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'任何条件都可以满足'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top+window.scrollY===b.offsetTop成功'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上面主要测试window.scrollY,offsetTop,scrollHeight</span></span><br><span class="line"><span class="comment">// 及getBoundingClientRect返回值之间的关系。</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>测试scrollLeft和scrollTop</p>
- <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ascrollLeft=a.scrollLeft;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ascrollLeft为'</span>+ascrollLeft)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a元素滚动后距离左边的距离为'</span>+ascrollLeft)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bscrollTop=b.scrollTop</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bscrollTop为'</span>+bscrollTop)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b元素滚动后距离顶部的距离为'</span>+bscrollTop)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试scrollLeft和scrollTop</span></span><br></pre></td></tr></table></figure></li>
-<li><p>scrollHeight,scrollTop,clientHeight之间的关系  </p>
-<p>浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="noopener">Math.round()</a></p>
+<li><p>meta viewport 是做什么用的，怎么写？</p>
 <ul>
-<li>分了两种情况：<ul>
-<li>4-1.当b元素竖直方向滚动到最下面的时候才相等</li>
-<li>4-2.当b元素竖直方向没有滚动到最下面，所以不相等 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入。</span></span><br><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'b元素的整个高度为'</span>+b.scrollHeight)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b元素的滚动的高度为'</span>+<span class="built_in">Math</span>.round(b.scrollTop))</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'b元素的可视范围高度为'</span>+b.clientHeight)</span><br><span class="line"><span class="comment">// 当b元素竖直方向滚动到最下面的时候才相等</span></span><br><span class="line">  <span class="keyword">if</span>((b.scrollHeight - <span class="built_in">Math</span>.round(b.scrollTop)) === b.clientHeight)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向滚动到最下面的时候才相等'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向没有滚动到最下面，所以不相等'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//scrollHeight,scrollTop,clientHeight之间的关系</span></span><br></pre></td></tr></table></figure>
-<h3 id="最后附上一个前端使用的大部分位置API的截图说明。"><a href="#最后附上一个前端使用的大部分位置API的截图说明。" class="headerlink" title="最后附上一个前端使用的大部分位置API的截图说明。"></a>最后附上一个前端使用的大部分位置API的截图说明。</h3><img src="https://s1.ax1x.com/2020/05/07/YZh89H.jpg" alt="YZh89H.jpg"></li>
+<li>它的功能就是<strong>手机上想让页面不能缩放</strong>应该使用的。</li>
+<li>我们可以在google上面搜索github head然后找到这个<a href="https://github.com/joshbuchea/HEAD" target="_blank" rel="noopener">git仓库地址</a>,这个仓库把所有流行的meta写法都写上了。这里是外国人的写法，下面的是中国人的写法。</li>
+</ul>
+<ol>
+<li>举例法<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+（<strong>简单记忆</strong>，牛叉（nc），n就是name，c就是content.content里面就是w3s,w是设备宽度，3s分别是初始，最大，最小放大倍数。）<br>然后逐个解释每个单词的意思。</li>
+</ol>
+<ul>
+<li>更多补充：由于近几年手机的发展，导致前端开发的工作重心从电脑桌面移动到手机上，所以会有viewport的出现。</li>
+<li><a href="https://juejin.im/post/5d804e0b518825297023fee7" target="_blank" rel="noopener">博客链接1</a>,<a href="https://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="noopener">博客链接2</a></li>
 </ul>
 </li>
+<li><p>你用过哪些 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML 5</a> 标签？<br>举例法<br>平时如果只用div写页面你就完了，把你平时用到的html5标签列举出来即可，但是要注意如果这个标签的用法比较复杂，你要先看一下MDN的文档再说这个标签；<strong>如果你说出一个标签，却不知道它有哪些API，那么你就会被扣分</strong></p>
+<ul>
+<li>常见的章节相关的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/section" target="_blank" rel="noopener">section</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header" target="_blank" rel="noopener">header</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/main" target="_blank" rel="noopener">main</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer" target="_blank" rel="noopener">footer</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/article" target="_blank" rel="noopener">article</a></li>
+<li>还有少用嵌入内容的<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a>, <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!--  抱歉，您的浏览器不支持canvas元素--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  （这些内容将会在不支持&lt;canvas&gt;元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现）--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
+JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用HTMLCanvasElement.getContext()获得一个绘图上下文并开始绘制</span></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>); <span class="comment">//获取到canvas元素</span></span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); <span class="comment">//获取到canvas2d上下文</span></span><br><span class="line">ctx.fillStyle = <span class="string">'green'</span>; <span class="comment">//颜色</span></span><br><span class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);<span class="comment">//范围</span></span><br></pre></td></tr></table></figure>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/svg" target="_blank" rel="noopener">svg</a>，还有<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a><br>有poster 海报的封面url, src嵌入视频的地址，loop循环播放，autoplay自动播放等。 </li>
+<li>不熟悉最好不要说这些。</li>
 </ul>
-<p>该截图来自于<a href="https://blog.csdn.net/caseywei/article/details/92644503" target="_blank" rel="noopener">Js——ScrollTop、ScrollHeight、ClientHeight、OffsetHeight汇总</a></p>
+</li>
+<li><p>H5 是什么？<br>阐述法<br>搜一下知乎就知道了，<strong>H5表示移动端页面</strong>，反正不是HTML5。用<code>site:zhihu.com</code>得到<a href="https://www.zhihu.com/question/30363342" target="_blank" rel="noopener">知乎页面——H5 是什么？</a></p>
+<ul>
+<li>也可以说HTML5并<strong>不是一项技术</strong>，而是<strong>一个标准</strong>。</li>
+<li>理论派讨论<strong>HTML5标准</strong>，要么是作为实践派讨论<strong>HTML5标准在某浏览器的应用</strong></li>
+<li>所以我们在谈论H5的时候，实际上是一个<b>解决方案</b>，一个看起来<b>酷炫</b>的移动端onepage网站的解决方案。而这个解决方案不仅包含了HTML5新增的audio标签，canvas，拖拽特性，本地存储，websocket通信，同时也包括了<b>盒模型</b>，包括<b>绝对定位</b>，包括<b>一切前端的基本知识</b>。H5本应是一个技术合集</li>
+</ul>
 </li>
 </ol>
 ]]></content>
       <categories>
-        <category>JavaScript</category>
+        <category>HTML</category>
       </categories>
       <tags>
-        <tag>JavaScript</tag>
+        <tag>HTML</tag>
       </tags>
   </entry>
   <entry>
@@ -648,14 +408,16 @@
       </tags>
   </entry>
   <entry>
-    <title>还原到某个commit的代码</title>
-    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<ul>
-<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
-<a id="more"></a></li>
-<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
-<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
-</ul>
+    <title>修改已经push了的commit信息</title>
+    <url>/2019/11/02/%E4%BF%AE%E6%94%B9%E5%B7%B2%E7%BB%8Fpush%E4%BA%86%E7%9A%84commit%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<h2 id="【git】-修改已经push了的commit信息"><a href="#【git】-修改已经push了的commit信息" class="headerlink" title="【git】 修改已经push了的commit信息"></a>【git】 修改已经push了的commit信息</h2><p>由于最后一次我提交的commit信息写错了，所以记录如下修改过程  </p>
+<a id="more"></a>
+<p>如题，本条仅适用于修改已经push过了的最近一次的commit注释信息，确保本地文件的最新的。   </p>
+<p>step1：使用【git commit –amend】命令，会进入到vim编辑器。   </p>
+<p>step2：输入【i】，即进入编辑模式，此时编辑提交信息。  </p>
+<p>step3：编辑好之后，输入【:wq】，即保存和退出。  </p>
+<p>step4：输入【git push -f】强制提交。  </p>
+<p>操作完之后，再看提交记录，即可看到修改的注释信息。 原文来自于<a href="https://blog.csdn.net/qq_33237207/article/details/98621783" target="_blank" rel="noopener">【git】 修改已经push了的commit信息</a>  </p>
 ]]></content>
       <categories>
         <category>github</category>
@@ -665,59 +427,178 @@
       </tags>
   </entry>
   <entry>
-    <title>基础篇(HTML)</title>
-    <url>/2020/04/27/%E5%9F%BA%E7%A1%80%E7%AF%87(HTML)/</url>
-    <content><![CDATA[<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><ul>
-<li>知识点如下：<ol>
-<li><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</li>
-<li>meta viewport 是做什么用的，怎么写？</li>
-<li>你用过哪些 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML 5</a> 标签？</li>
-<li>H5 是什么？<a id="more"></a></li>
-</ol>
+    <title>子选择器</title>
+    <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
+    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
+<a id="more"></a>
+
+<p>如果加了&gt;，此时选择使用的只能是子元素，不可以是用孙元素，只能下一级。</p>
+<p>使用list-style:none；属性</p>
+<p>如果不加&gt;，只使用空格.<br><img src="https://s1.ax1x.com/2020/05/08/YuDtMV.png" alt="YuDtMV.png"><br>如果加了&gt;就不可以。<br><img src="https://s1.ax1x.com/2020/05/08/YuDJx0.png" alt="YuDJx0.png"><br>因为body与nav元素之间还有一个div。</p>
+<p>如果把body和nav之间在加一个div就可以使用了。<br><img src="https://s1.ax1x.com/2020/05/08/YuDG2q.png" alt="YuDG2q.png"></p>
+]]></content>
+      <categories>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>部分位置API测试</title>
+    <url>/2019/12/04/%E9%83%A8%E5%88%86%E4%BD%8D%E7%BD%AEAPI%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  前面已经测试过部分位置信息了。<br>  <a id="more"></a><br>  <a href="https://zhuanlan.zhihu.com/p/62483585" target="_blank" rel="noopener">Top和Y的部分API测试笔记（一）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62514240" target="_blank" rel="noopener">Top和Y的部分API测试笔记（二）</a><br>  <a href="https://zhuanlan.zhihu.com/p/62519712" target="_blank" rel="noopener">Top和Y的部分API测试笔记（三）和总结</a><br>  今天在做Vue轮子项目的popover组件的时候发现还不够熟悉，直接再写一篇博客加深影响。</p>
+<ul>
+<li>这次测试信息包括：<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/getBoundingClientRect" target="_blank" rel="noopener">getBoundingClientRect</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/scrollY" target="_blank" rel="noopener">window.scrollY</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/offsetTop" target="_blank" rel="noopener">offsetTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollHeight" target="_blank" rel="noopener">scrollHeight</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollLeft</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/scrollTop" target="_blank" rel="noopener">scrollTop</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Element/clientHeight" target="_blank" rel="noopener">clientHeight</a><h2 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h2><h3 id="HTML代码-不是重点可以不用看"><a href="#HTML代码-不是重点可以不用看" class="headerlink" title="HTML代码(不是重点可以不用看)"></a>HTML代码(不是重点可以不用看)</h3><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"a"</span>&gt;</span>111111111sdfsdfdfsdfsdfsdf111111111111111111111111111111111111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"b"</span>&gt;</span>啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">"c"</span>&gt;</span>11111111<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS代码-不是重点可以不用看"><a href="#CSS代码-不是重点可以不用看" class="headerlink" title="CSS代码(不是重点可以不用看)"></a>CSS代码(不是重点可以不用看)</h3><figure class="highlight css"><table><tr><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">  <span class="attribute">padding</span>:<span class="number">0</span>;</span><br><span class="line">  <span class="attribute">margin</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#a</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid red;</span><br><span class="line">  <span class="attribute">width</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">1000px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#b</span>&#123;</span><br><span class="line">  <span class="comment">/* border:1px solid blue; */</span></span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line">  <span class="attribute">position</span>:relative;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#c</span>&#123;</span><br><span class="line">  <span class="attribute">border</span>:<span class="number">1px</span> solid green;</span><br><span class="line">  <span class="attribute">height</span>:<span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: scroll;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="JavaScript代码（主要测试对象）"><a href="#JavaScript代码（主要测试对象）" class="headerlink" title="JavaScript代码（主要测试对象）"></a>JavaScript代码（主要测试对象）</h3></li>
+</ul>
 </li>
 </ul>
 <ol>
-<li><p><strong>必考</strong>：你是如何理解 HTML 语义化的？(抽象题目具体化，举例)</p>
+<li><p>第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// console.log(width,height,'b元素距离顶部为'+top,left)</span></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//  上面是第一个测试，主要是测试 getBoundingClientRect返回的属性，它是相对于视口.</span></span><br><span class="line"><span class="comment">// 注意这里每次点击之后都需要获取值，所以要写到function里面。</span></span><br></pre></td></tr></table></figure></li>
+<li><p>window.scrollY,offsetTop,scrollHeight及getBoundingClientRect返回值之间的关系，这里用到了ES6的语法。因为我的浏览器还存在小数，所以用了四舍五入Math.round()。</p>
+<ul>
+<li>关系测试了两种。分别为：<ul>
+<li>2-1.这只有在竖直方向的竖条没有移动的前提下才满足的情况，也就再最上面的时候</li>
+<li>2-2.在任何条件都可以满足的情况</li>
+</ul>
+</li>
+<li>两种情况看下面代码的注释及<a href="https://jsbin.com/wuhawekose/1/edit?css,js,output" target="_blank" rel="noopener">JSbin代码链接</a>  <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span>&#123;width,height,top,left&#125;=b.getBoundingClientRect();</span><br><span class="line">  top=<span class="built_in">Math</span>.round(top)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> &#123;<span class="attr">height</span>:cHeight&#125;=c.getBoundingClientRect()</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> bodyHeight=<span class="built_in">document</span>.body.scrollHeight;</span><br><span class="line"><span class="keyword">let</span> bodyWidth=<span class="built_in">document</span>.body.scrollWidth;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight为'</span>+bodyHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'document.body.scrollWidth为'</span>+bodyWidth)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top+window.scrollY求和为'</span>+(top+<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'window.scrollY为'</span>+<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY))</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'top为'</span>+top)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'height为'</span>+height)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'cHeight为'</span>+cHeight)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'b.offsetTop为'</span>+b.offsetTop)</span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这只有在竖直方法的竖条没有移动的前提下才满足，也就再最上面的时候</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height===top)&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这只有在竖直方向的竖条没有移动的前提下才满足'</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height===top成功'</span>)</span><br><span class="line">&#125;</span><br><span class="line">  </span><br><span class="line"><span class="comment">//整个页面的高度-c元素的高度-b元素的高度-整个页面竖直方向滚动条移动的距离===b元素距离视口上边距的距离</span></span><br><span class="line"><span class="comment">// 这个在任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="built_in">document</span>.body.scrollHeight-cHeight-height-<span class="built_in">Math</span>.round(<span class="built_in">window</span>.scrollY)===top)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'这个在任何条件都可以满足'</span>)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'document.body.scrollHeight-cHeight-height-Math.round(window.scrollY)===top成功'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//b元素距离视口上边距的距离+垂直方向滚动的距离===b元素顶部相对于其offsetParent元素的顶部的距离</span></span><br><span class="line"><span class="comment">// 任何条件都可以满足。</span></span><br><span class="line">  <span class="keyword">if</span>(top+<span class="built_in">window</span>.scrollY===b.offsetTop)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'任何条件都可以满足'</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'top+window.scrollY===b.offsetTop成功'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//上面主要测试window.scrollY,offsetTop,scrollHeight</span></span><br><span class="line"><span class="comment">// 及getBoundingClientRect返回值之间的关系。</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>测试scrollLeft和scrollTop</p>
+ <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">a.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> ascrollLeft=a.scrollLeft;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'ascrollLeft为'</span>+ascrollLeft)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'a元素滚动后距离左边的距离为'</span>+ascrollLeft)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> bscrollTop=b.scrollTop</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'bscrollTop为'</span>+bscrollTop)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'b元素滚动后距离顶部的距离为'</span>+bscrollTop)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//测试scrollLeft和scrollTop</span></span><br></pre></td></tr></table></figure></li>
+<li><p>scrollHeight,scrollTop,clientHeight之间的关系  </p>
+<p>浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math/round" target="_blank" rel="noopener">Math.round()</a></p>
+<ul>
+<li>分了两种情况：<ul>
+<li>4-1.当b元素竖直方向滚动到最下面的时候才相等</li>
+<li>4-2.当b元素竖直方向没有滚动到最下面，所以不相等 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浏览器要缩小到可以看到拖动吧条，因为我的浏览器还存在小数，所以用了四舍五入。</span></span><br><span class="line"><span class="built_in">document</span>.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="built_in">console</span>.log(<span class="string">'b元素的整个高度为'</span>+b.scrollHeight)</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'b元素的滚动的高度为'</span>+<span class="built_in">Math</span>.round(b.scrollTop))</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'b元素的可视范围高度为'</span>+b.clientHeight)</span><br><span class="line"><span class="comment">// 当b元素竖直方向滚动到最下面的时候才相等</span></span><br><span class="line">  <span class="keyword">if</span>((b.scrollHeight - <span class="built_in">Math</span>.round(b.scrollTop)) === b.clientHeight)&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向滚动到最下面的时候才相等'</span>)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'当b元素竖直方向没有滚动到最下面，所以不相等'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//scrollHeight,scrollTop,clientHeight之间的关系</span></span><br></pre></td></tr></table></figure>
+<h3 id="最后附上一个前端使用的大部分位置API的截图说明。"><a href="#最后附上一个前端使用的大部分位置API的截图说明。" class="headerlink" title="最后附上一个前端使用的大部分位置API的截图说明。"></a>最后附上一个前端使用的大部分位置API的截图说明。</h3><img src="https://s1.ax1x.com/2020/05/07/YZh89H.jpg" alt="YZh89H.jpg"></li>
+</ul>
+</li>
+</ul>
+<p>该截图来自于<a href="https://blog.csdn.net/caseywei/article/details/92644503" target="_blank" rel="noopener">Js——ScrollTop、ScrollHeight、ClientHeight、OffsetHeight汇总</a></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于 HTML 的简单介绍</title>
+    <url>/2018/12/13/%E5%85%B3%E4%BA%8E%20HTML%20%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h2 id="什么是空标签（查-MDN、博客）"><a href="#什么是空标签（查-MDN、博客）" class="headerlink" title="什么是空标签（查 MDN、博客）"></a>什么是空标签（查 MDN、博客）</h2><ul>
+<li><p>一个空元素（empty element）可能是 HTML，SVG，或者 MathML 里的一个不可能存在子节点（例如内嵌的元素或者元素内的文本）的<a href="https://developer.mozilla.org/en-US/docs/Glossary/element" target="_blank" rel="noopener">element</a>。</p>
+<a id="more"></a>
+</li>
+<li><p>HTML，<a href="https://www.w3.org/TR/SVG2/" target="_blank" rel="noopener">SVG</a> 和 <a href="https://www.w3.org/Math/draft-spec/" target="_blank" rel="noopener">MathML</a> 的规范都详细定义了每个元素能包含的具体内容（define very precisely what each element can contain）。许多组合是没有任何语义含义的，比如一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 元素嵌套在一个 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a> 元素里。</p>
+</li>
+<li><p>在 HTML 中，通常在一个空元素上使用一个闭标签是无效的。例如， </p>
+<pre><code class="html"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span><span class="tag">&lt;/<span class="name">input</span>&gt;</span></code></pre>
+<p>的闭标签是无效的 HTML。<br>在 HTML 中有以下这些<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/%E7%A9%BA%E5%85%83%E7%B4%A0" target="_blank" rel="noopener">空元素</a>：</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/area" target="_blank" rel="noopener">area</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base" target="_blank" rel="noopener">base</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br" target="_blank" rel="noopener">br</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/col" target="_blank" rel="noopener">col</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup" target="_blank" rel="noopener">colgroup</a>——when the <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/colgroup#attr-span" target="_blank" rel="noopener">span</a> is present</p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/command" target="_blank" rel="noopener">command</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed" target="_blank" rel="noopener">embed</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr" target="_blank" rel="noopener">hr</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/keygen" target="_blank" rel="noopener">keygen</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link" target="_blank" rel="noopener">link</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/meta" target="_blank" rel="noopener">meta</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/param" target="_blank" rel="noopener">param</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/source" target="_blank" rel="noopener">source</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/track" target="_blank" rel="noopener">track</a></p>
+</li>
+<li><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr" target="_blank" rel="noopener">wbr</a></p>
+</li>
+</ul>
+<h2 id="什么是可替换标签（查-MDN、博客）"><a href="#什么是可替换标签（查-MDN、博客）" class="headerlink" title="什么是可替换标签（查 MDN、博客）"></a>什么是可替换标签（查 MDN、博客）</h2><ul>
+<li>CSS 里，<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Replaced_element" target="_blank" rel="noopener">可替换元素（replaced element）</a>的展现不是由CSS来控制的。这些元素是一类 外观渲染独立于CSS的 外部对象。 典型的可替换元素有 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img" target="_blank" rel="noopener">img</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object" target="_blank" rel="noopener">object</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a> 和 表单元素，如<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea" target="_blank" rel="noopener">textarea</a>、 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input" target="_blank" rel="noopener">input</a> 。 某些元素只在一些特殊情况下表现为可替换元素，例如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a> 和 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a> 。   </li>
+<li>通过 CSS content 属性来插入的对象 被称作 <strong>匿名可替换元素</strong>（anonymous replaced elements）。<br>CSS在某些情况下会对可替换元素做特殊处理，比如计算外边距和一些auto值。  </li>
+<li>需要注意的是，一部分（并非全部）可替换元素，本身具有尺寸和基线（baseline），会被像<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align" target="_blank" rel="noopener">vertical-align</a>之类的一些 CSS 属性用到。<h2 id="HTML-测验学习："><a href="#HTML-测验学习：" class="headerlink" title="HTML 测验学习："></a>HTML 测验学习：</h2></li>
+</ul>
 <ol>
-<li>举例法<br>HTML 语义化就是使用正确的标签（总结）段落就写 p 标签，标题就写 h1 标签，文章就写article标签，视频就写video标签，时间用<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time" target="_blank" rel="noopener">time标签</a>，画板用<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API" target="_blank" rel="noopener">canvas标签</a>等等。</li>
-<li>阐述法(补充)</li>
+<li>HTML 指的是？<br>超文本标记语言（Hyper Text Markup Language）</li>
+<li>Web 标准的制定者是<br>万维网联盟（W3C）</li>
+<li><code>&lt;h1&gt;</code>是最大的标题</li>
+<li><code>&lt;body bgcolor=&quot;yellow&quot;&gt;</code>可以添加背景颜色。<code>&lt;body style=&quot;background-color:yellow;&quot;&gt;</code>也可以</li>
+<li><code>&lt;br&gt;</code>可以插入折行</li>
+<li><code>&lt;b&gt;</code>产生粗体字的 HTML 标签。(Choose the correct HTML element to define important text)<br><code>&lt;strong&gt;</code></li>
+<li><code>&lt;i&gt;</code>产生斜体字的 HTML 标签(Choose the correct HTML element to define emphasized text)<br><code>&lt;em&gt;</code></li>
+<li><code>&lt;a href=&quot;http://www.w3school.com.cn&quot;&gt;W3School&lt;/a&gt;</code>可以产生超链接</li>
+<li><code>&lt;a href=&quot;mailto:xxx@yyy&quot;&gt;</code>制作电子邮件链接</li>
+<li><code>&lt;a href=&quot;url&quot; target=&quot;_blank&quot;&gt;</code>在新窗口打开链接。</li>
+<li><code>&lt;table&gt;&lt;tr&gt;&lt;td&gt;</code>全部都是表格标签。</li>
+<li><code>&lt;td align=&quot;left&quot;&gt;</code>可以使单元格中的内容进行左对齐的正确 HTML 标签。</li>
+<li><code>&lt;ol&gt;</code>产生带有数字列表符号的列表。</li>
+<li><code>&lt;ul&gt;</code>产生带有圆点列表符号的列表。</li>
+<li><code>&lt;input type=&quot;checkbox&quot;&gt;</code>可以产生复选框。</li>
+<li><code>&lt;input type=&quot;text&quot;&gt;</code>可以产生文本框。</li>
+<li><code>&lt;select&gt;</code>可以产生下拉列表(What is the correct HTML for making a drop-down list?)<br><code>&lt;select&gt;</code></li>
+<li><code>&lt;textarea&gt;</code>可以产生文本区（textarea）。</li>
+<li><code>&lt;img src=&quot;image.gif&quot;&gt;</code>可以插入图像。(What is the correct HTML for inserting an image?)<br><code>&lt;img src=&quot;image.gif&quot; alt=&quot;MyImage&quot;&gt;</code></li>
+<li><code>&lt;body background=&quot;background.gif&quot;&gt;</code>可以插入背景图像。(What is the correct HTML for inserting a background image?)<br><code>&lt;body style=&quot;background-image:url(background.gif)&quot;&gt;</code></li>
+<li>Which character is used to indicate an end tag?<br>\</li>
+<li>Inline elements are normally displayed without starting a new line.<br>True</li>
+<li>How can you make a bulleted list?<br><code>&lt;ul&gt;</code>   </li>
+<li>An <code>&lt;iframe&gt;</code> is used to display a web page within a web page.<br>True  </li>
+<li>HTML comments start with <code>&lt;!-- and end with --&gt;</code><br>True</li>
+<li>Block elements are normally displayed without starting a new line.<br>False</li>
+<li>Which HTML element defines the title of a document?<br><code>&lt;title&gt;</code></li>
+<li>Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?<br>alt</li>
+<li>Which doctype is correct for HTML5?<br><code>&lt;!DOCTYPE html&gt;</code></li>
+<li>Which HTML element is used to specify a footer for a document or section?<br><code>&lt;footer&gt;</code></li>
+<li>In HTML, you can embed SVG elements directly into an HTML page.<br>True</li>
+<li>What is the correct HTML element for playing video files?<br><code>&lt;video&gt;</code></li>
+<li>What is the correct HTML element for playing audio files?<br><code>&lt;audio&gt;</code></li>
+<li>The HTML global attribute, “contenteditable” is used to:<br>Specify whether the content of an element should be editable or not</li>
+<li>In HTML, onblur and onfocus are:<br>Event attributes</li>
+<li>Graphics defined by SVG is in which format?<br>XML</li>
+<li>The HTML <code>&lt;canvas&gt;</code> element is used to:<br>draw graphics</li>
+<li>In HTML, which attribute is used to specify that an input field must be filled out?<br>required</li>
+<li>Which input type defines a slider control?<br>range</li>
+<li>Which HTML element is used to display a scalar measurement within a range?<br><code>&lt;meter&gt;</code></li>
+<li>Which HTML element defines navigation links?<br><code>&lt;nav&gt;</code></li>
+<li>In HTML, what does the <aside> element define?<br>Content aside from the page content</li>
+<li>Which HTML element is used to specify a header for a document or section?<br><code>&lt;header&gt;</code></li>
 </ol>
 <ul>
-<li>首先讲以前的后台开发人员使用table标签布局，然后讲美工人员使用div+css布局（<strong>但是，不够语义化，分不清不同DIV之间有什么区别</strong>），最后讲专业的前端会使用正确的标签进行页面开发。</li>
-<li>所以最前面那种不是正确的写法，然后div+css的写法虽然有一些改进，但是换汤不换药，也不够合适。</li>
+<li>如果想自己测试可以通过下面链接<br>  W3schools 的 <a href="https://www.w3schools.com/quiztest/quiztest.asp?qtest=HTML" target="_blank" rel="noopener">HTML 测试题（需要FQ）</a><br>  如果访问不了这个链接可以尝试访问<a href="https://www.w3school.com.cn/quiz/quiz.asp?quiz=html" target="_blank" rel="noopener">国内的山寨版</a><h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><a href="https://zh.wikipedia.org/wiki/%E4%B8%87%E7%BB%B4%E7%BD%91%E8%81%94%E7%9B%9F" target="_blank" rel="noopener">万维网联盟W3C</a><br><a href="https://zh.wikipedia.org/wiki/MDN_Web_Docs" target="_blank" rel="noopener">MDN 简介</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element" target="_blank" rel="noopener">HTML 元素参考</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML5 标签列表</a></li>
 </ul>
-</li>
-<li><p>meta viewport 是做什么用的，怎么写？</p>
-<ul>
-<li>它的功能就是<strong>手机上想让页面不能缩放</strong>应该使用的。</li>
-<li>我们可以在google上面搜索github head然后找到这个<a href="https://github.com/joshbuchea/HEAD" target="_blank" rel="noopener">git仓库地址</a>,这个仓库把所有流行的meta写法都写上了。这里是外国人的写法，下面的是中国人的写法。</li>
-</ul>
-<ol>
-<li>举例法<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1"</span>&gt;</span></span><br></pre></td></tr></table></figure>
-（<strong>简单记忆</strong>，牛叉（nc），n就是name，c就是content.content里面就是w3s,w是设备宽度，3s分别是初始，最大，最小放大倍数。）<br>然后逐个解释每个单词的意思。</li>
-</ol>
-<ul>
-<li>更多补充：由于近几年手机的发展，导致前端开发的工作重心从电脑桌面移动到手机上，所以会有viewport的出现。</li>
-<li><a href="https://juejin.im/post/5d804e0b518825297023fee7" target="_blank" rel="noopener">博客链接1</a>,<a href="https://www.cnblogs.com/2050/p/3877280.html" target="_blank" rel="noopener">博客链接2</a></li>
-</ul>
-</li>
-<li><p>你用过哪些 <a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/HTML5_element_list" target="_blank" rel="noopener">HTML 5</a> 标签？<br>举例法<br>平时如果只用div写页面你就完了，把你平时用到的html5标签列举出来即可，但是要注意如果这个标签的用法比较复杂，你要先看一下MDN的文档再说这个标签；<strong>如果你说出一个标签，却不知道它有哪些API，那么你就会被扣分</strong></p>
-<ul>
-<li>常见的章节相关的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/section" target="_blank" rel="noopener">section</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header" target="_blank" rel="noopener">header</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/main" target="_blank" rel="noopener">main</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer" target="_blank" rel="noopener">footer</a> <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/article" target="_blank" rel="noopener">article</a></li>
-<li>还有少用嵌入内容的<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/canvas" target="_blank" rel="noopener">canvas</a>, <figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"300"</span> <span class="attr">height</span>=<span class="string">"300"</span>&gt;</span> </span><br><span class="line"><span class="comment">&lt;!--  抱歉，您的浏览器不支持canvas元素--&gt;</span></span><br><span class="line"><span class="comment">&lt;!--  （这些内容将会在不支持&lt;canvas&gt;元素的浏览器或是禁用了JavaScript的浏览器内渲染并展现）--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br></pre></td></tr></table></figure>
-JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//使用HTMLCanvasElement.getContext()获得一个绘图上下文并开始绘制</span></span><br><span class="line"><span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'canvas'</span>); <span class="comment">//获取到canvas元素</span></span><br><span class="line"><span class="keyword">var</span> ctx = canvas.getContext(<span class="string">'2d'</span>); <span class="comment">//获取到canvas2d上下文</span></span><br><span class="line">ctx.fillStyle = <span class="string">'green'</span>; <span class="comment">//颜色</span></span><br><span class="line">ctx.fillRect(<span class="number">10</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">100</span>);<span class="comment">//范围</span></span><br></pre></td></tr></table></figure>
-<a href="https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/svg" target="_blank" rel="noopener">svg</a>，还有<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio" target="_blank" rel="noopener">audio</a>, <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video" target="_blank" rel="noopener">video</a><br>有poster 海报的封面url, src嵌入视频的地址，loop循环播放，autoplay自动播放等。 </li>
-<li>不熟悉最好不要说这些。</li>
-</ul>
-</li>
-<li><p>H5 是什么？<br>阐述法<br>搜一下知乎就知道了，<strong>H5表示移动端页面</strong>，反正不是HTML5。用<code>site:zhihu.com</code>得到<a href="https://www.zhihu.com/question/30363342" target="_blank" rel="noopener">知乎页面——H5 是什么？</a></p>
-<ul>
-<li>也可以说HTML5并<strong>不是一项技术</strong>，而是<strong>一个标准</strong>。</li>
-<li>理论派讨论<strong>HTML5标准</strong>，要么是作为实践派讨论<strong>HTML5标准在某浏览器的应用</strong></li>
-<li>所以我们在谈论H5的时候，实际上是一个<b>解决方案</b>，一个看起来<b>酷炫</b>的移动端onepage网站的解决方案。而这个解决方案不仅包含了HTML5新增的audio标签，canvas，拖拽特性，本地存储，websocket通信，同时也包括了<b>盒模型</b>，包括<b>绝对定位</b>，包括<b>一切前端的基本知识</b>。H5本应是一个技术合集</li>
-</ul>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>HTML</category>
@@ -760,21 +641,20 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </tags>
   </entry>
   <entry>
-    <title>子选择器</title>
-    <url>/2020/01/02/%E5%AD%90%E9%80%89%E6%8B%A9%E5%99%A8/</url>
-    <content><![CDATA[<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Child_combinator" target="_blank" rel="noopener">子选择器</a><br>不加&gt;也就是只有空格，此时选择器使用的是子元素或者孙元素，只要下面都可以。</p>
-<a id="more"></a>
-
-<p>如果加了&gt;，此时选择使用的只能是子元素，不可以是用孙元素，只能下一级。</p>
-<p>使用list-style:none；属性</p>
-<p>如果不加&gt;，只使用空格.<br><img src="https://s1.ax1x.com/2020/05/08/YuDtMV.png" alt="YuDtMV.png"><br>如果加了&gt;就不可以。<br><img src="https://s1.ax1x.com/2020/05/08/YuDJx0.png" alt="YuDJx0.png"><br>因为body与nav元素之间还有一个div。</p>
-<p>如果把body和nav之间在加一个div就可以使用了。<br><img src="https://s1.ax1x.com/2020/05/08/YuDG2q.png" alt="YuDG2q.png"></p>
+    <title>还原到某个commit的代码</title>
+    <url>/2019/10/23/%E8%BF%98%E5%8E%9F%E5%88%B0%E6%9F%90%E4%B8%AAcommit%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<ul>
+<li>可以用的git 命令  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reset --hard 后面加commit的代码的ID</span><br><span class="line">//直接还原到某个commit的代码</span><br></pre></td></tr></table></figure>
+<a id="more"></a></li>
+<li>某个commit的代码可以通过下面的命令查看，git reflog对于已经删除也就是reset还原的记录也可以查询到，但是git log不可以查询已经还原的记录。  <figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure></li>
+<li>找到你需要的记录之后你可以使用git show 后面加commit的代码的ID查看你修改了哪个地方。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>CSS</category>
+        <category>github</category>
       </categories>
       <tags>
-        <tag>CSS</tag>
+        <tag>github</tag>
       </tags>
   </entry>
   <entry>
@@ -918,6 +798,129 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
       </categories>
       <tags>
         <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PhysicalTherapist---PT</title>
+    <url>/2021/02/27/PhysicalTherapist-PT/</url>
+    <content><![CDATA[<h1 id="PhysicalTherapist—PT"><a href="#PhysicalTherapist—PT" class="headerlink" title="PhysicalTherapist—PT"></a>PhysicalTherapist—PT</h1><h2 id="2021-1-25"><a href="#2021-1-25" class="headerlink" title="2021.1.25"></a>2021.1.25</h2><h3 id="TD5-5"><a href="#TD5-5" class="headerlink" title="TD5/5"></a>TD<sub>5/5</sub></h3><ul>
+<li><p>TD<sub>5/5</sub>,从肿瘤放射物理学中查询到时329页有说到。</p>
+<ul>
+<li><p><strong>我记得在做计划的时候都是考虑98%就可以</strong>。而下面说道的95%可能跟这个有关。</p>
+</li>
+<li><p>为统一标准，将达到95%的肿瘤控制率所需要的剂量（TCD<sub>95</sub>）定义为<a href="https://www.med66.com/html/ziliao/07/58/8db1b9c8cb52198d4752176ba2e29795.htm" target="_blank" rel="noopener">肿瘤致死剂量</a></p>
+</li>
+<li><p>正常阻止耐受量分两种：</p>
+<ol>
+<li>即为临床医生所能接受的、造成组织或器官的某种损伤的最小的和最大的剂量。最小的损伤剂量为TD<sub>5/5</sub>,表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过5%;</li>
+<li>最大的损伤剂量为TD<sub>50/5</sub>, 表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过50%<h2 id="两个DVH比较图"><a href="#两个DVH比较图" class="headerlink" title="两个DVH比较图"></a>两个DVH比较图</h2></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>书本453页。</p>
+</li>
+<li><p>利用 DVH 鉴别治疗方案的优劣要区别具体情况①当一个计划 OAR 的 DVH 曲线总是低于另一个计划的 DVH 值时，前者计划应该优于后者；②当两个计划 OAR 的 DVH 曲线有交叉时，如图 9-51所示，计划 D 中的 （）AR 有较多的体积受到比计划 I中更高的剂量，但计划 I 中有较大的体积受到较低剂量的照射。如果 （）AR 是串型组织（由单元组织或细胞决定整个器官的功能，第八章第五节），如脊髓，高剂量段将决定治疗方案的取舍，计划 I 优于计划 I ;如果 OAR 是并行组织（器官中大部分单元组织或细胞受伤后，器官功能才受损，第八章第五节），如肝、肺等组织，因DVH 曲线 I，K 下的面积近似相同，计划 I，H 可能等同。</p>
+</li>
+<li><p>两个计划DVH图比较图 9-51<a href="https://imgchr.com/i/sO2jzT" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/25/sO2jzT.png" alt="sO2jzT.png"></a>]</p>
+<h2 id="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"><a href="#2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）" class="headerlink" title="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"></a>2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）</h2><h3 id="plan1"><a href="#plan1" class="headerlink" title="plan1"></a>plan1</h3></li>
+<li><p>plan1优化参数-1<a href="https://imgchr.com/i/yLdtwd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdtwd.jpg" alt="yLdtwd.jpg"></a></p>
+</li>
+<li><p>plan1优化参数-2<a href="https://imgchr.com/i/yLdGOe" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdGOe.jpg" alt="yLdGOe.jpg"></a></p>
+</li>
+<li><p>plan1优化参数-3<a href="https://imgchr.com/i/yLdYeH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdYeH.jpg" alt="yLdYeH.jpg"></a></p>
+<h3 id="plan2"><a href="#plan2" class="headerlink" title="plan2"></a>plan2</h3></li>
+<li><p>ctv-gtv 优选度由150降低到100</p>
+</li>
+<li><p>gtv 优选度由150降低到100</p>
+</li>
+<li><p>b-c 优选度由150降低到100</p>
+</li>
+<li><p>plan2优化参数 1<a href="https://imgchr.com/i/yLddYt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLddYt.jpg" alt="yLddYt.jpg"></a></p>
+</li>
+<li><p>plan2优化参数-2<a href="https://imgchr.com/i/yLdBSf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdBSf.jpg" alt="yLdBSf.jpg"></a></p>
+</li>
+<li><p>结果</p>
+<ul>
+<li>剂量线5000的会多出部分接近肺，CTV中间会多出一些剂量散点</li>
+<li>剂量线5750的会多出部分</li>
+<li>体积直方图DVH中业整体会使plan2的剂量低于plan1(但CTV和c-g出现剂量超过5200后plan2&gt;plan1)</li>
+<li>进过测试危机器官优选度低于ctv和gtv，会导致低剂量区变小，高剂量区变大。</li>
+</ul>
+</li>
+<li><p>plan2剂量分布图<a href="https://imgchr.com/i/yLdwfP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdwfP.jpg" alt="yLdwfP.jpg"></a></p>
+</li>
+<li><p>plan2的DVH图<a href="https://imgchr.com/i/yLdaFI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdaFI.jpg" alt="yLdaFI.jpg"></a></p>
+</li>
+<li><p>plan2的5000和5750剂量分布图<a href="https://imgchr.com/i/yLd8yD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd8yD.jpg" alt="yLd8yD.jpg"></a></p>
+</li>
+<li><p>plan2的5000和5750剂量分布图 (2)<a href="https://imgchr.com/i/yLdNTA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdNTA.jpg" alt="yLdNTA.jpg"></a></p>
+<h3 id="plan3"><a href="#plan3" class="headerlink" title="plan3"></a>plan3</h3></li>
+<li><p>plan3优化参数-1<a href="https://imgchr.com/i/yLdDl8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdDl8.jpg" alt="yLdDl8.jpg"></a></p>
+</li>
+<li><p>cord脊髓优选度由10提高到150</p>
+</li>
+<li><p>heart心脏优选度由80提高到150</p>
+</li>
+<li><p>lung-r右肺超过优选度由70提高到150</p>
+</li>
+<li><p>lung-l左肺优选度由50提高到150</p>
+</li>
+<li><p>结果</p>
+<ul>
+<li>剂量5000的中间会出现一个缺口。</li>
+<li>计量5750的会稍微大一些。</li>
+<li>体积直方图中<ul>
+<li>cord脊髓基本不变</li>
+<li>lung-r剂量超过400时plan1&gt;plan3,小于400时候plan3&gt;plan1</li>
+<li>lung-l剂量超过600时plan1&gt;plan3,小于600时候plan3&gt;plan1</li>
+<li>heart剂量超过480时plan1&gt;plan3,小于480时候plan3&gt;plan1</li>
+<li>ctv剂量超过5300时plan3&gt;plan1,小于5300时候plan1&gt;plan3</li>
+<li>c-g剂量超过5200时plan3&gt;plan1,小于5200时候plan1&gt;plan3</li>
+<li>gtv,plan1&gt;plan3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>plan3剂量分布图<a href="https://imgchr.com/i/yLdsOg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdsOg.jpg" alt="yLdsOg.jpg"></a></p>
+</li>
+<li><p>plan3剂量分布图-2<a href="https://imgchr.com/i/yLd6mQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd6mQ.jpg" alt="yLd6mQ.jpg"></a></p>
+<h3 id="plan4"><a href="#plan4" class="headerlink" title="plan4"></a>plan4</h3></li>
+<li><p>经过测试剂量限值上限增加会使实际剂量也会增加。</p>
+</li>
+<li><p>plan4优化参数调整<a href="https://imgchr.com/i/yLdr6S" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdr6S.jpg" alt="yLdr6S.jpg"></a></p>
+<h2 id="2021年2月25日"><a href="#2021年2月25日" class="headerlink" title="2021年2月25日"></a>2021年2月25日</h2><h3 id="喉癌计划测试"><a href="#喉癌计划测试" class="headerlink" title="喉癌计划测试"></a>喉癌计划测试</h3></li>
+<li><p>该计划做完之后在两个ptv靶区之间等剂量分布线连在一起了，为了分隔等剂量线，在左右两个等剂量线之间画一个回流区为NC。然后设置优化参数如下图所示。</p>
+</li>
+<li><p>另外我第一次做的5000剂量线包裹不了PTV靶区，主要是因为</p>
+<ol>
+<li>可能是我的优选度给的比较低之前给的是30和100，后面都改成了120。</li>
+<li>PTV一般给两个上限和两个下限。我给了三个上限和一个下限。</li>
+<li>剂量降低的数值刚开始是100，后面减少为50.</li>
+<li>最好是100%体积的时候剂量超过需要的5000，最开始的5000我修改为5100.</li>
+</ol>
+</li>
+<li><p>另外包裹不住PTV靶区</p>
+<ol>
+<li>ptv里面分两个上限和两个下限。两个下限中就类似于cold冷端，也就是最外面不能低于多少剂量。</li>
+</ol>
+</li>
+<li><p><strong>百分比0对应的是剂量最大值，百分比100对应的是剂量最小值</strong>。</p>
+</li>
+<li><p>优化图1<a href="https://imgtu.com/i/yvqljI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvqljI.jpg" alt="yvqljI.jpg"></a></p>
+</li>
+<li><p>优化图2<a href="https://imgtu.com/i/yvq3ut" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvq3ut.jpg" alt="yvq3ut.jpg"></a></p>
+<h3 id="导ct图是第一行第四个图标"><a href="#导ct图是第一行第四个图标" class="headerlink" title="导ct图是第一行第四个图标"></a>导ct图是第一行第四个图标</h3></li>
+<li><p>第一行第四个<a href="https://imgtu.com/i/yvL9Vf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvL9Vf.jpg" alt="yvL9Vf.jpg"></a></p>
+</li>
+<li><p>名字代号示例<a href="https://imgtu.com/i/yvLPIS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvLPIS.jpg" alt="yvLPIS.jpg"></a></p>
+</li>
+<li><p>老钱说的只有靶区，<strong>比如ptv才有下限</strong>，因为靶区剂量不能低于医生需要的剂量要求。其他的都只有上限。</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>物理师</tag>
       </tags>
   </entry>
 </search>
