@@ -800,4 +800,124 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
         <tag>面试</tag>
       </tags>
   </entry>
+  <entry>
+    <title>PhysicalTherapist---PT</title>
+    <url>/2021/02/27/PhysicalTherapist-PT/</url>
+    <content><![CDATA[<h1 id="PhysicalTherapist—PT"><a href="#PhysicalTherapist—PT" class="headerlink" title="PhysicalTherapist—PT"></a>PhysicalTherapist—PT</h1><h2 id="2021-1-25"><a href="#2021-1-25" class="headerlink" title="2021.1.25"></a>2021.1.25</h2><h3 id="TD5-5"><a href="#TD5-5" class="headerlink" title="TD5/5"></a>TD<sub>5/5</sub></h3><ul>
+<li><p>TD<sub>5/5</sub>,从肿瘤放射物理学中查询到时329页有说到。</p>
+<ul>
+<li><p><strong>我记得在做计划的时候都是考虑98%就可以</strong>。而下面说道的95%可能跟这个有关。</p>
+</li>
+<li><p>为统一标准，将达到95%的肿瘤控制率所需要的剂量（TCD<sub>95</sub>）定义为<a href="https://www.med66.com/html/ziliao/07/58/8db1b9c8cb52198d4752176ba2e29795.htm" target="_blank" rel="noopener">肿瘤致死剂量</a></p>
+</li>
+<li><p>正常阻止耐受量分两种：</p>
+<ol>
+<li>即为临床医生所能接受的、造成组织或器官的某种损伤的最小的和最大的剂量。最小的损伤剂量为TD<sub>5/5</sub>,表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过5%;</li>
+<li>最大的损伤剂量为TD<sub>50/5</sub>, 表明在所有用标准治疗条件的肿瘤患者中，治疗后5年，因放射治疗造成严重放射损伤的患者不超过50%<h2 id="两个DVH比较图"><a href="#两个DVH比较图" class="headerlink" title="两个DVH比较图"></a>两个DVH比较图</h2></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>书本453页。</p>
+</li>
+<li><p>利用 DVH 鉴别治疗方案的优劣要区别具体情况①当一个计划 OAR 的 DVH 曲线总是低于另一个计划的 DVH 值时，前者计划应该优于后者；②当两个计划 OAR 的 DVH 曲线有交叉时，如图 9-51所示，计划 D 中的 （）AR 有较多的体积受到比计划 I中更高的剂量，但计划 I 中有较大的体积受到较低剂量的照射。如果 （）AR 是串型组织（由单元组织或细胞决定整个器官的功能，第八章第五节），如脊髓，高剂量段将决定治疗方案的取舍，计划 I 优于计划 I ;如果 OAR 是并行组织（器官中大部分单元组织或细胞受伤后，器官功能才受损，第八章第五节），如肝、肺等组织，因DVH 曲线 I，K 下的面积近似相同，计划 I，H 可能等同。</p>
+</li>
+<li><p>两个计划DVH图比较图 9-51<a href="https://imgchr.com/i/sO2jzT" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/01/25/sO2jzT.png" alt="sO2jzT.png"></a>]</p>
+<h2 id="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"><a href="#2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）" class="headerlink" title="2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）"></a>2021年2月21日修改计划参数对比计划结果（汪中妹乳腺癌）</h2><h3 id="plan1"><a href="#plan1" class="headerlink" title="plan1"></a>plan1</h3></li>
+<li><p>plan1优化参数-1<a href="https://imgchr.com/i/yLdtwd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdtwd.jpg" alt="yLdtwd.jpg"></a></p>
+</li>
+<li><p>plan1优化参数-2<a href="https://imgchr.com/i/yLdGOe" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdGOe.jpg" alt="yLdGOe.jpg"></a></p>
+</li>
+<li><p>plan1优化参数-3<a href="https://imgchr.com/i/yLdYeH" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdYeH.jpg" alt="yLdYeH.jpg"></a></p>
+<h3 id="plan2"><a href="#plan2" class="headerlink" title="plan2"></a>plan2</h3></li>
+<li><p>ctv-gtv 优选度由150降低到100</p>
+</li>
+<li><p>gtv 优选度由150降低到100</p>
+</li>
+<li><p>b-c 优选度由150降低到100</p>
+</li>
+<li><p>plan2优化参数 1<a href="https://imgchr.com/i/yLddYt" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLddYt.jpg" alt="yLddYt.jpg"></a></p>
+</li>
+<li><p>plan2优化参数-2<a href="https://imgchr.com/i/yLdBSf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdBSf.jpg" alt="yLdBSf.jpg"></a></p>
+</li>
+<li><p>结果</p>
+<ul>
+<li>剂量线5000的会多出部分接近肺，CTV中间会多出一些剂量散点</li>
+<li>剂量线5750的会多出部分</li>
+<li>体积直方图DVH中业整体会使plan2的剂量低于plan1(但CTV和c-g出现剂量超过5200后plan2&gt;plan1)</li>
+<li>进过测试危机器官优选度低于ctv和gtv，会导致低剂量区变小，高剂量区变大。</li>
+</ul>
+</li>
+<li><p>plan2剂量分布图<a href="https://imgchr.com/i/yLdwfP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdwfP.jpg" alt="yLdwfP.jpg"></a></p>
+</li>
+<li><p>plan2的DVH图<a href="https://imgchr.com/i/yLdaFI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdaFI.jpg" alt="yLdaFI.jpg"></a></p>
+</li>
+<li><p>plan2的5000和5750剂量分布图<a href="https://imgchr.com/i/yLd8yD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd8yD.jpg" alt="yLd8yD.jpg"></a></p>
+</li>
+<li><p>plan2的5000和5750剂量分布图 (2)<a href="https://imgchr.com/i/yLdNTA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdNTA.jpg" alt="yLdNTA.jpg"></a></p>
+<h3 id="plan3"><a href="#plan3" class="headerlink" title="plan3"></a>plan3</h3></li>
+<li><p>plan3优化参数-1<a href="https://imgchr.com/i/yLdDl8" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdDl8.jpg" alt="yLdDl8.jpg"></a></p>
+</li>
+<li><p>cord脊髓优选度由10提高到150</p>
+</li>
+<li><p>heart心脏优选度由80提高到150</p>
+</li>
+<li><p>lung-r右肺超过优选度由70提高到150</p>
+</li>
+<li><p>lung-l左肺优选度由50提高到150</p>
+</li>
+<li><p>结果</p>
+<ul>
+<li>剂量5000的中间会出现一个缺口。</li>
+<li>计量5750的会稍微大一些。</li>
+<li>体积直方图中<ul>
+<li>cord脊髓基本不变</li>
+<li>lung-r剂量超过400时plan1&gt;plan3,小于400时候plan3&gt;plan1</li>
+<li>lung-l剂量超过600时plan1&gt;plan3,小于600时候plan3&gt;plan1</li>
+<li>heart剂量超过480时plan1&gt;plan3,小于480时候plan3&gt;plan1</li>
+<li>ctv剂量超过5300时plan3&gt;plan1,小于5300时候plan1&gt;plan3</li>
+<li>c-g剂量超过5200时plan3&gt;plan1,小于5200时候plan1&gt;plan3</li>
+<li>gtv,plan1&gt;plan3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>plan3剂量分布图<a href="https://imgchr.com/i/yLdsOg" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdsOg.jpg" alt="yLdsOg.jpg"></a></p>
+</li>
+<li><p>plan3剂量分布图-2<a href="https://imgchr.com/i/yLd6mQ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLd6mQ.jpg" alt="yLd6mQ.jpg"></a></p>
+<h3 id="plan4"><a href="#plan4" class="headerlink" title="plan4"></a>plan4</h3></li>
+<li><p>经过测试剂量限值上限增加会使实际剂量也会增加。</p>
+</li>
+<li><p>plan4优化参数调整<a href="https://imgchr.com/i/yLdr6S" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/23/yLdr6S.jpg" alt="yLdr6S.jpg"></a></p>
+<h2 id="2021年2月25日"><a href="#2021年2月25日" class="headerlink" title="2021年2月25日"></a>2021年2月25日</h2><h3 id="喉癌计划测试"><a href="#喉癌计划测试" class="headerlink" title="喉癌计划测试"></a>喉癌计划测试</h3></li>
+<li><p>该计划做完之后在两个ptv靶区之间等剂量分布线连在一起了，为了分隔等剂量线，在左右两个等剂量线之间画一个回流区为NC。然后设置优化参数如下图所示。</p>
+</li>
+<li><p>另外我第一次做的5000剂量线包裹不了PTV靶区，主要是因为</p>
+<ol>
+<li>可能是我的优选度给的比较低之前给的是30和100，后面都改成了120。</li>
+<li>PTV一般给两个上限和两个下限。我给了三个上限和一个下限。</li>
+<li>剂量降低的数值刚开始是100，后面减少为50.</li>
+<li>最好是100%体积的时候剂量超过需要的5000，最开始的5000我修改为5100.</li>
+</ol>
+</li>
+<li><p>另外包裹不住PTV靶区</p>
+<ol>
+<li>ptv里面分两个上限和两个下限。两个下限中就类似于cold冷端，也就是最外面不能低于多少剂量。</li>
+</ol>
+</li>
+<li><p><strong>百分比0对应的是剂量最大值，百分比100对应的是剂量最小值</strong>。</p>
+</li>
+<li><p>优化图1<a href="https://imgtu.com/i/yvqljI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvqljI.jpg" alt="yvqljI.jpg"></a></p>
+</li>
+<li><p>优化图2<a href="https://imgtu.com/i/yvq3ut" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvq3ut.jpg" alt="yvq3ut.jpg"></a></p>
+<h3 id="导ct图是第一行第四个图标"><a href="#导ct图是第一行第四个图标" class="headerlink" title="导ct图是第一行第四个图标"></a>导ct图是第一行第四个图标</h3></li>
+<li><p>第一行第四个<a href="https://imgtu.com/i/yvL9Vf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvL9Vf.jpg" alt="yvL9Vf.jpg"></a></p>
+</li>
+<li><p>名字代号示例<a href="https://imgtu.com/i/yvLPIS" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/02/25/yvLPIS.jpg" alt="yvLPIS.jpg"></a></p>
+</li>
+<li><p>老钱说的只有靶区，<strong>比如ptv才有下限</strong>，因为靶区剂量不能低于医生需要的剂量要求。其他的都只有上限。</p>
+</li>
+</ul>
+]]></content>
+  </entry>
 </search>
