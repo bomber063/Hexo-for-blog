@@ -924,7 +924,7 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <ol>
 <li>账号——359，选择肿瘤二区，密码123.<br><a href="https://imgtu.com/i/6kWpMd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kWpMd.jpg" alt="6kWpMd.jpg"></a></li>
 <li>右键费用查询，此时要记住病人的住院号（比如20210266)。<br><a href="https://imgtu.com/i/6kRvGD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kRvGD.jpg" alt="6kRvGD.jpg"></a><br><a href="https://imgtu.com/i/6kRvGD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kRvGD.jpg" alt="6kRvGD.jpg"></a></li>
-<li>之后进去查询界面勾选红色老桐庐医保打钩，输入住院号，点击查找病人，下面出现病人，然后点击选定。<br><a href="https://imgtu.com/i/6kRvGD" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kRvGD.jpg" alt="6kRvGD.jpg"></a></li>
+<li>之后进去查询界面勾选红色老桐庐医保打钩，输入住院号，点击查找病人，下面出现病人，然后点击选定。<br><a href="https://imgtu.com/i/6kWFdP" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kWFdP.jpg" alt="6kWFdP.jpg"></a></li>
 <li>选中费用汇总。<br><a href="https://imgtu.com/i/6kWkIf" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kWkIf.jpg" alt="6kWkIf.jpg"></a></li>
 <li>查询显示的放疗次数，与实际的放疗次数对比是否一致即可。<h3 id="轮廓勾画body的时候注意"><a href="#轮廓勾画body的时候注意" class="headerlink" title="轮廓勾画body的时候注意"></a>轮廓勾画body的时候注意</h3></li>
 </ol>
@@ -941,7 +941,7 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li>等剂量线是否可以包住对应的靶区。</li>
 <li>mu的大小。mu剂量一般超过300就需要降低，mu代表高剂量跳针，如果是200多久可以稍微通过通量削弱降低一点。降低不了也没关系。跳针次数越少对机器越好，可以延长机器寿命。苏盛新举了一个之前手臂（毕日升）例子，对穿的两个射野，mu一个是900，另一个是1000就太多了。那么就需要把调强改为三维普通放疗。<br><a href="https://imgtu.com/i/6kfxud" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kfxud.jpg" alt="6kfxud.jpg"></a></li>
 <li>全局最大剂量来削弱最大剂量，也就是越红的地方点击刷子削弱。全局最大剂量就在下图的<strong>移动观察平面到全局最大剂量</strong>。<br><a href="https://imgtu.com/i/6k49sJ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6k49sJ.jpg" alt="6k49sJ.jpg"></a><ul>
-<li>用下面的界面来削弱，注意要选中箭头光标才可以触发削弱的功能。<br><a href="https://imgtu.com/i/6k49sJ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6k49sJ.jpg" alt="6k49sJ.jpg"></a><br><a href="https://imgtu.com/i/6k49sJ" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6k49sJ.jpg" alt="6k49sJ.jpg"></a><h3 id="剂量建成（x射线和电子射线，乳腺癌举例子）"><a href="#剂量建成（x射线和电子射线，乳腺癌举例子）" class="headerlink" title="剂量建成（x射线和电子射线，乳腺癌举例子）"></a>剂量建成（x射线和电子射线，乳腺癌举例子）</h3></li>
+<li>用下面的界面来削弱，注意要选中箭头光标才可以触发削弱的功能。<br><a href="https://imgtu.com/i/6kIuVA" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kIuVA.jpg" alt="6kIuVA.jpg"></a><br><a href="https://imgtu.com/i/6kImbd" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2021/03/02/6kImbd.jpg" alt="6kImbd.jpg"></a><h3 id="剂量建成（x射线和电子射线，乳腺癌举例子）"><a href="#剂量建成（x射线和电子射线，乳腺癌举例子）" class="headerlink" title="剂量建成（x射线和电子射线，乳腺癌举例子）"></a>剂量建成（x射线和电子射线，乳腺癌举例子）</h3></li>
 </ul>
 </li>
 </ol>
@@ -965,6 +965,34 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li><p>肺，腮腺等是并联器官，计划优化的时候不是用最大值，是用百分比，比如40%。</p>
 </li>
 <li><p>串联器官用最大值，也就是0%.</p>
+<h3 id="排程，计划确认，治疗单，cbct射野"><a href="#排程，计划确认，治疗单，cbct射野" class="headerlink" title="排程，计划确认，治疗单，cbct射野"></a>排程，计划确认，治疗单，cbct射野</h3></li>
+<li><p>cbct射野是通过新增加摆位野，然后修改名字为cbct。</p>
+</li>
+<li><p>计划确认中的因子设置为5，并且使用用户原点。</p>
+</li>
+<li><p>总结的打印使用shrotsummry.</p>
+</li>
+<li><p>右键预览，活动类型选择治疗，活动选择日常治疗。</p>
+</li>
+<li><p>治疗单——value就比如la20210206编号，还有course和plan.</p>
+</li>
+<li><p>如果计划退回后还需要点击未确认。</p>
+</li>
+<li><p>排程后预约，然后计划单。</p>
+<h3 id="绝对剂量检测（还需要加上图片）"><a href="#绝对剂量检测（还需要加上图片）" class="headerlink" title="绝对剂量检测（还需要加上图片）"></a>绝对剂量检测（还需要加上图片）</h3></li>
+<li><p>x射线水深不管是6mv还是10mv都是5cm，电子射线水深不同深度水深不同，具体见excel表格或者图片。</p>
+</li>
+<li><p>使用service才能让mu达到300，普通的最多只能达到200，这里需要选择能量，时间，然后mu300,然后跳帧100，x射线是四个回车，电子射线需要点击英文提示F2。</p>
+</li>
+<li><p>如果做完一次后或者出现其他联锁的时候就重新设置，也就是set all。</p>
+</li>
+<li><p>最后计算的数值超过原有的3%就不能pass。</p>
+</li>
+<li><p>绝对剂量用标准277做。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3></li>
+<li><p>肿瘤在CT上显示比其他软组织颜色略深，黑色。</p>
+</li>
+<li><p>做计划的时候原点设置到整数。</p>
 </li>
 </ul>
 ]]></content>
