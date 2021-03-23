@@ -1039,6 +1039,30 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li><p>因为叶片是矩形的，所以针对靶区可以适当调整位置。</p>
 </li>
 <li><p>削弱的时候一般看透射率，把最大的点的透射率和削弱0.1即可。比如最大点透射率是0.3，那么削弱到0.2即可。可以小一点也可以大一点，比如0.25或者0.15</p>
+<h2 id="2021年3月23日"><a href="#2021年3月23日" class="headerlink" title="2021年3月23日"></a>2021年3月23日</h2><h3 id="乳腺癌报错射线穿过主体孔"><a href="#乳腺癌报错射线穿过主体孔" class="headerlink" title="乳腺癌报错射线穿过主体孔"></a>乳腺癌报错射线穿过主体孔</h3></li>
+<li><p>今天在做乳腺癌放疗计划的时候发现角度在130度以下就会报错，但是如果超过130度很可能导致肺部的受量太多报错信息如下图<br><a href="https://imgtu.com/i/6HAggI" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HAggI.jpg" alt="6HAggI.jpg"></a></p>
+</li>
+<li><p>经过在微信物理师南华校友群和A12医学物理师交流群咨询，后找到问题所在主要是躯体图像没有扫全的原因（CT孔径不够），下面箭头指的4的地方就是手臂没有扫描全。<br><a href="https://imgtu.com/i/6HAhb8" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HAhb8.jpg" alt="6HAhb8.jpg"></a></p>
+</li>
+<li><p>另外下面这个箭头部分也没有扫全<br><a href="https://imgtu.com/i/6HArUe" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HArUe.jpg" alt="6HArUe.jpg"></a></p>
+</li>
+<li><p>解决方案有两种： </p>
+<ol>
+<li>如果有射野经过未扫描完整的区域，需要将body内收1到2mm</li>
+<li>加床然后删除。</li>
+</ol>
+</li>
+<li><p>方法1：如果有射野经过未扫描完整的区域，需要将body内收1到2mm。我这里<strong>内收了10mm</strong>，报错的射野角度由130改变到110，低于110的时候还是会报错。</p>
+</li>
+<li><p>方法2：加床，通过Eclipse13.5系统的如下操作</p>
+<ul>
+<li>选中加床<br><a href="https://imgtu.com/i/6HZujI" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HZujI.jpg" alt="6HZujI.jpg"></a></li>
+<li>然后会提示放大<br><a href="https://imgtu.com/i/6HAo5Q" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HAo5Q.jpg" alt="6HAo5Q.jpg"></a></li>
+<li>另外如果已经计算过的是不能加床的<br><a href="https://imgtu.com/i/6HAWKP" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HAWKP.jpg" alt="6HAWKP.jpg"></a></li>
+<li>选床的时候可以选择igrt，中。（这里选择哪个床其实关系不大，因为增加后要删除的）<br><a href="https://imgtu.com/i/6HAIUg" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HAIUg.jpg" alt="6HAIUg.jpg"></a></li>
+<li>提示放大后点击确认，那么图像放大，然后就可以看到增加床了<br><a href="https://imgtu.com/i/6HA7Cj" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HA7Cj.jpg" alt="6HA7Cj.jpg"></a></li>
+<li>最后删除掉左边显示的增加的床的图像即可。这样射野不管在什么角度都不会报错了。</li>
+</ul>
 </li>
 </ul>
 ]]></content>
