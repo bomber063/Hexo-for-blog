@@ -1046,10 +1046,11 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 </li>
 <li><p>另外下面这个箭头部分也没有扫全<br><a href="https://imgtu.com/i/6HArUe" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HArUe.jpg" alt="6HArUe.jpg"></a></p>
 </li>
-<li><p>解决方案有两种： </p>
+<li><p>解决方案有三种（最后一种没有试过）： </p>
 <ol>
 <li>如果有射野经过未扫描完整的区域，需要将body内收1到2mm</li>
 <li>加床然后删除。</li>
+<li>野射束穿过body通过空气再照到靶区</li>
 </ol>
 </li>
 <li><p>方法1：如果有射野经过未扫描完整的区域，需要将body内收1到2mm。我这里<strong>内收了10mm</strong>，报错的射野角度由130改变到110，低于110的时候还是会报错。</p>
@@ -1063,6 +1064,8 @@ JavaScript<figure class="highlight js"><table><tr><td class="code"><pre><span cl
 <li>提示放大后点击确认，那么图像放大，然后就可以看到增加床了<br><a href="https://imgtu.com/i/6HA7Cj" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HA7Cj.jpg" alt="6HA7Cj.jpg"></a></li>
 <li>最后删除掉左边显示的增加的床的图像即可。这样射野不管在什么角度都不会报错了。</li>
 </ul>
+</li>
+<li><p>方法3：野射束穿过body通过空气再照到靶区就会报错。射野不穿过这个区域就能计算了。<br><a href="https://imgtu.com/i/6HaQr6" target="_blank" rel="noopener"><img src="https://z3.ax1x.com/2021/03/23/6HaQr6.jpg" alt="6HaQr6.jpg"></a></p>
 </li>
 </ul>
 ]]></content>
